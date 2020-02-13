@@ -1,0 +1,130 @@
+$mainFont: "Montserrat", sans-serif;
+$grey1: rgb(82, 82, 82);
+$grey2: rgb(104, 104, 104);
+$grey3: rgb(228, 228, 228);
+$grey4: rgb(235, 235, 235);
+$light: rgb(250, 250, 250);
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $grey1;
+  font-family: $mainFont;
+}
+
+.container {
+  margin: auto;
+  padding: 10px;
+  display: flex;
+  max-width: 768px;
+  min-height: 768px;
+  margin-top: 20px;
+  flex-direction: row;
+  background-color: $grey2;
+}
+
+.inputs {
+  width: 35%;
+  padding: 20px;
+  display: flex;
+  padding-top: 40px;
+  flex-direction: column;
+  background-color: $light;
+
+  .textField {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+
+    input {
+      width: 70%;
+      padding: 10px;
+      outline: none;
+      border-style: none;
+      font-family: $mainFont;
+      background-color: $grey4;
+    }
+
+    button {
+      color: $grey1;
+      width: 30%;
+      outline: none;
+      border-style: none;
+      font-family: $mainFont;
+      background-color: $grey3;
+    }
+  }
+
+  .startStopBtn {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      color: $grey1;
+      outline: none;
+      padding: 10px;
+      border-style: none;
+      margin-bottom: 20px;
+      font-family: $mainFont;
+      background-color: $grey3;
+    }
+  }
+}
+
+.totals {
+  width: 65%;
+  display: flex;
+  padding: 20px;
+  margin-left: 2px;
+  padding-top: 40px;
+  flex-direction: column;
+  background-color: $grey3;
+
+  .mainRunningTotal {
+    padding: 10px;
+    display: flex;
+    min-height: 70px;
+    flex-direction: row;
+    align-items: center;
+    align-items: flex-end;
+    background-color: $light;
+    justify-content: space-between;
+
+    h4,
+    h2,
+    h1 {
+      margin: 0;
+      color: $grey1;
+      font-family: $mainFont;
+    }
+  }
+
+  .taskRunningTotal {
+    padding: 10px;
+    display: flex;
+    min-height: 60px;
+    margin-top: 20px;
+    align-items: center;
+    flex-direction: row;
+    align-items: flex-end;
+    background-color: $light;
+    justify-content: space-between;
+
+    h4,
+    h2,
+    h1 {
+      margin: 0;
+      color: $grey1;
+      font-family: $mainFont;
+    }
+  }
+}
+
+.totalsDetail {
+  width: 100%;
+  color: $grey2;
+  font-size: 0.8em;
+  padding: 0 0 10px 10px;
+  background-color: $light;
+}

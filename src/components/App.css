@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #525252;
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {
+  margin: auto;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 768px;
+  min-height: 768px;
+  margin-top: 20px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: #686868;
+}
+
+.inputs {
+  width: 35%;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 40px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #fafafa;
+}
+
+.inputs .textField {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.inputs .textField input {
+  width: 70%;
+  padding: 10px;
+  outline: none;
+  border-style: none;
+  font-family: "Montserrat", sans-serif;
+  background-color: #ebebeb;
+}
+
+.inputs .textField button {
+  color: #525252;
+  width: 30%;
+  outline: none;
+  border-style: none;
+  font-family: "Montserrat", sans-serif;
+  background-color: #e4e4e4;
+}
+
+.inputs .startStopBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.inputs .startStopBtn button {
+  color: #525252;
+  outline: none;
+  padding: 10px;
+  border-style: none;
+  margin-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
+  background-color: #e4e4e4;
+}
+
+.totals {
+  width: 65%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px;
+  margin-left: 2px;
+  padding-top: 40px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #e4e4e4;
+}
+
+.totals .mainRunningTotal {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 70px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  background-color: #fafafa;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.totals .mainRunningTotal h4,
+.totals .mainRunningTotal h2,
+.totals .mainRunningTotal h1 {
+  margin: 0;
+  color: #525252;
+  font-family: "Montserrat", sans-serif;
+}
+
+.totals .taskRunningTotal {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 60px;
+  margin-top: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  background-color: #fafafa;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.totals .taskRunningTotal h4,
+.totals .taskRunningTotal h2,
+.totals .taskRunningTotal h1 {
+  margin: 0;
+  color: #525252;
+  font-family: "Montserrat", sans-serif;
+}
+
+.totalsDetail {
+  width: 100%;
+  color: #686868;
+  font-size: 0.8em;
+  padding: 0 0 10px 10px;
+  background-color: #fafafa;
+}
+/*# sourceMappingURL=App.css.map */
