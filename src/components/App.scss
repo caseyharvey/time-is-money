@@ -5,6 +5,14 @@ $grey3: rgb(228, 228, 228);
 $grey4: rgb(240, 240, 240);
 $light: rgb(250, 250, 250);
 
+.responsiveFont {
+  font-size: 0.7em;
+}
+
+.responsiveWidth {
+  width: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -14,126 +22,123 @@ body {
 
 .container {
   margin: auto;
-  padding: 10px;
-  display: flex;
-  max-width: 768px;
-  min-height: 768px;
-  margin-top: 20px;
-  flex-direction: row;
-  background-color: $grey2;
-}
-
-.inputs {
-  width: 35%;
   padding: 20px;
   display: flex;
-  padding-top: 40px;
+  min-height: 90vh;
+  max-width: 1024px;
+  border-radius: 10px;
   flex-direction: column;
+  background-color: $grey2;
+
+  h1 {
+    color: $light;
+    text-align: center;
+    margin: 10px auto 30px auto;
+  }
+}
+
+.inputAndStats {
+  width: 100%;
+  display: flex;
+  padding: 15px;
+  border-radius: 10px;
+  flex-direction: column;
+  box-sizing: border-box;
   background-color: $light;
 
-  .textField {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 20px;
+  form {
+    margin: auto;
+    max-width: 520px;
+    @extend .responsiveWidth;
 
     input {
       width: 70%;
-      padding: 10px;
       outline: none;
+      color: $grey1;
+      padding: 20px;
       border-style: none;
       font-family: $mainFont;
+      box-sizing: border-box;
       background-color: $grey4;
+      border-radius: 10px 0 0 10px;
+      @extend .responsiveFont;
     }
 
     button {
-      color: $grey1;
       width: 30%;
       outline: none;
-      border-style: none;
-      font-family: $mainFont;
-      background-color: $grey3;
-    }
-  }
-
-  .startStopBtn {
-    display: flex;
-    margin-bottom: 30px;
-    flex-direction: column;
-
-    button {
       color: $grey1;
-      outline: none;
-      padding: 10px;
+      padding: 20px;
       border-style: none;
-      margin-bottom: 20px;
+      box-sizing: border-box;
       font-family: $mainFont;
       background-color: $grey3;
+      border-radius: 0 10px 10px 0;
+      @extend .responsiveFont;
     }
   }
 
-  h4 {
-    padding: 10px;
+  .valueBreakdown {
+    display: flex;
     color: $grey1;
-    margin: 0 0 20px 0;
-    font-family: $mainFont;
-    background-color: $grey4;
+    max-width: 520px;
+    align-items: center;
+    flex-direction: row;
+    box-sizing: border-box;
+    background-color: $light;
+    margin: 50px auto 35px auto;
+    justify-content: space-around;
+    @extend .responsiveWidth;
+    @extend .responsiveFont;
   }
 }
 
-.totals {
-  width: 65%;
-  display: flex;
-  padding: 20px;
-  margin-left: 2px;
-  padding-top: 40px;
-  flex-direction: column;
-  background-color: $grey3;
-
-  .mainRunningTotal {
-    padding: 10px;
-    display: flex;
-    min-height: 70px;
-    flex-direction: row;
-    align-items: center;
-    align-items: flex-end;
-    background-color: $light;
-    justify-content: space-between;
-
-    h4,
-    h2,
-    h1 {
-      margin: 0;
-      color: $grey1;
-      font-family: $mainFont;
-    }
+@media (min-width: 360px) {
+  .responsiveFont {
+    font-size: 0.8em;
   }
-
-  .taskRunningTotal {
-    padding: 10px;
-    display: flex;
-    min-height: 60px;
-    margin-top: 20px;
-    align-items: center;
-    flex-direction: row;
-    align-items: flex-end;
-    background-color: $light;
-    justify-content: space-between;
-
-    h4,
-    h2,
-    h1 {
-      margin: 0;
-      color: $grey1;
-      font-family: $mainFont;
+}
+@media (min-width: 375px) {
+  .inputAndStats {
+    padding: 25px;
+  }
+  .valueBreakdown {
+    margin: 50px 0 25px 0;
+  }
+}
+@media (min-width: 425px) {
+  .responsiveFont {
+    font-size: 1em;
+  }
+  .inputAndStats {
+    form {
+      input {
+        padding: 20px;
+      }
+      button {
+        padding: 20px;
+      }
     }
   }
 }
 
-.totalsDetail {
-  width: 100%;
-  color: $grey2;
-  font-size: 0.8em;
-  padding: 0 0 10px 10px;
-  background-color: $light;
+@media (min-width: 800px) {
+  .responsiveWidth {
+    width: 50%;
+  }
+
+  .inputAndStats {
+    flex-direction: row;
+    padding: 30px;
+
+    .valueBreakdown {
+      margin: 0;
+    }
+  }
 }
+
+// @media (min-width: 1024px) {
+//   .responsiveFont {
+//     font-size: 1.3em;
+//   }
+// }

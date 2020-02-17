@@ -1,3 +1,11 @@
+.responsiveFont, .inputAndStats form input, .inputAndStats form button, .inputAndStats .valueBreakdown {
+  font-size: 0.7em;
+}
+
+.responsiveWidth, .inputAndStats form, .inputAndStats .valueBreakdown {
+  width: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -7,145 +15,79 @@ body {
 
 .container {
   margin: auto;
-  padding: 10px;
+  padding: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  max-width: 768px;
-  min-height: 768px;
-  margin-top: 20px;
-  -webkit-box-orient: horizontal;
+  min-height: 90vh;
+  max-width: 1024px;
+  border-radius: 10px;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background-color: #686868;
 }
 
-.inputs {
-  width: 35%;
-  padding: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-top: 40px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  background-color: #fafafa;
+.container h1 {
+  color: #fafafa;
+  text-align: center;
+  margin: 10px auto 30px auto;
 }
 
-.inputs .textField {
+.inputAndStats {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  padding: 15px;
+  border-radius: 10px;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  margin-bottom: 20px;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #fafafa;
 }
 
-.inputs .textField input {
+.inputAndStats form {
+  margin: auto;
+  max-width: 520px;
+}
+
+.inputAndStats form input {
   width: 70%;
-  padding: 10px;
   outline: none;
+  color: #525252;
+  padding: 20px;
   border-style: none;
   font-family: "Montserrat", sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background-color: #f0f0f0;
+  border-radius: 10px 0 0 10px;
 }
 
-.inputs .textField button {
-  color: #525252;
+.inputAndStats form button {
   width: 30%;
   outline: none;
-  border-style: none;
-  font-family: "Montserrat", sans-serif;
-  background-color: #e4e4e4;
-}
-
-.inputs .startStopBtn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 30px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.inputs .startStopBtn button {
   color: #525252;
-  outline: none;
-  padding: 10px;
-  border-style: none;
-  margin-bottom: 20px;
-  font-family: "Montserrat", sans-serif;
-  background-color: #e4e4e4;
-}
-
-.inputs h4 {
-  padding: 10px;
-  color: #525252;
-  margin: 0 0 20px 0;
-  font-family: "Montserrat", sans-serif;
-  background-color: #f0f0f0;
-}
-
-.totals {
-  width: 65%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   padding: 20px;
-  margin-left: 2px;
-  padding-top: 40px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  border-style: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
   background-color: #e4e4e4;
+  border-radius: 0 10px 10px 0;
 }
 
-.totals .mainRunningTotal {
-  padding: 10px;
+.inputAndStats .valueBreakdown {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 70px;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  background-color: #fafafa;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.totals .mainRunningTotal h4,
-.totals .mainRunningTotal h2,
-.totals .mainRunningTotal h1 {
-  margin: 0;
   color: #525252;
-  font-family: "Montserrat", sans-serif;
-}
-
-.totals .taskRunningTotal {
-  padding: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  min-height: 60px;
-  margin-top: 20px;
+  max-width: 520px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -153,28 +95,54 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background-color: #fafafa;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  margin: 50px auto 35px auto;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-.totals .taskRunningTotal h4,
-.totals .taskRunningTotal h2,
-.totals .taskRunningTotal h1 {
-  margin: 0;
-  color: #525252;
-  font-family: "Montserrat", sans-serif;
+@media (min-width: 360px) {
+  .responsiveFont, .inputAndStats form input, .inputAndStats form button, .inputAndStats .valueBreakdown {
+    font-size: 0.8em;
+  }
 }
 
-.totalsDetail {
-  width: 100%;
-  color: #686868;
-  font-size: 0.8em;
-  padding: 0 0 10px 10px;
-  background-color: #fafafa;
+@media (min-width: 375px) {
+  .inputAndStats {
+    padding: 25px;
+  }
+  .valueBreakdown {
+    margin: 50px 0 25px 0;
+  }
+}
+
+@media (min-width: 425px) {
+  .responsiveFont, .inputAndStats form input, .inputAndStats form button, .inputAndStats .valueBreakdown {
+    font-size: 1em;
+  }
+  .inputAndStats form input {
+    padding: 20px;
+  }
+  .inputAndStats form button {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 800px) {
+  .responsiveWidth, .inputAndStats form, .inputAndStats .valueBreakdown {
+    width: 50%;
+  }
+  .inputAndStats {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    padding: 30px;
+  }
+  .inputAndStats .valueBreakdown {
+    margin: 0;
+  }
 }
 /*# sourceMappingURL=App.css.map */
