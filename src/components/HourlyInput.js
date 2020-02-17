@@ -1,5 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { setHourly } from "../actions";
+import { connect } from "react-redux";
 
 class HourlyInput extends React.Component {
   renderInput = ({ input }) => {
@@ -8,9 +10,10 @@ class HourlyInput extends React.Component {
     );
   };
 
-  onSubmit(formValues) {
-    console.log(formValues);
-  }
+  onSubmit = value => {
+    console.log(value.inputHourlyRate);
+    this.props.setHourly(parseInt(value.inputHourlyRate));
+  };
 
   render() {
     return (
@@ -22,9 +25,17 @@ class HourlyInput extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return { hourlyRate: state.hourlyRate };
+};
+
+const connectedHourlyInput = connect(mapStateToProps, { setHourly })(
+  HourlyInput
+);
+
 export default reduxForm({
   form: "HourlyInput"
-})(HourlyInput);
+})(connectedHourlyInput);
 
 // class Inputs extends React.Component {
 //   constructor(props) {
