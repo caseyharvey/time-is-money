@@ -1,4 +1,4 @@
-.responsiveFont, .inputAndStats form input, .inputAndStats form button, .inputAndStats .valueBreakdown {
+.responsiveFont, .dollarSign:before, .inputAndStats form div input, .inputAndStats form div .errorMessage, .inputAndStats form button, .inputAndStats .valueBreakdown {
   font-size: 0.7em;
 }
 
@@ -14,18 +14,22 @@ body {
 }
 
 .container {
-  margin: 2vh auto;
   padding: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   min-height: 90vh;
+  margin: 2vh auto;
+  min-width: 320px;
+  overflow: hidden;
   max-width: 1024px;
   border-radius: 10px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background-color: #686868;
 }
 
@@ -33,6 +37,17 @@ body {
   color: #fafafa;
   text-align: center;
   margin: 10px auto 30px auto;
+}
+
+.dollarSign {
+  position: relative;
+}
+
+.dollarSign:before {
+  position: absolute;
+  top: 4px;
+  content: "$";
+  left: 10px;
 }
 
 .inputAndStats {
@@ -53,11 +68,20 @@ body {
 
 .inputAndStats form {
   margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   max-width: 520px;
 }
 
-.inputAndStats form input {
+.inputAndStats form div {
+  margin: 0;
   width: 70%;
+  position: relative;
+}
+
+.inputAndStats form div input {
+  width: 100%;
   outline: none;
   color: #525252;
   padding: 20px;
@@ -69,15 +93,32 @@ body {
   border-radius: 10px 0 0 10px;
 }
 
+.inputAndStats form div .errorMessage {
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 18px;
+  position: absolute;
+  text-align: right;
+  pointer-events: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #ff1400;
+  border-radius: 10px 0 0 10px;
+  border: 2px solid #ff1400;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(40%, white));
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 40%);
+}
+
 .inputAndStats form button {
   width: 30%;
   outline: none;
   color: #525252;
   padding: 20px;
-  border-style: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
+  border-style: none;
   background-color: #e4e4e4;
   border-radius: 0 10px 10px 0;
 }
@@ -104,8 +145,11 @@ body {
 }
 
 @media (min-width: 360px) {
-  .responsiveFont, .inputAndStats form input, .inputAndStats form button, .inputAndStats .valueBreakdown {
+  .responsiveFont, .dollarSign:before, .inputAndStats form div input, .inputAndStats form div .errorMessage, .inputAndStats form button, .inputAndStats .valueBreakdown {
     font-size: 0.8em;
+  }
+  .dollarSign:before {
+    top: 4px;
   }
 }
 
@@ -119,14 +163,14 @@ body {
 }
 
 @media (min-width: 425px) {
-  .responsiveFont, .inputAndStats form input, .inputAndStats form button, .inputAndStats .valueBreakdown {
+  .responsiveFont, .dollarSign:before, .inputAndStats form div input, .inputAndStats form div .errorMessage, .inputAndStats form button, .inputAndStats .valueBreakdown {
     font-size: 1em;
   }
-  .inputAndStats form input {
-    padding: 20px;
+  .dollarSign:before {
+    top: 0;
   }
-  .inputAndStats form button {
-    padding: 20px;
+  .inputAndStats form div input {
+    padding-left: 30px;
   }
 }
 

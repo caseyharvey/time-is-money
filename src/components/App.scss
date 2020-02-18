@@ -21,19 +21,33 @@ body {
 }
 
 .container {
-  margin: 2vh auto;
   padding: 20px;
   display: flex;
   min-height: 90vh;
+  margin: 2vh auto;
+  min-width: 320px;
+  overflow: hidden;
   max-width: 1024px;
   border-radius: 10px;
   flex-direction: column;
+  box-sizing: border-box;
   background-color: $grey2;
 
   h1 {
     color: $light;
     text-align: center;
     margin: 10px auto 30px auto;
+  }
+}
+
+.dollarSign {
+  position: relative;
+  &:before {
+    @extend .responsiveFont;
+    position: absolute;
+    top: 4px;
+    content: "$";
+    left: 10px;
   }
 }
 
@@ -48,30 +62,56 @@ body {
 
   form {
     margin: auto;
+    display: flex;
     max-width: 520px;
     @extend .responsiveWidth;
 
-    input {
+    div {
+      margin: 0;
       width: 70%;
-      outline: none;
-      color: $grey1;
-      padding: 20px;
-      border-style: none;
-      font-family: $mainFont;
-      box-sizing: border-box;
-      background-color: $grey4;
-      border-radius: 10px 0 0 10px;
-      @extend .responsiveFont;
-    }
+      position: relative;
 
+      input {
+        width: 100%;
+        outline: none;
+        color: $grey1;
+        padding: 20px;
+        border-style: none;
+        font-family: $mainFont;
+        box-sizing: border-box;
+        background-color: $grey4;
+        border-radius: 10px 0 0 10px;
+        @extend .responsiveFont;
+      }
+
+      .errorMessage {
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 18px;
+        position: absolute;
+        text-align: right;
+        pointer-events: none;
+        box-sizing: border-box;
+        color: rgb(255, 20, 0);
+        border-radius: 10px 0 0 10px;
+        border: 2px solid rgb(255, 20, 0);
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 1) 40%
+        );
+        @extend .responsiveFont;
+      }
+    }
     button {
       width: 30%;
       outline: none;
       color: $grey1;
       padding: 20px;
-      border-style: none;
       box-sizing: border-box;
       font-family: $mainFont;
+      border-style: none;
       background-color: $grey3;
       border-radius: 0 10px 10px 0;
       @extend .responsiveFont;
@@ -97,6 +137,11 @@ body {
   .responsiveFont {
     font-size: 0.8em;
   }
+  .dollarSign {
+    &:before {
+      top: 4px;
+    }
+  }
 }
 @media (min-width: 375px) {
   .inputAndStats {
@@ -110,18 +155,19 @@ body {
   .responsiveFont {
     font-size: 1em;
   }
+  .dollarSign {
+    &:before {
+      top: 0;
+    }
+  }
   .inputAndStats {
     form {
-      input {
-        padding: 20px;
-      }
-      button {
-        padding: 20px;
+      div input {
+        padding-left: 30px;
       }
     }
   }
 }
-
 @media (min-width: 800px) {
   .responsiveWidth {
     width: 50%;
@@ -136,9 +182,3 @@ body {
     }
   }
 }
-
-// @media (min-width: 1024px) {
-//   .responsiveFont {
-//     font-size: 1.3em;
-//   }
-// }
