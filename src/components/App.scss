@@ -4,13 +4,13 @@ $grey2: rgb(104, 104, 104);
 $grey3: rgb(228, 228, 228);
 $grey4: rgb(240, 240, 240);
 $light: rgb(250, 250, 250);
+$warning: rgb(255, 20, 0);
 
 .responsiveFont {
   font-size: 0.7em;
 }
-
-.responsiveWidth {
-  width: 100%;
+.LargeResponsiveFont {
+  font-size: 1.7em;
 }
 
 body {
@@ -23,7 +23,7 @@ body {
 .container {
   padding: 20px;
   display: flex;
-  min-height: 90vh;
+  min-height: 96vh;
   margin: 2vh auto;
   min-width: 320px;
   overflow: hidden;
@@ -51,20 +51,20 @@ body {
   }
 }
 
-.inputAndStats {
+.inputAndStatsContainer {
   width: 100%;
   display: flex;
   padding: 15px;
   border-radius: 10px;
+  align-items: center;
   flex-direction: column;
   box-sizing: border-box;
   background-color: $light;
 
   form {
-    margin: auto;
+    width: 100%;
     display: flex;
-    max-width: 520px;
-    @extend .responsiveWidth;
+    max-width: 425px;
 
     div {
       margin: 0;
@@ -93,9 +93,9 @@ body {
         text-align: right;
         pointer-events: none;
         box-sizing: border-box;
-        color: rgb(255, 20, 0);
+        color: $warning;
         border-radius: 10px 0 0 10px;
-        border: 2px solid rgb(255, 20, 0);
+        border: 2px solid $warning;
         background: linear-gradient(
           90deg,
           rgba(255, 255, 255, 0) 0%,
@@ -119,6 +119,7 @@ body {
   }
 
   .valueBreakdown {
+    width: 100%;
     display: flex;
     color: $grey1;
     max-width: 520px;
@@ -126,10 +127,59 @@ body {
     flex-direction: row;
     box-sizing: border-box;
     background-color: $light;
-    margin: 50px auto 35px auto;
+    margin: 40px auto 25px auto;
     justify-content: space-around;
-    @extend .responsiveWidth;
     @extend .responsiveFont;
+  }
+}
+
+.mainTimerContainer {
+  display: flex;
+  padding: 15px;
+  color: $grey1;
+  margin-top: 20px;
+  align-items: center;
+  border-radius: 10px;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-color: $light;
+
+  .stopStartContainer {
+    width: 100%;
+    max-width: 425px;
+    position: relative;
+
+    button {
+      width: 100%;
+      outline: none;
+      padding: 20px;
+      color: $grey1;
+      border-style: none;
+      border-radius: 10px;
+      font-family: $mainFont;
+      box-sizing: border-box;
+      background-color: $grey3;
+      @extend .responsiveFont;
+    }
+
+    .hide {
+      visibility: hidden;
+    }
+
+    .stopButton {
+      top: 0;
+      left: 0;
+      color: $warning;
+      position: absolute;
+      background-color: $grey4;
+    }
+  }
+  .mainTimerDisplay {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 40px auto 25px auto;
+    @extend .LargeResponsiveFont;
   }
 }
 
@@ -144,23 +194,29 @@ body {
   }
 }
 @media (min-width: 375px) {
-  .inputAndStats {
+  .inputAndStatsContainer,
+  .mainTimerContainer {
     padding: 25px;
   }
-  .valueBreakdown {
-    margin: 50px 0 25px 0;
+  .valueBreakdown,
+  .mainTimerDisplay {
+    margin: 30px 0 15px 0;
   }
 }
 @media (min-width: 425px) {
   .responsiveFont {
     font-size: 1em;
   }
+  .LargeResponsiveFont {
+    font-size: 2em;
+  }
   .dollarSign {
     &:before {
       top: 0;
     }
   }
-  .inputAndStats {
+  .inputAndStatsContainer,
+  .mainTimerContainer {
     form {
       div input {
         padding-left: 30px;
@@ -169,16 +225,32 @@ body {
   }
 }
 @media (min-width: 800px) {
-  .responsiveWidth {
-    width: 50%;
-  }
-
-  .inputAndStats {
+  .inputAndStatsContainer,
+  .mainTimerContainer {
     flex-direction: row;
     padding: 30px;
 
-    .valueBreakdown {
+    .valueBreakdown,
+    .mainTimerDisplay {
       margin: 0;
+    }
+  }
+
+  .inputAndStatsContainer {
+    form {
+      width: 40%;
+    }
+    .valueBreakdown {
+      width: 60%;
+    }
+  }
+
+  .mainTimerContainer {
+    .stopStartContainer {
+      width: 40%;
+    }
+    .mainTimerDisplay {
+      width: 60%;
     }
   }
 }

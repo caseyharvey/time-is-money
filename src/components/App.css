@@ -1,9 +1,9 @@
-.responsiveFont, .dollarSign:before, .inputAndStats form div input, .inputAndStats form div .errorMessage, .inputAndStats form button, .inputAndStats .valueBreakdown {
+.responsiveFont, .dollarSign:before, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .inputAndStatsContainer .valueBreakdown, .mainTimerContainer .stopStartContainer button {
   font-size: 0.7em;
 }
 
-.responsiveWidth, .inputAndStats form, .inputAndStats .valueBreakdown {
-  width: 100%;
+.LargeResponsiveFont, .mainTimerContainer .mainTimerDisplay {
+  font-size: 1.7em;
 }
 
 body {
@@ -18,7 +18,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 90vh;
+  min-height: 96vh;
   margin: 2vh auto;
   min-width: 320px;
   overflow: hidden;
@@ -50,13 +50,16 @@ body {
   left: 10px;
 }
 
-.inputAndStats {
+.inputAndStatsContainer {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   padding: 15px;
   border-radius: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -66,21 +69,21 @@ body {
   background-color: #fafafa;
 }
 
-.inputAndStats form {
-  margin: auto;
+.inputAndStatsContainer form {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  max-width: 520px;
+  max-width: 425px;
 }
 
-.inputAndStats form div {
+.inputAndStatsContainer form div {
   margin: 0;
   width: 70%;
   position: relative;
 }
 
-.inputAndStats form div input {
+.inputAndStatsContainer form div input {
   width: 100%;
   outline: none;
   color: #525252;
@@ -93,7 +96,7 @@ body {
   border-radius: 10px 0 0 10px;
 }
 
-.inputAndStats form div .errorMessage {
+.inputAndStatsContainer form div .errorMessage {
   top: 0;
   left: 0;
   width: 100%;
@@ -110,7 +113,7 @@ body {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 40%);
 }
 
-.inputAndStats form button {
+.inputAndStatsContainer form button {
   width: 30%;
   outline: none;
   color: #525252;
@@ -123,7 +126,8 @@ body {
   border-radius: 0 10px 10px 0;
 }
 
-.inputAndStats .valueBreakdown {
+.inputAndStatsContainer .valueBreakdown {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -139,13 +143,72 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-color: #fafafa;
-  margin: 50px auto 35px auto;
+  margin: 40px auto 25px auto;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
 
+.mainTimerContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 15px;
+  color: #525252;
+  margin-top: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #fafafa;
+}
+
+.mainTimerContainer .stopStartContainer {
+  width: 100%;
+  max-width: 425px;
+  position: relative;
+}
+
+.mainTimerContainer .stopStartContainer button {
+  width: 100%;
+  outline: none;
+  padding: 20px;
+  color: #525252;
+  border-style: none;
+  border-radius: 10px;
+  font-family: "Montserrat", sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #e4e4e4;
+}
+
+.mainTimerContainer .stopStartContainer .hide {
+  visibility: hidden;
+}
+
+.mainTimerContainer .stopStartContainer .stopButton {
+  top: 0;
+  left: 0;
+  color: #ff1400;
+  position: absolute;
+  background-color: #f0f0f0;
+}
+
+.mainTimerContainer .mainTimerDisplay {
+  width: 100%;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 40px auto 25px auto;
+}
+
 @media (min-width: 360px) {
-  .responsiveFont, .dollarSign:before, .inputAndStats form div input, .inputAndStats form div .errorMessage, .inputAndStats form button, .inputAndStats .valueBreakdown {
+  .responsiveFont, .dollarSign:before, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .inputAndStatsContainer .valueBreakdown, .mainTimerContainer .stopStartContainer button {
     font-size: 0.8em;
   }
   .dollarSign:before {
@@ -154,39 +217,58 @@ body {
 }
 
 @media (min-width: 375px) {
-  .inputAndStats {
+  .inputAndStatsContainer,
+  .mainTimerContainer {
     padding: 25px;
   }
-  .valueBreakdown {
-    margin: 50px 0 25px 0;
+  .valueBreakdown,
+  .mainTimerDisplay {
+    margin: 30px 0 15px 0;
   }
 }
 
 @media (min-width: 425px) {
-  .responsiveFont, .dollarSign:before, .inputAndStats form div input, .inputAndStats form div .errorMessage, .inputAndStats form button, .inputAndStats .valueBreakdown {
+  .responsiveFont, .dollarSign:before, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .inputAndStatsContainer .valueBreakdown, .mainTimerContainer .stopStartContainer button {
     font-size: 1em;
+  }
+  .LargeResponsiveFont, .mainTimerContainer .mainTimerDisplay {
+    font-size: 2em;
   }
   .dollarSign:before {
     top: 0;
   }
-  .inputAndStats form div input {
+  .inputAndStatsContainer form div input,
+  .mainTimerContainer form div input {
     padding-left: 30px;
   }
 }
 
 @media (min-width: 800px) {
-  .responsiveWidth, .inputAndStats form, .inputAndStats .valueBreakdown {
-    width: 50%;
-  }
-  .inputAndStats {
+  .inputAndStatsContainer,
+  .mainTimerContainer {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
     padding: 30px;
   }
-  .inputAndStats .valueBreakdown {
+  .inputAndStatsContainer .valueBreakdown,
+  .inputAndStatsContainer .mainTimerDisplay,
+  .mainTimerContainer .valueBreakdown,
+  .mainTimerContainer .mainTimerDisplay {
     margin: 0;
+  }
+  .inputAndStatsContainer form {
+    width: 40%;
+  }
+  .inputAndStatsContainer .valueBreakdown {
+    width: 60%;
+  }
+  .mainTimerContainer .stopStartContainer {
+    width: 40%;
+  }
+  .mainTimerContainer .mainTimerDisplay {
+    width: 60%;
   }
 }
 /*# sourceMappingURL=App.css.map */
