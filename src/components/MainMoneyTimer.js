@@ -1,10 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import TimerDisplay from "./TimerDisplay";
-import { incrementMainTimer, setMainTimerRunning } from "../actions";
+import {
+  incrementMainTimer,
+  setMainTimerRunning,
+  setStopTimerWarning
+} from "../actions";
 
 class MainMoneyTimer extends React.Component {
   startTimer = () => {
+    this.props.incrementMainTimer();
     this.props.setMainTimerRunning();
     this.interval = setInterval(() => {
       this.props.incrementMainTimer();
@@ -12,6 +17,9 @@ class MainMoneyTimer extends React.Component {
   };
 
   stopTimer = () => {
+    if (this.props.warningTimerIsRunning) {
+      this.props.setStopTimerWarning();
+    }
     clearInterval(this.interval);
     this.props.setMainTimerRunning();
   };
@@ -47,11 +55,13 @@ const mapStateToProps = state => {
     hourlyRate: state.hourlyRate,
     mainTimerValue: state.mainTimerValue,
     ratePerSecond: state.ratePerSecond,
-    mainTimerRunning: state.mainTimerRunning
+    mainTimerRunning: state.mainTimerRunning,
+    warningTimerIsRunning: state.warningTimerIsRunning
   };
 };
 
 export default connect(mapStateToProps, {
   incrementMainTimer,
-  setMainTimerRunning
+  setMainTimerRunning,
+  setStopTimerWarning
 })(MainMoneyTimer);

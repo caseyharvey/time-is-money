@@ -16,6 +16,10 @@ $warning: rgb(255, 20, 0);
   font-size: 1.7em;
 }
 
+.hide {
+  visibility: hidden;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -34,7 +38,6 @@ body {
   border-radius: 10px;
   flex-direction: column;
   box-sizing: border-box;
-  // background-color: $darkGrey;
 
   h1 {
     color: $light;
@@ -68,6 +71,23 @@ body {
     width: 100%;
     display: flex;
     max-width: 425px;
+    position: relative;
+
+    .mainTimerWarning {
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      padding: 20px;
+      color: $warning;
+      position: absolute;
+      text-align: center;
+      border-radius: 10px;
+      box-sizing: border-box;
+      background-color: $light;
+      border: 2px solid $warning;
+      @extend .mediumResponsiveFont;
+    }
 
     div {
       margin: 0;
@@ -85,6 +105,10 @@ body {
         background-color: $lightGrey;
         border-radius: 10px 0 0 10px;
         @extend .mediumResponsiveFont;
+
+        &:focus {
+          background-color: white;
+        }
       }
 
       .errorMessage {
@@ -164,10 +188,6 @@ body {
       box-sizing: border-box;
       background-color: $mediumGrey;
       @extend .mediumResponsiveFont;
-    }
-
-    .hide {
-      visibility: hidden;
     }
 
     .stopButton {

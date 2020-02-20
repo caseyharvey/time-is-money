@@ -22,6 +22,11 @@ export const setMainTimerRunning = () => {
     type: "SET_MAIN_TIMER_RUNNING"
   };
 };
+export const setStopTimerWarning = () => {
+  return {
+    type: "WARNING_TIMER_IS_RUNNING"
+  };
+};
 
 export const resetMainTimer = () => {
   return {

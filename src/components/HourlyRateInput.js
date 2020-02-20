@@ -1,9 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setRatePerHour, setRatePerSecond } from "../actions";
+import {
+  setRatePerHour,
+  setRatePerSecond,
+  setStopTimerWarning
+} from "../actions";
 import { Field, reduxForm, reset } from "redux-form";
 
 class HourlyRateInput extends React.Component {
+  handleFocus = e => {
+    this.props.mainTimerRunning
+      ? this.props.setStopTimerWarning()
+      : e.target.select();
+  };
+
   renderInput = ({ input, meta: { error, invalid, pristine } }) => {
     const errorClass = `${error && invalid && !pristine ? "errorMessage" : ""}`;
     return (
@@ -13,7 +23,7 @@ class HourlyRateInput extends React.Component {
             {...input}
             autoComplete="off"
             placeholder=" Enter hourly rate"
-            onFocus={e => e.target.select()}
+            onFocus={this.handleFocus}
           />
         </span>
         <span className={errorClass}>{errorClass ? error : null}</span>
@@ -22,15 +32,27 @@ class HourlyRateInput extends React.Component {
   };
 
   onSubmit = value => {
-    if (this.props.valid) {
+    if (this.props.mainTimerRunning) {
+      console.log("fired in on submit");
+      this.props.setStopTimerWarning();
+    } else if (this.props.valid) {
       this.props.setRatePerHour(parseInt(value.ratePerHour));
       this.props.setRatePerSecond(parseInt(value.ratePerHour) / 3600);
     }
   };
 
+  //   timerIsRunningWarning = () => {
+  //
+  //   };
+  // <div className={this.timerRunningWarning}>Stop main timer first</div>
+
   render() {
+    const warning = this.props.warningTimerIsRunning;
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <div className={warning ? "mainTimerWarning" : "hide mainTimerWarning"}>
+          Stop main timer first
+        </div>
         <Field name="ratePerHour" component={this.renderInput} />
         <button onClick={this.onSubmit}>Set</button>
       </form>
@@ -59,13 +81,16 @@ const successfulSubmit = (result, dispatch) => {
 const mapStateToProps = state => {
   return {
     ratePerHour: state.ratePerHour,
-    setRatePerSecond: state.setRatePerSecond
+    RatePerSecond: state.RatePerSecond,
+    mainTimerRunning: state.mainTimerRunning,
+    warningTimerIsRunning: state.warningTimerIsRunning
   };
 };
 
 const connectedHourlyInput = connect(mapStateToProps, {
   setRatePerHour,
-  setRatePerSecond
+  setRatePerSecond,
+  setStopTimerWarning
 })(HourlyRateInput);
 
 export default reduxForm({
