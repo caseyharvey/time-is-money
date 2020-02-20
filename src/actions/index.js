@@ -22,3 +22,9 @@ export const setMainTimerRunning = () => {
     type: "SET_MAIN_TIMER_RUNNING"
   };
 };
+
+export const resetMainTimer = () => {
+  return {
+    type: "RESET_MAIN_TIMER"
+  };
+};

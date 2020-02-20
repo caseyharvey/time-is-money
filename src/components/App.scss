@@ -1,8 +1,8 @@
 $mainFont: "Montserrat", sans-serif;
-$grey1: rgb(82, 82, 82);
-$grey2: rgb(104, 104, 104);
-$grey3: rgb(228, 228, 228);
-$grey4: rgb(240, 240, 240);
+$dark: rgb(82, 82, 82);
+$darkGrey: rgb(104, 104, 104);
+$mediumGrey: rgb(228, 228, 228);
+$lightGrey: rgb(240, 240, 240);
 $light: rgb(250, 250, 250);
 $warning: rgb(255, 20, 0);
 
@@ -19,7 +19,7 @@ $warning: rgb(255, 20, 0);
 body {
   margin: 0;
   padding: 0;
-  background-color: $grey1;
+  background-color: $dark;
   font-family: $mainFont;
 }
 
@@ -27,19 +27,19 @@ body {
   padding: 20px;
   display: flex;
   min-height: 96vh;
-  margin: 2vh auto;
+  margin: 0 auto;
   min-width: 320px;
   overflow: hidden;
   max-width: 1024px;
   border-radius: 10px;
   flex-direction: column;
   box-sizing: border-box;
-  background-color: $grey2;
+  // background-color: $darkGrey;
 
   h1 {
     color: $light;
     text-align: center;
-    margin: 10px auto 30px auto;
+    margin: 0 auto 20px auto;
   }
 }
 
@@ -77,12 +77,12 @@ body {
       input {
         width: 100%;
         outline: none;
-        color: $grey1;
+        color: $dark;
         padding: 20px;
         border-style: none;
         font-family: $mainFont;
         box-sizing: border-box;
-        background-color: $grey4;
+        background-color: $lightGrey;
         border-radius: 10px 0 0 10px;
         @extend .mediumResponsiveFont;
       }
@@ -110,12 +110,12 @@ body {
     button {
       width: 30%;
       outline: none;
-      color: $grey1;
+      color: $dark;
       padding: 20px;
       box-sizing: border-box;
       font-family: $mainFont;
       border-style: none;
-      background-color: $grey3;
+      background-color: $mediumGrey;
       border-radius: 0 10px 10px 0;
       @extend .mediumResponsiveFont;
     }
@@ -124,7 +124,7 @@ body {
   .valueBreakdown {
     width: 100%;
     display: flex;
-    color: $grey1;
+    color: $dark;
     max-width: 520px;
     align-items: center;
     flex-direction: row;
@@ -139,7 +139,7 @@ body {
 .mainMoneyTimerContainer {
   display: flex;
   padding: 15px;
-  color: $grey1;
+  color: $dark;
   margin-top: 20px;
   position: relative;
   align-items: center;
@@ -157,12 +157,12 @@ body {
       width: 100%;
       outline: none;
       padding: 20px;
-      color: $grey1;
+      color: $dark;
       border-style: none;
       border-radius: 10px;
       font-family: $mainFont;
       box-sizing: border-box;
-      background-color: $grey3;
+      background-color: $mediumGrey;
       @extend .mediumResponsiveFont;
     }
 
@@ -175,7 +175,7 @@ body {
       left: 0;
       color: $warning;
       position: absolute;
-      background-color: $grey4;
+      background-color: $lightGrey;
     }
   }
 
@@ -184,19 +184,18 @@ body {
     right: 0;
     width: 116px;
     bottom: -20px;
-    color: $grey1;
+    color: $dark;
     padding: 10px;
     margin: 0 auto;
     position: absolute;
     border-radius: 10px;
-    background-color: $grey3;
+    background-color: $mediumGrey;
   }
 
   .mainMoneyTimerDisplay {
-    width: 100%;
     text-align: center;
+    margin: 40px 0 25px 0;
     box-sizing: border-box;
-    margin: 40px auto 25px auto;
     @extend .LargeResponsiveFont;
   }
 }
