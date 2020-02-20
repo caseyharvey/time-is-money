@@ -1,6 +1,6 @@
-export const setHourly = rate => {
+export const setRatePerHour = rate => {
   return {
-    type: "SET_HOURLY",
+    type: "SET_RATE_PER_HOUR",
     payload: rate
   };
 };
@@ -11,10 +11,9 @@ export const setRatePerSecond = rate => {
   };
 };
 
-export const incrementMainTimer = ratePerSecond => {
+export const incrementMainTimer = () => {
   return {
-    type: "INCREMENT_TIMER",
-    payload: ratePerSecond
+    type: "INCREMENT_MAIN_TIMER"
   };
 };
 

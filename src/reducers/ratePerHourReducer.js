@@ -1,7 +1,7 @@
 export default (state = 0, action) => {
   switch (action.type) {
-    case "INCREMENT_TIMER":
-      return (state += action.payload);
+    case "SET_RATE_PER_HOUR":
+      return action.payload;
     default:
       return state;
   }

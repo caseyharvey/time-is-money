@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setHourly, setRatePerSecond } from "../actions";
+import { setRatePerHour, setRatePerSecond } from "../actions";
 import { Field, reduxForm, reset } from "redux-form";
 
-class HourlyInput extends React.Component {
+class HourlyRateInput extends React.Component {
   renderInput = ({ input, meta: { error, invalid, pristine } }) => {
     const errorClass = `${error && invalid && !pristine ? "errorMessage" : ""}`;
     return (
@@ -23,53 +23,53 @@ class HourlyInput extends React.Component {
 
   onSubmit = value => {
     if (this.props.valid) {
-      this.props.setHourly(parseInt(value.hourlyRate));
-      this.props.setRatePerSecond(parseInt(value.hourlyRate) / 3600);
+      this.props.setRatePerHour(parseInt(value.ratePerHour));
+      this.props.setRatePerSecond(parseInt(value.ratePerHour) / 3600);
     }
   };
 
   render() {
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field name="hourlyRate" component={this.renderInput} />
+        <Field name="ratePerHour" component={this.renderInput} />
         <button onClick={this.onSubmit}>Set</button>
       </form>
     );
   }
 }
 
-const validate = ({ hourlyRate }) => {
+const validate = ({ ratePerHour }) => {
   const errors = {};
-  if (!hourlyRate) {
-    errors.hourlyRate = "Enter hourly rate";
-  } else if (isNaN(Number(hourlyRate))) {
-    errors.hourlyRate = "Must be a number";
-  } else if (hourlyRate.length > 9) {
-    errors.hourlyRate = "WOW!";
-  } else if (/\s/.test(hourlyRate)) {
-    errors.hourlyRate = "No spaces allowed";
+  if (!ratePerHour) {
+    errors.ratePerHour = "Enter hourly rate";
+  } else if (isNaN(Number(ratePerHour))) {
+    errors.ratePerHour = "Must be a number";
+  } else if (ratePerHour.length > 9) {
+    errors.ratePerHour = "WOW!";
+  } else if (/\s/.test(ratePerHour)) {
+    errors.ratePerHour = "No spaces allowed";
   }
   return errors;
 };
 
 const successfulSubmit = (result, dispatch) => {
-  dispatch(reset("HourlyInput"));
+  dispatch(reset("HourlyRateInput"));
 };
 
 const mapStateToProps = state => {
   return {
-    hourlyRate: state.hourlyRate,
+    ratePerHour: state.ratePerHour,
     setRatePerSecond: state.setRatePerSecond
   };
 };
 
 const connectedHourlyInput = connect(mapStateToProps, {
-  setHourly,
+  setRatePerHour,
   setRatePerSecond
-})(HourlyInput);
+})(HourlyRateInput);
 
 export default reduxForm({
-  form: "HourlyInput",
+  form: "HourlyRateInput",
   onSubmitSuccess: successfulSubmit,
   validate
 })(connectedHourlyInput);

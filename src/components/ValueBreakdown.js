@@ -3,15 +3,15 @@ import { connect } from "react-redux";
 
 class ValueBreakdown extends React.Component {
   render() {
-    const hourlyRate = this.props.hourlyRate;
+    const ratePerHour = this.props.ratePerHour;
     return (
       <div className="valueBreakdown">
-        <div className="valueItem">${hourlyRate * 1} /hr</div>
+        <div className="valueItem">${ratePerHour * 1} /hr</div>
         <div className="valueItem">
-          ${Math.round((hourlyRate / 60 + Number.EPSILON) * 100) / 100} /min
+          ${Math.round((ratePerHour / 60 + Number.EPSILON) * 100) / 100} /min
         </div>
         <div className="valueItem">
-          ${Math.round((hourlyRate / 3600 + Number.EPSILON) * 100) / 100} /sec
+          ${Math.round((ratePerHour / 3600 + Number.EPSILON) * 100) / 100} /sec
         </div>
       </div>
     );
@@ -19,7 +19,7 @@ class ValueBreakdown extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { hourlyRate: state.hourlyRate };
+  return { ratePerHour: state.ratePerHour };
 };
 
 export default connect(mapStateToProps)(ValueBreakdown);

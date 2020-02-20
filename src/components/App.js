@@ -1,8 +1,7 @@
 import React from "react";
-// import TotalDisplay from "./TotalDisplay";
-import HourlyInput from "./HourlyInput";
+import HourlyRateInput from "./HourlyRateInput";
 import ValueBreakdown from "./ValueBreakdown";
-import MainTimer from "./MainTimer";
+import MainMoneyTimer from "./MainMoneyTimer";
 
 import "./App.css";
 
@@ -11,10 +10,10 @@ const App = () => {
     <div className="container">
       <h1>time is money</h1>
       <div className="inputAndStatsContainer">
-        <HourlyInput />
+        <HourlyRateInput />
         <ValueBreakdown />
       </div>
-      <MainTimer />
+      <MainMoneyTimer />
     </div>
   );
 };

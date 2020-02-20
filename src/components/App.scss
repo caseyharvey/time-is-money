@@ -9,6 +9,9 @@ $warning: rgb(255, 20, 0);
 .responsiveFont {
   font-size: 0.7em;
 }
+.mediumResponsiveFont {
+  font-size: 0.9em;
+}
 .LargeResponsiveFont {
   font-size: 1.7em;
 }
@@ -81,7 +84,7 @@ body {
         box-sizing: border-box;
         background-color: $grey4;
         border-radius: 10px 0 0 10px;
-        @extend .responsiveFont;
+        @extend .mediumResponsiveFont;
       }
 
       .errorMessage {
@@ -114,7 +117,7 @@ body {
       border-style: none;
       background-color: $grey3;
       border-radius: 0 10px 10px 0;
-      @extend .responsiveFont;
+      @extend .mediumResponsiveFont;
     }
   }
 
@@ -133,11 +136,12 @@ body {
   }
 }
 
-.mainTimerContainer {
+.mainMoneyTimerContainer {
   display: flex;
   padding: 15px;
   color: $grey1;
   margin-top: 20px;
+  position: relative;
   align-items: center;
   border-radius: 10px;
   flex-direction: column;
@@ -159,7 +163,7 @@ body {
       font-family: $mainFont;
       box-sizing: border-box;
       background-color: $grey3;
-      @extend .responsiveFont;
+      @extend .mediumResponsiveFont;
     }
 
     .hide {
@@ -174,7 +178,21 @@ body {
       background-color: $grey4;
     }
   }
-  .mainTimerDisplay {
+
+  .timerDisplay {
+    left: 0;
+    right: 0;
+    width: 116px;
+    bottom: -20px;
+    color: $grey1;
+    padding: 10px;
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 10px;
+    background-color: $grey3;
+  }
+
+  .mainMoneyTimerDisplay {
     width: 100%;
     text-align: center;
     box-sizing: border-box;
@@ -187,6 +205,9 @@ body {
   .responsiveFont {
     font-size: 0.8em;
   }
+  .mediumResponsiveFont {
+    font-size: 1em;
+  }
   .dollarSign {
     &:before {
       top: 4px;
@@ -195,17 +216,20 @@ body {
 }
 @media (min-width: 375px) {
   .inputAndStatsContainer,
-  .mainTimerContainer {
+  .mainMoneyTimerContainer {
     padding: 25px;
   }
   .valueBreakdown,
-  .mainTimerDisplay {
+  .mainMoneyTimerDisplay {
     margin: 30px 0 15px 0;
   }
 }
 @media (min-width: 425px) {
   .responsiveFont {
     font-size: 1em;
+  }
+  .mediumResponsiveFont {
+    font-size: 1.2em;
   }
   .LargeResponsiveFont {
     font-size: 2em;
@@ -216,7 +240,7 @@ body {
     }
   }
   .inputAndStatsContainer,
-  .mainTimerContainer {
+  .mainMoneyTimerContainer {
     form {
       div input {
         padding-left: 30px;
@@ -226,12 +250,12 @@ body {
 }
 @media (min-width: 800px) {
   .inputAndStatsContainer,
-  .mainTimerContainer {
+  .mainMoneyTimerContainer {
     flex-direction: row;
     padding: 30px;
 
     .valueBreakdown,
-    .mainTimerDisplay {
+    .mainMoneyTimerDisplay {
       margin: 0;
     }
   }
@@ -245,11 +269,11 @@ body {
     }
   }
 
-  .mainTimerContainer {
+  .mainMoneyTimerContainer {
     .stopStartContainer {
       width: 40%;
     }
-    .mainTimerDisplay {
+    .mainMoneyTimerDisplay {
       width: 60%;
     }
   }

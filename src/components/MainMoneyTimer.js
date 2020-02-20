@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
+import TimerDisplay from "./TimerDisplay";
 import { incrementMainTimer, setMainTimerRunning } from "../actions";
 
-class MainTimer extends React.Component {
+class MainMoneyTimer extends React.Component {
   startTimer = () => {
     this.props.setMainTimerRunning();
     this.interval = setInterval(() => {
-      this.props.incrementMainTimer(this.props.ratePerSecond);
+      this.props.incrementMainTimer();
     }, 1000);
   };
 
@@ -16,9 +17,11 @@ class MainTimer extends React.Component {
   };
 
   render() {
-    const currentAmount = this.props.currentTimer;
+    const currentDollarValue =
+      this.props.mainTimerValue * this.props.ratePerSecond;
+
     return (
-      <div className="mainTimerContainer">
+      <div className="mainMoneyTimerContainer">
         <div className="stopStartContainer">
           <button onClick={this.startTimer}>Start main timer</button>
           <button
@@ -30,8 +33,9 @@ class MainTimer extends React.Component {
             Stop main timer
           </button>
         </div>
-        <div className="mainTimerDisplay">
-          ${Math.round((currentAmount + Number.EPSILON) * 100) / 100}
+        <TimerDisplay />
+        <div className="mainMoneyTimerDisplay">
+          ${Math.round((currentDollarValue + Number.EPSILON) * 100) / 100}
         </div>
       </div>
     );
@@ -41,7 +45,7 @@ class MainTimer extends React.Component {
 const mapStateToProps = state => {
   return {
     hourlyRate: state.hourlyRate,
-    currentTimer: state.currentTimer,
+    mainTimerValue: state.mainTimerValue,
     ratePerSecond: state.ratePerSecond,
     mainTimerRunning: state.mainTimerRunning
   };
@@ -50,4 +54,4 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   incrementMainTimer,
   setMainTimerRunning
-})(MainTimer);
+})(MainMoneyTimer);
