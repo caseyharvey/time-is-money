@@ -1,28 +1,24 @@
-import React from "react";
-import { connect } from "react-redux";
-import {
-  setRatePerHour,
-  setRatePerSecond,
-  setStopTimerWarning
-} from "../actions";
-import { Field, reduxForm, reset } from "redux-form";
+import React from 'react';
+import { connect } from 'react-redux';
+import { setRate, setStopTimerWarning } from '../actions';
+import { Field, reduxForm, reset } from 'redux-form';
 
 class HourlyRateInput extends React.Component {
   handleFocus = e => {
-    this.props.mainTimerRunning
+    this.props.mainTimer.timerRunning
       ? this.props.setStopTimerWarning()
       : e.target.select();
   };
 
   renderInput = ({ input, meta: { error, invalid, pristine } }) => {
-    const errorClass = `${error && invalid && !pristine ? "errorMessage" : ""}`;
+    const errorClass = `${error && invalid && !pristine ? 'errorMessage' : ''}`;
     return (
       <div>
-        <span className="dollarSign">
+        <span className='dollarSign'>
           <input
             {...input}
-            autoComplete="off"
-            placeholder=" Enter hourly rate"
+            autoComplete='off'
+            placeholder=' Enter hourly rate'
             onFocus={this.handleFocus}
           />
         </span>
@@ -31,13 +27,12 @@ class HourlyRateInput extends React.Component {
     );
   };
 
-  onSubmit = value => {
-    if (this.props.mainTimerRunning) {
-      console.log("fired in on submit");
+  onSubmit = InputValue => {
+    if (this.props.mainTimer.timerRunning) {
+      console.log('fired in on submit');
       this.props.setStopTimerWarning();
     } else if (this.props.valid) {
-      this.props.setRatePerHour(parseInt(value.ratePerHour));
-      this.props.setRatePerSecond(parseInt(value.ratePerHour) / 3600);
+      this.props.setRate(parseInt(InputValue.ratePerHour));
     }
   };
 
@@ -47,13 +42,13 @@ class HourlyRateInput extends React.Component {
   // <div className={this.timerRunningWarning}>Stop main timer first</div>
 
   render() {
-    const warning = this.props.warningTimerIsRunning;
+    const warning = this.props.mainTimer.stopTimerWarning;
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <div className={warning ? "mainTimerWarning" : "hide mainTimerWarning"}>
+        <div className={warning ? 'mainTimerWarning' : 'hide mainTimerWarning'}>
           Stop main timer first
         </div>
-        <Field name="ratePerHour" component={this.renderInput} />
+        <Field name='ratePerHour' component={this.renderInput} />
         <button onClick={this.onSubmit}>Set</button>
       </form>
     );
@@ -63,38 +58,35 @@ class HourlyRateInput extends React.Component {
 const validate = ({ ratePerHour }) => {
   const errors = {};
   if (!ratePerHour) {
-    errors.ratePerHour = "Enter hourly rate";
+    errors.ratePerHour = 'Enter hourly rate';
   } else if (isNaN(Number(ratePerHour))) {
-    errors.ratePerHour = "Must be a number";
+    errors.ratePerHour = 'Must be a number';
   } else if (ratePerHour.length > 9) {
-    errors.ratePerHour = "WOW!";
+    errors.ratePerHour = 'WOW!';
   } else if (/\s/.test(ratePerHour)) {
-    errors.ratePerHour = "No spaces allowed";
+    errors.ratePerHour = 'No spaces allowed';
   }
   return errors;
 };
 
 const successfulSubmit = (result, dispatch) => {
-  dispatch(reset("HourlyRateInput"));
+  dispatch(reset('HourlyRateInput'));
 };
 
 const mapStateToProps = state => {
   return {
-    ratePerHour: state.ratePerHour,
-    RatePerSecond: state.RatePerSecond,
-    mainTimerRunning: state.mainTimerRunning,
-    warningTimerIsRunning: state.warningTimerIsRunning
+    mainTimer: state.mainTimer,
+    rate: state.rate
   };
 };
 
 const connectedHourlyInput = connect(mapStateToProps, {
-  setRatePerHour,
-  setRatePerSecond,
+  setRate,
   setStopTimerWarning
 })(HourlyRateInput);
 
 export default reduxForm({
-  form: "HourlyRateInput",
+  form: 'HourlyRateInput',
   onSubmitSuccess: successfulSubmit,
   validate
 })(connectedHourlyInput);

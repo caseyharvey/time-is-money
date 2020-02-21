@@ -1,17 +1,21 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
 class ValueBreakdown extends React.Component {
   render() {
-    const ratePerHour = this.props.ratePerHour;
     return (
-      <div className="valueBreakdown">
-        <div className="valueItem">${ratePerHour * 1} /hr</div>
-        <div className="valueItem">
-          ${Math.round((ratePerHour / 60 + Number.EPSILON) * 100) / 100} /min
+      <div className='valueBreakdown'>
+        <div className='valueItem'>${this.props.rate.perHour * 1} /hr</div>
+        <div className='valueItem'>
+          $
+          {Math.round((this.props.rate.perMinute / 60 + Number.EPSILON) * 100) /
+            100}{' '}
+          /min
         </div>
-        <div className="valueItem">
-          ${Math.round((ratePerHour / 3600 + Number.EPSILON) * 100) / 100} /sec
+        <div className='valueItem'>
+          $
+          {Math.round((this.props.rate.perSecond + Number.EPSILON) * 100) / 100}{' '}
+          /sec
         </div>
       </div>
     );
@@ -19,7 +23,7 @@ class ValueBreakdown extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { ratePerHour: state.ratePerHour };
+  return { rate: state.rate };
 };
 
 export default connect(mapStateToProps)(ValueBreakdown);

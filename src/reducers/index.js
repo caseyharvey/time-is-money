@@ -1,17 +1,11 @@
-import { combineReducers } from "redux";
-import { reducer as formReducer } from "redux-form";
+import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 
-import mainTimerReducer from "./mainTimerReducer";
-import ratePerHourReducer from "./ratePerHourReducer";
-import ratePerSecondReducer from "./ratePerSecondReducer";
-import mainTimerRunningReducer from "./mainTimerRunningReducer";
-import warningTimerIsRunningReducer from "./warningTimerIsRunningReducer";
+import mainTimerReducer from './mainTimerReducer';
+import rateReducer from './rateReducer';
 
 export default combineReducers({
   form: formReducer,
-  ratePerHour: ratePerHourReducer,
-  mainTimerValue: mainTimerReducer,
-  ratePerSecond: ratePerSecondReducer,
-  mainTimerRunning: mainTimerRunningReducer,
-  warningTimerIsRunning: warningTimerIsRunningReducer
+  rate: rateReducer,
+  mainTimer: mainTimerReducer
 });

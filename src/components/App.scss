@@ -1,4 +1,4 @@
-$mainFont: "Montserrat", sans-serif;
+$mainFont: 'Montserrat', sans-serif;
 $dark: rgb(82, 82, 82);
 $darkGrey: rgb(104, 104, 104);
 $mediumGrey: rgb(228, 228, 228);
@@ -52,7 +52,7 @@ body {
     @extend .responsiveFont;
     position: absolute;
     top: 4px;
-    content: "$";
+    content: '$';
     left: 10px;
   }
 }
@@ -103,11 +103,14 @@ body {
         font-family: $mainFont;
         box-sizing: border-box;
         background-color: $lightGrey;
+        border: 2px solid $lightGrey;
         border-radius: 10px 0 0 10px;
         @extend .mediumResponsiveFont;
 
         &:focus {
+          box-sizing: border-box;
           background-color: white;
+          border: 2px solid $mediumGrey;
         }
       }
 
@@ -115,7 +118,7 @@ body {
         top: 0;
         left: 0;
         width: 100%;
-        padding: 18px;
+        padding: 20px;
         position: absolute;
         text-align: right;
         pointer-events: none;
@@ -126,9 +129,9 @@ body {
         background: linear-gradient(
           90deg,
           rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 1) 40%
+          rgba(255, 255, 255, 1) 30%
         );
-        @extend .responsiveFont;
+        @extend .mediumResponsiveFont;
       }
     }
     button {

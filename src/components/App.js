@@ -1,15 +1,15 @@
-import React from "react";
-import HourlyRateInput from "./HourlyRateInput";
-import ValueBreakdown from "./ValueBreakdown";
-import MainMoneyTimer from "./MainMoneyTimer";
+import React from 'react';
+import HourlyRateInput from './HourlyRateInput';
+import ValueBreakdown from './ValueBreakdown';
+import MainMoneyTimer from './MainMoneyTimer';
 
-import "./App.css";
+import './App.css';
 
 const App = () => {
   return (
-    <div className="container">
+    <div className='container'>
       <h1>time is money</h1>
-      <div className="inputAndStatsContainer">
+      <div className='inputAndStatsContainer'>
         <HourlyRateInput />
         <ValueBreakdown />
       </div>

@@ -1,11 +1,11 @@
-import React from "react";
-import { connect } from "react-redux";
-import TimerDisplay from "./TimerDisplay";
+import React from 'react';
+import { connect } from 'react-redux';
+import TimerDisplay from './TimerDisplay';
 import {
   incrementMainTimer,
   setMainTimerRunning,
   setStopTimerWarning
-} from "../actions";
+} from '../actions';
 
 class MainMoneyTimer extends React.Component {
   startTimer = () => {
@@ -17,7 +17,7 @@ class MainMoneyTimer extends React.Component {
   };
 
   stopTimer = () => {
-    if (this.props.warningTimerIsRunning) {
+    if (this.props.mainTimer.stopTimerWarning) {
       this.props.setStopTimerWarning();
     }
     clearInterval(this.interval);
@@ -26,15 +26,17 @@ class MainMoneyTimer extends React.Component {
 
   render() {
     const currentDollarValue =
-      this.props.mainTimerValue * this.props.ratePerSecond;
+      this.props.mainTimer.timerValue * this.props.rate.perSecond;
 
     return (
-      <div className="mainMoneyTimerContainer">
-        <div className="stopStartContainer">
+      <div className='mainMoneyTimerContainer'>
+        <div className='stopStartContainer'>
           <button onClick={this.startTimer}>Start main timer</button>
           <button
             className={
-              this.props.mainTimerRunning ? "stopButton" : "hide stopButton"
+              this.props.mainTimer.timerRunning
+                ? 'stopButton'
+                : 'hide stopButton'
             }
             onClick={this.stopTimer}
           >
@@ -42,7 +44,7 @@ class MainMoneyTimer extends React.Component {
           </button>
         </div>
         <TimerDisplay />
-        <div className="mainMoneyTimerDisplay">
+        <div className='mainMoneyTimerDisplay'>
           ${Math.round((currentDollarValue + Number.EPSILON) * 100) / 100}
         </div>
       </div>
@@ -52,11 +54,8 @@ class MainMoneyTimer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    hourlyRate: state.hourlyRate,
-    mainTimerValue: state.mainTimerValue,
-    ratePerSecond: state.ratePerSecond,
-    mainTimerRunning: state.mainTimerRunning,
-    warningTimerIsRunning: state.warningTimerIsRunning
+    mainTimer: state.mainTimer,
+    rate: state.rate
   };
 };
 

@@ -1,8 +1,8 @@
-.responsiveFont, .dollarSign:before, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer .valueBreakdown {
+.responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown {
   font-size: 0.7em;
 }
 
-.mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form button, .mainMoneyTimerContainer .stopStartContainer button {
+.mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .mainMoneyTimerContainer .stopStartContainer button {
   font-size: 0.9em;
 }
 
@@ -53,7 +53,7 @@ body {
 .dollarSign:before {
   position: absolute;
   top: 4px;
-  content: "$";
+  content: '$';
   left: 10px;
 }
 
@@ -117,18 +117,22 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-color: #f0f0f0;
+  border: 2px solid #f0f0f0;
   border-radius: 10px 0 0 10px;
 }
 
 .inputAndStatsContainer form div input:focus {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   background-color: white;
+  border: 2px solid #e4e4e4;
 }
 
 .inputAndStatsContainer form div .errorMessage {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 18px;
+  padding: 20px;
   position: absolute;
   text-align: right;
   pointer-events: none;
@@ -137,8 +141,8 @@ body {
   color: #ff1400;
   border-radius: 10px 0 0 10px;
   border: 2px solid #ff1400;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(40%, white));
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 40%);
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(30%, white));
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 30%);
 }
 
 .inputAndStatsContainer form button {
@@ -245,10 +249,10 @@ body {
 }
 
 @media (min-width: 360px) {
-  .responsiveFont, .dollarSign:before, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer .valueBreakdown {
+  .responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown {
     font-size: 0.8em;
   }
-  .mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form button, .mainMoneyTimerContainer .stopStartContainer button {
+  .mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .mainMoneyTimerContainer .stopStartContainer button {
     font-size: 1em;
   }
   .dollarSign:before {
@@ -268,10 +272,10 @@ body {
 }
 
 @media (min-width: 425px) {
-  .responsiveFont, .dollarSign:before, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer .valueBreakdown {
+  .responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown {
     font-size: 1em;
   }
-  .mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form button, .mainMoneyTimerContainer .stopStartContainer button {
+  .mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .mainMoneyTimerContainer .stopStartContainer button {
     font-size: 1.2em;
   }
   .LargeResponsiveFont, .mainMoneyTimerContainer .mainMoneyTimerDisplay {
