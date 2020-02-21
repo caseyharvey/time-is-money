@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import TimerDisplay from './TimerDisplay';
 import {
   setRate,
+  resetMainTimer,
   rateHasBeenSet,
   incrementMainTimer,
   setMainTimerRunning,
@@ -43,37 +44,50 @@ class MainMoneyTimer extends React.Component {
     setMainTimerRunning();
   };
 
+  resetTimer = () => {
+    this.stopTimer();
+    this.props.setRate(0);
+    this.props.resetMainTimer();
+  };
+
   render() {
     const currentDollarValue =
       this.props.mainTimer.timerValue * this.props.rate.perSecond;
 
     return (
       <div className='mainMoneyTimerContainer'>
-        <div className='stopStartContainer'>
-          <button onClick={this.startTimer}>Start main timer</button>
-          <button
-            className={
-              this.props.mainTimer.timerRunning
-                ? 'stopButton'
-                : 'hide stopButton'
-            }
-            onClick={this.stopTimer}
-          >
-            Stop main timer
-          </button>
-          <button
-            className={
-              !this.props.rate.rateHasBeenSet
-                ? 'hide enterHourlyRateWarning'
-                : 'enterHourlyRateWarning'
-            }
-          >
-            Enter hourly rate
-          </button>
+        <div className='topRow'>
+          <div className='stopStartContainer'>
+            <button onClick={this.startTimer}>Start main timer</button>
+            <button
+              className={
+                this.props.mainTimer.timerRunning
+                  ? 'stopButton'
+                  : 'hide stopButton'
+              }
+              onClick={this.stopTimer}
+            >
+              Stop main timer
+            </button>
+            <button
+              className={
+                !this.props.rate.rateHasBeenSet
+                  ? 'hide enterHourlyRateWarning'
+                  : 'enterHourlyRateWarning'
+              }
+            >
+              Enter hourly rate
+            </button>
+          </div>
+          <div className='mainMoneyTimerDisplay'>
+            ${Math.round((currentDollarValue + Number.EPSILON) * 100) / 100}
+          </div>
         </div>
-        <TimerDisplay />
-        <div className='mainMoneyTimerDisplay'>
-          ${Math.round((currentDollarValue + Number.EPSILON) * 100) / 100}
+        <div className='bottomRow'>
+          <TimerDisplay />
+          <button onClick={this.resetTimer} className='resetButton'>
+            Reset
+          </button>
         </div>
       </div>
     );
@@ -89,6 +103,7 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   setRate,
+  resetMainTimer,
   rateHasBeenSet,
   incrementMainTimer,
   setMainTimerRunning,

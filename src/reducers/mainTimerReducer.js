@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
     case 'INCREMENT_MAIN_TIMER':
       return { ...state, timerValue: state.timerValue + 1 };
     case 'RESET_MAIN_TIMER':
-      return { ...state, timerValue: 0 };
+      return { ...state, timerRunning: false, timerValue: 0 };
     case 'SET_MAIN_TIMER_RUNNING':
       return {
         ...state,

@@ -1,12 +1,12 @@
-.responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown {
+.responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown, .mainMoneyTimerContainer .bottomRow .timerDisplay, .mainMoneyTimerContainer .bottomRow .resetButton {
   font-size: 0.7em;
 }
 
-.mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .mainMoneyTimerContainer .stopStartContainer button {
+.mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .mainMoneyTimerContainer .topRow .stopStartContainer button {
   font-size: 0.9em;
 }
 
-.LargeResponsiveFont, .mainMoneyTimerContainer .mainMoneyTimerDisplay {
+.LargeResponsiveFont, .mainMoneyTimerContainer .topRow .mainMoneyTimerDisplay {
   font-size: 1.7em;
 }
 
@@ -55,7 +55,7 @@ body {
 
 .dollarSign:before {
   position: absolute;
-  top: 4px;
+  top: 3px;
   content: '$';
   left: 10px;
 }
@@ -206,12 +206,26 @@ body {
   background-color: #fafafa;
 }
 
-.mainMoneyTimerContainer .stopStartContainer {
+.mainMoneyTimerContainer .topRow {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.mainMoneyTimerContainer .topRow .stopStartContainer {
   width: 100%;
   position: relative;
 }
 
-.mainMoneyTimerContainer .stopStartContainer button {
+.mainMoneyTimerContainer .topRow .stopStartContainer button {
   width: 100%;
   outline: none;
   padding: 20px;
@@ -224,7 +238,7 @@ body {
   background-color: #e4e4e4;
 }
 
-.mainMoneyTimerContainer .stopStartContainer .stopButton {
+.mainMoneyTimerContainer .topRow .stopStartContainer .stopButton {
   top: 0;
   left: 0;
   color: #ff1400;
@@ -232,7 +246,7 @@ body {
   background-color: #f0f0f0;
 }
 
-.mainMoneyTimerContainer .stopStartContainer .enterHourlyRateWarning {
+.mainMoneyTimerContainer .topRow .stopStartContainer .enterHourlyRateWarning {
   top: -2px;
   left: 0;
   color: #ff1400;
@@ -243,35 +257,53 @@ body {
   border: 2px solid #ff1400;
 }
 
-.mainMoneyTimerContainer .timerDisplay {
-  left: 0;
-  right: 0;
-  width: 116px;
-  bottom: -20px;
-  color: #525252;
-  padding: 10px;
-  margin: 0 auto;
-  position: absolute;
-  border-radius: 10px;
-  background-color: #e4e4e4;
-}
-
-.mainMoneyTimerContainer .mainMoneyTimerDisplay {
+.mainMoneyTimerContainer .topRow .mainMoneyTimerDisplay {
   text-align: center;
   margin: 40px 0 25px 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
+.mainMoneyTimerContainer .bottomRow {
+  width: 100%;
+  color: #525252;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 30px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.mainMoneyTimerContainer .bottomRow .timerDisplay {
+  padding: 0 10px;
+}
+
+.mainMoneyTimerContainer .bottomRow .resetButton {
+  outline: none;
+  color: #ff1400;
+  padding: 0 10px;
+  border-style: none;
+  font-family: "Montserrat", sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #fafafa;
+}
+
 @media (min-width: 360px) {
-  .responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown {
+  .responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown, .mainMoneyTimerContainer .bottomRow .timerDisplay, .mainMoneyTimerContainer .bottomRow .resetButton {
     font-size: 0.8em;
   }
-  .mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .mainMoneyTimerContainer .stopStartContainer button {
+  .mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .mainMoneyTimerContainer .topRow .stopStartContainer button {
     font-size: 1em;
   }
   .dollarSign:before {
-    top: 4px;
+    top: 2px;
   }
 }
 
@@ -287,13 +319,13 @@ body {
 }
 
 @media (min-width: 425px) {
-  .responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown {
+  .responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown, .mainMoneyTimerContainer .bottomRow .timerDisplay, .mainMoneyTimerContainer .bottomRow .resetButton {
     font-size: 1em;
   }
-  .mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .mainMoneyTimerContainer .stopStartContainer button {
+  .mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .mainMoneyTimerContainer .topRow .stopStartContainer button {
     font-size: 1.2em;
   }
-  .LargeResponsiveFont, .mainMoneyTimerContainer .mainMoneyTimerDisplay {
+  .LargeResponsiveFont, .mainMoneyTimerContainer .topRow .mainMoneyTimerDisplay {
     font-size: 2em;
   }
   .dollarSign:before {
@@ -306,8 +338,7 @@ body {
 }
 
 @media (min-width: 900px) {
-  .inputAndStatsContainer,
-  .mainMoneyTimerContainer {
+  .inputAndStatsContainer {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -315,22 +346,28 @@ body {
     max-width: 100%;
     padding: 30px;
   }
-  .inputAndStatsContainer .valueBreakdown,
-  .inputAndStatsContainer .mainMoneyTimerDisplay,
-  .mainMoneyTimerContainer .valueBreakdown,
-  .mainMoneyTimerContainer .mainMoneyTimerDisplay {
-    margin: 0;
-  }
   .inputAndStatsContainer form {
     width: 40%;
   }
   .inputAndStatsContainer .valueBreakdown {
+    margin: 0;
     width: 60%;
   }
-  .mainMoneyTimerContainer .stopStartContainer {
+  .mainMoneyTimerContainer {
+    max-width: 100%;
+    padding: 30px;
+  }
+  .mainMoneyTimerContainer .topRow {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .mainMoneyTimerContainer .topRow .stopStartContainer {
     width: 40%;
   }
-  .mainMoneyTimerContainer .mainMoneyTimerDisplay {
+  .mainMoneyTimerContainer .topRow .mainMoneyTimerDisplay {
+    margin: 0;
     width: 60%;
   }
 }

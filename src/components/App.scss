@@ -52,7 +52,7 @@ body {
   &:before {
     @extend .responsiveFont;
     position: absolute;
-    top: 4px;
+    top: 3px;
     content: '$';
     left: 10px;
   }
@@ -179,61 +179,80 @@ body {
   box-sizing: border-box;
   background-color: $light;
 
-  .stopStartContainer {
+  .topRow {
     width: 100%;
-    // max-width: 425px;
-    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
-    button {
+    .stopStartContainer {
       width: 100%;
+      // max-width: 425px;
+      position: relative;
+
+      button {
+        width: 100%;
+        outline: none;
+        padding: 20px;
+        color: $dark;
+        border-style: none;
+        border-radius: 10px;
+        font-family: $mainFont;
+        box-sizing: border-box;
+        background-color: $mediumGrey;
+        @extend .mediumResponsiveFont;
+      }
+
+      .stopButton {
+        top: 0;
+        left: 0;
+        color: $warning;
+        position: absolute;
+        background-color: $lightGrey;
+      }
+
+      .enterHourlyRateWarning {
+        top: -2px;
+        left: 0;
+        color: $warning;
+        position: absolute;
+        box-sizing: border-box;
+        background-color: $light;
+        border: 2px solid $warning;
+      }
+    }
+
+    .mainMoneyTimerDisplay {
+      text-align: center;
+      margin: 40px 0 25px 0;
+      box-sizing: border-box;
+      @extend .LargeResponsiveFont;
+    }
+  }
+
+  .bottomRow {
+    width: 100%;
+    color: $dark;
+    display: flex;
+    margin-top: 30px;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .timerDisplay {
+      padding: 0 10px;
+      @extend .responsiveFont;
+    }
+
+    .resetButton {
       outline: none;
-      padding: 20px;
-      color: $dark;
+      color: $warning;
+      padding: 0 10px;
       border-style: none;
-      border-radius: 10px;
       font-family: $mainFont;
       box-sizing: border-box;
-      background-color: $mediumGrey;
-      @extend .mediumResponsiveFont;
-    }
-
-    .stopButton {
-      top: 0;
-      left: 0;
-      color: $warning;
-      position: absolute;
-      background-color: $lightGrey;
-    }
-
-    .enterHourlyRateWarning {
-      top: -2px;
-      left: 0;
-      color: $warning;
-      position: absolute;
-      box-sizing: border-box;
       background-color: $light;
-      border: 2px solid $warning;
+      @extend .responsiveFont;
     }
-  }
-
-  .timerDisplay {
-    left: 0;
-    right: 0;
-    width: 116px;
-    bottom: -20px;
-    color: $dark;
-    padding: 10px;
-    margin: 0 auto;
-    position: absolute;
-    border-radius: 10px;
-    background-color: $mediumGrey;
-  }
-
-  .mainMoneyTimerDisplay {
-    text-align: center;
-    margin: 40px 0 25px 0;
-    box-sizing: border-box;
-    @extend .LargeResponsiveFont;
   }
 }
 
@@ -246,7 +265,7 @@ body {
   }
   .dollarSign {
     &:before {
-      top: 4px;
+      top: 2px;
     }
   }
 }
@@ -285,33 +304,31 @@ body {
   }
 }
 @media (min-width: 900px) {
-  .inputAndStatsContainer,
-  .mainMoneyTimerContainer {
+  .inputAndStatsContainer {
     flex-direction: row;
     max-width: 100%;
     padding: 30px;
-
-    .valueBreakdown,
-    .mainMoneyTimerDisplay {
-      margin: 0;
-    }
-  }
-
-  .inputAndStatsContainer {
     form {
       width: 40%;
     }
     .valueBreakdown {
+      margin: 0;
       width: 60%;
     }
   }
 
   .mainMoneyTimerContainer {
-    .stopStartContainer {
-      width: 40%;
-    }
-    .mainMoneyTimerDisplay {
-      width: 60%;
+    max-width: 100%;
+    padding: 30px;
+    .topRow {
+      flex-direction: row;
+      .stopStartContainer {
+        width: 40%;
+      }
+      .mainMoneyTimerDisplay {
+        margin: 0;
+        width: 60%;
+      }
     }
   }
 }
