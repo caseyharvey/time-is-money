@@ -23,7 +23,7 @@ class HourlyRateInput extends React.Component {
           <input
             {...input}
             autoComplete='off'
-            placeholder=' Enter hourly rate'
+            placeholder=' enter hourly rate'
             onFocus={this.handleFocus}
           />
         </span>
@@ -65,7 +65,7 @@ class HourlyRateInput extends React.Component {
               : 'hide mainTimerWarning'
           }
         >
-          Stop main timer first
+          stop main timer first
         </div>
         <Field name='ratePerHour' component={this.renderInput} />
         <button onClick={this.onSubmit}>Set</button>
@@ -77,13 +77,13 @@ class HourlyRateInput extends React.Component {
 const validate = ({ ratePerHour }) => {
   const errors = {};
   if (!ratePerHour) {
-    errors.ratePerHour = 'Enter hourly rate';
+    errors.ratePerHour = 'enter hourly rate';
   } else if (isNaN(Number(ratePerHour))) {
-    errors.ratePerHour = 'Must be a number';
+    errors.ratePerHour = 'must be a number';
   } else if (ratePerHour.length > 9) {
     errors.ratePerHour = 'WOW!';
   } else if (/\s/.test(ratePerHour)) {
-    errors.ratePerHour = 'No spaces allowed';
+    errors.ratePerHour = 'no spaces allowed';
   }
   return errors;
 };

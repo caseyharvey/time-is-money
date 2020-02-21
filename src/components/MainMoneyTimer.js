@@ -58,7 +58,7 @@ class MainMoneyTimer extends React.Component {
       <div className='mainMoneyTimerContainer'>
         <div className='topRow'>
           <div className='stopStartContainer'>
-            <button onClick={this.startTimer}>Start main timer</button>
+            <button onClick={this.startTimer}>start main timer</button>
             <button
               className={
                 this.props.mainTimer.timerRunning
@@ -67,7 +67,7 @@ class MainMoneyTimer extends React.Component {
               }
               onClick={this.stopTimer}
             >
-              Stop main timer
+              stop main timer
             </button>
             <button
               className={
@@ -76,7 +76,7 @@ class MainMoneyTimer extends React.Component {
                   : 'enterHourlyRateWarning'
               }
             >
-              Enter hourly rate
+              enter hourly rate
             </button>
           </div>
           <div className='mainMoneyTimerDisplay'>
@@ -86,7 +86,7 @@ class MainMoneyTimer extends React.Component {
         <div className='bottomRow'>
           <TimerDisplay />
           <button onClick={this.resetTimer} className='resetButton'>
-            Reset
+            reset
           </button>
         </div>
       </div>

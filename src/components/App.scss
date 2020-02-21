@@ -7,7 +7,7 @@ $light: rgb(250, 250, 250);
 $warning: rgb(255, 20, 0);
 
 .responsiveFont {
-  font-size: 0.7em;
+  font-size: 0.8em;
 }
 .mediumResponsiveFont {
   font-size: 0.9em;
@@ -234,23 +234,23 @@ body {
     width: 100%;
     color: $dark;
     display: flex;
-    margin-top: 30px;
+    padding: 10px;
+    margin-top: 20px;
     flex-direction: row;
+    box-sizing: border-box;
     justify-content: space-between;
 
     .timerDisplay {
-      padding: 0 10px;
       @extend .responsiveFont;
     }
 
     .resetButton {
       outline: none;
       color: $warning;
-      padding: 0 10px;
       border-style: none;
       font-family: $mainFont;
       box-sizing: border-box;
-      background-color: $light;
+      background-color: transparent;
       @extend .responsiveFont;
     }
   }
@@ -258,7 +258,7 @@ body {
 
 @media (min-width: 360px) {
   .responsiveFont {
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
   .mediumResponsiveFont {
     font-size: 1em;
@@ -281,7 +281,7 @@ body {
 }
 @media (min-width: 425px) {
   .responsiveFont {
-    font-size: 1em;
+    font-size: 1.1em;
   }
   .mediumResponsiveFont {
     font-size: 1.2em;
