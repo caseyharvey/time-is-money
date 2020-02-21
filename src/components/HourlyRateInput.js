@@ -1,6 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setRate, setStopTimerWarning } from '../actions';
+import {
+  setRate,
+  rateHasBeenSet,
+  setStopTimerWarning,
+  resetMainTimer
+} from '../actions';
 import { Field, reduxForm, reset } from 'redux-form';
 
 class HourlyRateInput extends React.Component {
@@ -28,24 +33,38 @@ class HourlyRateInput extends React.Component {
   };
 
   onSubmit = InputValue => {
-    if (this.props.mainTimer.timerRunning) {
-      console.log('fired in on submit');
-      this.props.setStopTimerWarning();
-    } else if (this.props.valid) {
-      this.props.setRate(parseInt(InputValue.ratePerHour));
+    const {
+      mainTimer: { timerRunning, timerValue },
+      setStopTimerWarning,
+      resetMainTimer,
+      rateHasBeenSet,
+      setRate,
+      valid
+    } = this.props;
+
+    if (timerRunning) {
+      setStopTimerWarning();
+    } else if (timerValue && valid) {
+      alert('this will reset timer');
+      resetMainTimer();
+      rateHasBeenSet();
+      setRate(parseInt(InputValue.ratePerHour));
+    } else if (valid) {
+      rateHasBeenSet();
+      setRate(parseInt(InputValue.ratePerHour));
     }
   };
 
-  //   timerIsRunningWarning = () => {
-  //
-  //   };
-  // <div className={this.timerRunningWarning}>Stop main timer first</div>
-
   render() {
-    const warning = this.props.mainTimer.stopTimerWarning;
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <div className={warning ? 'mainTimerWarning' : 'hide mainTimerWarning'}>
+        <div
+          className={
+            this.props.mainTimer.stopTimerWarning
+              ? 'mainTimerWarning'
+              : 'hide mainTimerWarning'
+          }
+        >
           Stop main timer first
         </div>
         <Field name='ratePerHour' component={this.renderInput} />
@@ -82,6 +101,8 @@ const mapStateToProps = state => {
 
 const connectedHourlyInput = connect(mapStateToProps, {
   setRate,
+  resetMainTimer,
+  rateHasBeenSet,
   setStopTimerWarning
 })(HourlyRateInput);
 

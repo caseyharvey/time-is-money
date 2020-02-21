@@ -9,6 +9,12 @@ export const setRate = rate => {
   };
 };
 
+export const rateHasBeenSet = () => {
+  return {
+    type: 'RATE_HAS_BEEN_SET'
+  };
+};
+
 export const incrementMainTimer = () => {
   return {
     type: 'INCREMENT_MAIN_TIMER'
