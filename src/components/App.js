@@ -3,7 +3,7 @@ import HourlyRateInput from './HourlyRateInput';
 import ValueBreakdown from './ValueBreakdown';
 import MainMoneyTimer from './MainMoneyTimer';
 
-import './App.css';
+import '../CSS/App.css';
 
 const App = () => {
   return (

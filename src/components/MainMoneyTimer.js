@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from './Modal';
 import { connect } from 'react-redux';
 import TimerDisplay from './TimerDisplay';
 import {
@@ -7,7 +8,8 @@ import {
   rateHasBeenSet,
   incrementMainTimer,
   setMainTimerRunning,
-  setStopTimerWarning
+  setStopTimerWarning,
+  toggleMainResetModalVisibility
 } from '../actions';
 
 class MainMoneyTimer extends React.Component {
@@ -40,20 +42,26 @@ class MainMoneyTimer extends React.Component {
     if (stopTimerWarning) {
       setStopTimerWarning();
     }
-    clearInterval(this.interval);
     setMainTimerRunning();
+    clearInterval(this.interval);
   };
 
-  resetTimer = () => {
+  resetAll = () => {
+    const {
+      setRate,
+      resetMainTimer,
+      toggleMainResetModalVisibility
+    } = this.props;
+
+    setRate(0);
     this.stopTimer();
-    this.props.setRate(0);
-    this.props.resetMainTimer();
+    resetMainTimer();
+    toggleMainResetModalVisibility();
   };
 
   render() {
     const currentDollarValue =
       this.props.mainTimer.timerValue * this.props.rate.perSecond;
-
     return (
       <div className='mainMoneyTimerContainer'>
         <div className='topRow'>
@@ -85,9 +93,18 @@ class MainMoneyTimer extends React.Component {
         </div>
         <div className='bottomRow'>
           <TimerDisplay />
-          <button onClick={this.resetTimer} className='resetButton'>
+          <button
+            onClick={this.props.toggleMainResetModalVisibility}
+            className='resetButton'
+          >
             reset
           </button>
+          <Modal
+            confirm={this.resetAll}
+            cancel={this.props.toggleMainResetModalVisibility}
+            isVisible={this.props.modal.mainResetModalVisible ? '' : 'hide'}
+            message='This will reset the main timer and your hourly rate'
+          />
         </div>
       </div>
     );
@@ -96,8 +113,9 @@ class MainMoneyTimer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    mainTimer: state.mainTimer,
-    rate: state.rate
+    rate: state.rate,
+    modal: state.modal,
+    mainTimer: state.mainTimer
   };
 };
 
@@ -107,5 +125,6 @@ export default connect(mapStateToProps, {
   rateHasBeenSet,
   incrementMainTimer,
   setMainTimerRunning,
-  setStopTimerWarning
+  setStopTimerWarning,
+  toggleMainResetModalVisibility
 })(MainMoneyTimer);

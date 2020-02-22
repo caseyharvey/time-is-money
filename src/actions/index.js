@@ -37,3 +37,14 @@ export const resetMainTimer = () => {
     type: 'RESET_MAIN_TIMER'
   };
 };
+
+export const toggleMainResetModalVisibility = () => {
+  return {
+    type: 'TOGGLE_MAIN_RESET_MODAL_VISIBILITY'
+  };
+};
+export const changeHourlyModalVisibilityToggle = () => {
+  return {
+    type: 'CHANGE_HOURLY_MODAL_VISIBILITY_TOGGLE'
+  };
+};
