@@ -1,4 +1,4 @@
-$mainFont: 'Montserrat', sans-serif;
+$primaryFont: 'Montserrat', sans-serif;
 $dark: rgb(82, 82, 82);
 $darkGrey: rgb(104, 104, 104);
 $mediumGrey: rgb(228, 228, 228);
@@ -19,7 +19,7 @@ $warning: rgb(255, 20, 0);
   outline: none;
   border-style: none;
   box-sizing: border-box;
-  font-family: $mainFont;
+  font-family: $primaryFont;
 }
 .hide {
   visibility: hidden;
@@ -35,7 +35,7 @@ html {
     margin: 0;
     padding: 0;
     background-color: $dark;
-    font-family: $mainFont;
+    font-family: $primaryFont;
   }
 }
 
@@ -88,7 +88,7 @@ html {
     display: flex;
     position: relative;
 
-    .mainTimerWarning {
+    .primaryTimerWarning {
       top: 0;
       left: 0;
       width: 100%;
@@ -114,7 +114,7 @@ html {
         color: $dark;
         padding: 20px;
         border-style: none;
-        font-family: $mainFont;
+        font-family: $primaryFont;
         box-sizing: border-box;
         background-color: $lightGrey;
         border: 2px solid $lightGrey;
@@ -175,7 +175,7 @@ html {
   }
 }
 
-.mainMoneyTimerContainer {
+.moneyTimerContainer {
   width: 100%;
   color: $dark;
   display: flex;
@@ -189,7 +189,7 @@ html {
   box-sizing: border-box;
   background-color: $light;
 
-  .stopStartContainer {
+  .startStopContainer {
     width: 100%;
     position: relative;
 
@@ -221,7 +221,7 @@ html {
       border: 2px solid $warning;
     }
   }
-  .mainMoneyTimerDisplay {
+  .dollarValueDisplay {
     text-align: center;
     margin: 40px 0 25px 0;
     box-sizing: border-box;
@@ -229,7 +229,7 @@ html {
   }
 }
 
-.mainTimerDisplayContainer {
+.timerDisplayContainer {
   width: 100%;
   color: $dark;
   display: flex;
@@ -336,17 +336,17 @@ html {
   }
 }
 @media (min-width: 375px) {
-  .mainTimerDisplayContainer {
+  .timerDisplayContainer {
     padding: 15px 30px;
   }
 
   .inputAndStatsContainer,
-  .mainMoneyTimerContainer {
+  .moneyTimerContainer {
     padding: 25px;
   }
 
   .valueBreakdown,
-  .mainMoneyTimerDisplay {
+  .dollarValueDisplay {
     margin: 30px 0 15px 0;
   }
 }
@@ -370,7 +370,7 @@ html {
   }
 
   .inputAndStatsContainer,
-  .mainMoneyTimerContainer {
+  .moneyTimerContainer {
     form {
       div input {
         padding-left: 30px;
@@ -394,22 +394,22 @@ html {
     }
   }
 
-  .mainMoneyTimerContainer {
+  .moneyTimerContainer {
     padding: 30px;
     max-width: 100%;
     flex-direction: row;
 
-    .stopStartContainer {
+    .startStopContainer {
       width: 45%;
     }
 
-    .mainMoneyTimerDisplay {
+    .dollarValueDisplay {
       margin: 0;
       width: 55%;
     }
   }
 
-  .mainTimerDisplayContainer {
+  .timerDisplayContainer {
     max-width: 100%;
     padding: 15px 35px;
   }

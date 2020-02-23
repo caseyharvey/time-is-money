@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, reset } from 'redux-form';
 import {
   setRate,
-  resetMainTimer,
+  resetPrimaryTimer,
   rateHasBeenSet,
   setStopTimerWarning,
   changeHourlyModalVisibilityToggle
@@ -12,7 +12,7 @@ import {
 
 class HourlyRateInput extends React.Component {
   handleFocus = e => {
-    this.props.mainTimer.timerRunning
+    this.props.primaryTimer.timerRunning
       ? this.props.setStopTimerWarning()
       : e.target.select();
   };
@@ -39,11 +39,11 @@ class HourlyRateInput extends React.Component {
   resetToNewRate = () => {
     const {
       changeHourlyModalVisibilityToggle,
-      resetMainTimer,
+      resetPrimaryTimer,
       setRate
     } = this.props;
 
-    resetMainTimer();
+    resetPrimaryTimer();
     changeHourlyModalVisibilityToggle();
     setRate(parseInt(this.holdInputValue));
   };
@@ -52,7 +52,7 @@ class HourlyRateInput extends React.Component {
     this.holdInputValue = InputValue.ratePerHour;
 
     const {
-      mainTimer: { timerValue },
+      primaryTimer: { timerValue },
       changeHourlyModalVisibilityToggle,
       rateHasBeenSet,
       setRate,
@@ -73,7 +73,7 @@ class HourlyRateInput extends React.Component {
         <Field name='ratePerHour' component={this.renderInput} />
         <button
           onClick={
-            this.props.mainTimer.timerRunning
+            this.props.primaryTimer.timerRunning
               ? this.props.setStopTimerWarning
               : null
           }
@@ -82,18 +82,18 @@ class HourlyRateInput extends React.Component {
         </button>
         <div
           className={
-            this.props.mainTimer.stopTimerWarning
-              ? 'mainTimerWarning'
-              : 'hide mainTimerWarning'
+            this.props.primaryTimer.stopTimerWarning
+              ? 'primaryTimerWarning'
+              : 'hide primaryTimerWarning'
           }
         >
-          stop main timer first
+          stop primary timer first
         </div>
         <Modal
           confirm={this.resetToNewRate}
           cancel={this.props.changeHourlyModalVisibilityToggle}
           isVisible={this.props.modal.changeHourlyModalVisibility ? '' : 'hide'}
-          message='this will reset the main timer and set your new hourly rate'
+          message='this will reset the primary timer and set your new hourly rate'
         />
       </form>
     );
@@ -122,13 +122,13 @@ const mapStateToProps = state => {
   return {
     rate: state.rate,
     modal: state.modal,
-    mainTimer: state.mainTimer
+    primaryTimer: state.primaryTimer
   };
 };
 
 const connectedHourlyInput = connect(mapStateToProps, {
   setRate,
-  resetMainTimer,
+  resetPrimaryTimer,
   rateHasBeenSet,
   setStopTimerWarning,
   changeHourlyModalVisibilityToggle

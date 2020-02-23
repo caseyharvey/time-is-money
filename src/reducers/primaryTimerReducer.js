@@ -6,11 +6,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'INCREMENT_MAIN_TIMER':
+    case 'INCREMENT_PRIMARY_TIMER':
       return { ...state, timerValue: state.timerValue + 1 };
-    case 'RESET_MAIN_TIMER':
+    case 'RESET_PRIMARY_TIMER':
       return { ...state, timerRunning: false, timerValue: 0 };
-    case 'SET_MAIN_TIMER_RUNNING':
+    case 'SET_PRIMARY_TIMER_RUNNING':
       return {
         ...state,
         timerRunning: state.timerRunning ? false : true

@@ -15,15 +15,15 @@ export const rateHasBeenSet = () => {
   };
 };
 
-export const incrementMainTimer = () => {
+export const incrementPrimaryTimer = () => {
   return {
-    type: 'INCREMENT_MAIN_TIMER'
+    type: 'INCREMENT_PRIMARY_TIMER'
   };
 };
 
-export const setMainTimerRunning = () => {
+export const setPrimaryTimerRunning = () => {
   return {
-    type: 'SET_MAIN_TIMER_RUNNING'
+    type: 'SET_PRIMARY_TIMER_RUNNING'
   };
 };
 export const setStopTimerWarning = () => {
@@ -32,15 +32,15 @@ export const setStopTimerWarning = () => {
   };
 };
 
-export const resetMainTimer = () => {
+export const resetPrimaryTimer = () => {
   return {
-    type: 'RESET_MAIN_TIMER'
+    type: 'RESET_PRIMARY_TIMER'
   };
 };
 
-export const toggleMainResetModalVisibility = () => {
+export const togglePrimaryResetModalVisibility = () => {
   return {
-    type: 'TOGGLE_MAIN_RESET_MODAL_VISIBILITY'
+    type: 'TOGGLE_PRIMARY_RESET_MODAL_VISIBILITY'
   };
 };
 export const changeHourlyModalVisibilityToggle = () => {
