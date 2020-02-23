@@ -1,16 +1,16 @@
-.responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown, .mainMoneyTimerContainer .bottomRow .timerDisplay, .mainMoneyTimerContainer .bottomRow .resetButton {
+.responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown, .mainTimerDisplayContainer .timerDisplay, .mainTimerDisplayContainer .resetButton {
   font-size: 0.8em;
 }
 
-.mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .mainMoneyTimerContainer .topRow .stopStartContainer button, html .modalBackground .modalContainer .modalMessage, html .modalBackground .modalContainer .modalButtonContainer .modalCancel, html .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+.mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .mainMoneyTimerContainer .stopStartContainer button, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
   font-size: 0.9em;
 }
 
-.LargeResponsiveFont, .mainMoneyTimerContainer .topRow .mainMoneyTimerDisplay {
+.LargeResponsiveFont, .mainMoneyTimerContainer .mainMoneyTimerDisplay {
   font-size: 1.7em;
 }
 
-.buttonBaseStyle, .inputAndStatsContainer form button, .mainMoneyTimerContainer .topRow .stopStartContainer button, .mainMoneyTimerContainer .bottomRow .resetButton, html .modalBackground .modalContainer .modalButtonContainer .modalCancel, html .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+.buttonBaseStyle, .inputAndStatsContainer form button, .mainMoneyTimerContainer .stopStartContainer button, .mainTimerDisplayContainer .resetButton, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
   outline: none;
   border-style: none;
   -webkit-box-sizing: border-box;
@@ -22,7 +22,14 @@
   visibility: hidden;
 }
 
-body {
+html {
+  height: 100%;
+  min-width: 320px;
+  min-height: 576px;
+  position: relative;
+}
+
+html body {
   margin: 0;
   padding: 0;
   background-color: #525252;
@@ -35,21 +42,21 @@ body {
   display: -ms-flexbox;
   display: flex;
   margin: 0 auto;
-  min-height: 96vh;
-  min-width: 320px;
   overflow: hidden;
+  min-width: 320px;
+  min-height: 96vh;
   min-height: 576px;
   max-width: 1024px;
-  border-radius: 10px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 .container h1 {
@@ -63,10 +70,10 @@ body {
 }
 
 .dollarSign:before {
-  position: absolute;
   top: 3px;
-  content: '$';
   left: 10px;
+  content: '$';
+  position: absolute;
 }
 
 .inputAndStatsContainer {
@@ -144,12 +151,12 @@ body {
   left: 0;
   width: 100%;
   padding: 20px;
+  color: #ff1400;
   position: absolute;
   text-align: right;
   pointer-events: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  color: #ff1400;
   border-radius: 10px 0 0 10px;
   border: 2px solid #ff1400;
   background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(30%, white));
@@ -199,7 +206,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -209,26 +216,12 @@ body {
   background-color: #fafafa;
 }
 
-.mainMoneyTimerContainer .topRow {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.mainMoneyTimerContainer .topRow .stopStartContainer {
+.mainMoneyTimerContainer .stopStartContainer {
   width: 100%;
   position: relative;
 }
 
-.mainMoneyTimerContainer .topRow .stopStartContainer button {
+.mainMoneyTimerContainer .stopStartContainer button {
   width: 100%;
   padding: 20px;
   color: #525252;
@@ -236,7 +229,7 @@ body {
   background-color: #e4e4e4;
 }
 
-.mainMoneyTimerContainer .topRow .stopStartContainer .stopButton {
+.mainMoneyTimerContainer .stopStartContainer .stopButton {
   top: 0;
   left: 0;
   color: #ff1400;
@@ -244,7 +237,7 @@ body {
   background-color: #f0f0f0;
 }
 
-.mainMoneyTimerContainer .topRow .stopStartContainer .enterHourlyRateWarning {
+.mainMoneyTimerContainer .stopStartContainer .enterHourlyRateWarning {
   top: -2px;
   left: 0;
   color: #ff1400;
@@ -255,45 +248,40 @@ body {
   border: 2px solid #ff1400;
 }
 
-.mainMoneyTimerContainer .topRow .mainMoneyTimerDisplay {
+.mainMoneyTimerContainer .mainMoneyTimerDisplay {
   text-align: center;
   margin: 40px 0 25px 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-.mainMoneyTimerContainer .bottomRow {
+.mainTimerDisplayContainer {
   width: 100%;
   color: #525252;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 10px;
-  margin-top: 20px;
+  max-width: 565px;
+  padding: 15px 20px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  background-color: #f0f0f0;
+  border-radius: 0 0 10px 10px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 
-.mainMoneyTimerContainer .bottomRow .resetButton {
+.mainTimerDisplayContainer .resetButton {
   color: #ff1400;
   background-color: transparent;
 }
 
-html {
-  height: 100%;
-  min-width: 320px;
-  min-height: 576px;
-  position: relative;
-}
-
-html .modalBackground {
+.modalBackground {
   top: 0;
   left: 0;
   right: 0;
@@ -308,7 +296,7 @@ html .modalBackground {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-html .modalBackground .modalContainer {
+.modalBackground .modalContainer {
   width: 90%;
   height: 40%;
   padding: 30px;
@@ -322,12 +310,12 @@ html .modalBackground .modalContainer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -336,7 +324,7 @@ html .modalBackground .modalContainer {
           box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
 }
 
-html .modalBackground .modalContainer .modalMessage {
+.modalBackground .modalContainer .modalMessage {
   height: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -350,32 +338,32 @@ html .modalBackground .modalContainer .modalMessage {
           justify-content: center;
 }
 
-html .modalBackground .modalContainer .modalButtonContainer {
-  height: 50%;
+.modalBackground .modalContainer .modalButtonContainer {
   width: 100%;
+  height: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 
-html .modalBackground .modalContainer .modalButtonContainer .modalCancel {
+.modalBackground .modalContainer .modalButtonContainer .modalCancel {
   width: 45%;
   padding: 20px;
   border-radius: 10px;
   background-color: #f0f0f0;
 }
 
-html .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+.modalBackground .modalContainer .modalButtonContainer .modalConfirm {
   width: 45%;
   padding: 20px;
   color: #ff1400;
@@ -385,10 +373,10 @@ html .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
 }
 
 @media (min-width: 360px) {
-  .responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown, .mainMoneyTimerContainer .bottomRow .timerDisplay, .mainMoneyTimerContainer .bottomRow .resetButton {
+  .responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown, .mainTimerDisplayContainer .timerDisplay, .mainTimerDisplayContainer .resetButton {
     font-size: 0.9em;
   }
-  .mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .mainMoneyTimerContainer .topRow .stopStartContainer button, html .modalBackground .modalContainer .modalMessage, html .modalBackground .modalContainer .modalButtonContainer .modalCancel, html .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+  .mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .mainMoneyTimerContainer .stopStartContainer button, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
     font-size: 1em;
   }
   .dollarSign:before {
@@ -397,6 +385,9 @@ html .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
 }
 
 @media (min-width: 375px) {
+  .mainTimerDisplayContainer {
+    padding: 15px 30px;
+  }
   .inputAndStatsContainer,
   .mainMoneyTimerContainer {
     padding: 25px;
@@ -408,13 +399,13 @@ html .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
 }
 
 @media (min-width: 425px) {
-  .responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown, .mainMoneyTimerContainer .bottomRow .timerDisplay, .mainMoneyTimerContainer .bottomRow .resetButton {
+  .responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown, .mainTimerDisplayContainer .timerDisplay, .mainTimerDisplayContainer .resetButton {
     font-size: 1.1em;
   }
-  .mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .mainMoneyTimerContainer .topRow .stopStartContainer button, html .modalBackground .modalContainer .modalMessage, html .modalBackground .modalContainer .modalButtonContainer .modalCancel, html .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+  .mediumResponsiveFont, .inputAndStatsContainer form .mainTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div .errorMessage, .inputAndStatsContainer form button, .mainMoneyTimerContainer .stopStartContainer button, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
     font-size: 1.2em;
   }
-  .LargeResponsiveFont, .mainMoneyTimerContainer .topRow .mainMoneyTimerDisplay {
+  .LargeResponsiveFont, .mainMoneyTimerContainer .mainMoneyTimerDisplay {
     font-size: 2em;
   }
   .dollarSign:before {
@@ -443,21 +434,23 @@ html .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
     width: 60%;
   }
   .mainMoneyTimerContainer {
-    max-width: 100%;
     padding: 30px;
-  }
-  .mainMoneyTimerContainer .topRow {
+    max-width: 100%;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
   }
-  .mainMoneyTimerContainer .topRow .stopStartContainer {
+  .mainMoneyTimerContainer .stopStartContainer {
     width: 40%;
   }
-  .mainMoneyTimerContainer .topRow .mainMoneyTimerDisplay {
+  .mainMoneyTimerContainer .mainMoneyTimerDisplay {
     margin: 0;
     width: 60%;
+  }
+  .mainTimerDisplayContainer {
+    max-width: 100%;
+    padding: 15px 35px;
   }
 }
 /*# sourceMappingURL=App.css.map */

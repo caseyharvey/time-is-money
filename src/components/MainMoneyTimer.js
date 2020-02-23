@@ -63,8 +63,8 @@ class MainMoneyTimer extends React.Component {
     const currentDollarValue =
       this.props.mainTimer.timerValue * this.props.rate.perSecond;
     return (
-      <div className='mainMoneyTimerContainer'>
-        <div className='topRow'>
+      <>
+        <div className='mainMoneyTimerContainer'>
           <div className='stopStartContainer'>
             <button onClick={this.startTimer}>start main timer</button>
             <button
@@ -91,7 +91,7 @@ class MainMoneyTimer extends React.Component {
             ${Math.round((currentDollarValue + Number.EPSILON) * 100) / 100}
           </div>
         </div>
-        <div className='bottomRow'>
+        <div className='mainTimerDisplayContainer'>
           <TimerDisplay />
           <button
             onClick={this.props.toggleMainResetModalVisibility}
@@ -99,14 +99,14 @@ class MainMoneyTimer extends React.Component {
           >
             reset
           </button>
-          <Modal
-            confirm={this.resetAll}
-            cancel={this.props.toggleMainResetModalVisibility}
-            isVisible={this.props.modal.mainResetModalVisible ? '' : 'hide'}
-            message='This will reset the main timer and your hourly rate'
-          />
         </div>
-      </div>
+        <Modal
+          confirm={this.resetAll}
+          cancel={this.props.toggleMainResetModalVisibility}
+          isVisible={this.props.modal.mainResetModalVisible ? '' : 'hide'}
+          message='this will reset the main timer and your hourly rate'
+        />
+      </>
     );
   }
 }
