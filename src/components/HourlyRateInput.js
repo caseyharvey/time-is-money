@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from './Modal';
 import { connect } from 'react-redux';
+import { Field, reduxForm, reset } from 'redux-form';
 import {
   setRate,
   resetMainTimer,
@@ -8,7 +9,6 @@ import {
   setStopTimerWarning,
   changeHourlyModalVisibilityToggle
 } from '../actions';
-import { Field, reduxForm, reset } from 'redux-form';
 
 class HourlyRateInput extends React.Component {
   handleFocus = e => {
@@ -17,8 +17,10 @@ class HourlyRateInput extends React.Component {
       : e.target.select();
   };
 
-  renderInput = ({ input, meta: { error, invalid, pristine } }) => {
-    const errorClass = `${error && invalid && !pristine ? 'errorMessage' : ''}`;
+  renderInput = ({ input, meta: { error, pristine, submitFailed } }) => {
+    const errorClass = `${
+      (error && !pristine) || submitFailed ? 'errorMessage' : ''
+    }`;
     return (
       <div>
         <span className='dollarSign'>
@@ -43,11 +45,11 @@ class HourlyRateInput extends React.Component {
 
     resetMainTimer();
     changeHourlyModalVisibilityToggle();
-    setRate(parseInt(this.holdInputValueRate));
+    setRate(parseInt(this.holdInputValue));
   };
 
   onSubmit = InputValue => {
-    this.holdInputValueRate = InputValue.ratePerHour;
+    this.holdInputValue = InputValue.ratePerHour;
 
     const {
       mainTimer: { timerValue },
@@ -76,7 +78,7 @@ class HourlyRateInput extends React.Component {
               : null
           }
         >
-          Set
+          set
         </button>
         <div
           className={
@@ -91,7 +93,7 @@ class HourlyRateInput extends React.Component {
           confirm={this.resetToNewRate}
           cancel={this.props.changeHourlyModalVisibilityToggle}
           isVisible={this.props.modal.changeHourlyModalVisibility ? '' : 'hide'}
-          message='This will reset the main timer and set your new hourly rate'
+          message='this will reset the main timer and set your new hourly rate'
         />
       </form>
     );
@@ -104,8 +106,8 @@ const validate = ({ ratePerHour }) => {
     errors.ratePerHour = 'enter hourly rate';
   } else if (isNaN(Number(ratePerHour))) {
     errors.ratePerHour = 'must be a number';
-  } else if (ratePerHour.length > 9) {
-    errors.ratePerHour = 'WOW!';
+  } else if (ratePerHour.length > 7) {
+    errors.ratePerHour = 'stop wasting time';
   } else if (/\s/.test(ratePerHour)) {
     errors.ratePerHour = 'no spaces allowed';
   }
@@ -133,7 +135,7 @@ const connectedHourlyInput = connect(mapStateToProps, {
 })(HourlyRateInput);
 
 export default reduxForm({
+  validate,
   form: 'HourlyRateInput',
-  onSubmitSuccess: successfulSubmit,
-  validate
+  onSubmitSuccess: successfulSubmit
 })(connectedHourlyInput);

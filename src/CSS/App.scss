@@ -246,6 +246,7 @@ html {
   }
 
   .resetButton {
+    padding: 0;
     color: $warning;
     background-color: transparent;
     @extend .buttonBaseStyle;
@@ -384,12 +385,12 @@ html {
     padding: 30px;
 
     form {
-      width: 40%;
+      width: 45%;
     }
 
     .valueBreakdown {
       margin: 0;
-      width: 60%;
+      width: 55%;
     }
   }
 
@@ -399,12 +400,12 @@ html {
     flex-direction: row;
 
     .stopStartContainer {
-      width: 40%;
+      width: 45%;
     }
 
     .mainMoneyTimerDisplay {
       margin: 0;
-      width: 60%;
+      width: 55%;
     }
   }
 

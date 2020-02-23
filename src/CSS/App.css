@@ -277,6 +277,7 @@ html body {
 }
 
 .mainTimerDisplayContainer .resetButton {
+  padding: 0;
   color: #ff1400;
   background-color: transparent;
 }
@@ -427,11 +428,11 @@ html body {
     padding: 30px;
   }
   .inputAndStatsContainer form {
-    width: 40%;
+    width: 45%;
   }
   .inputAndStatsContainer .valueBreakdown {
     margin: 0;
-    width: 60%;
+    width: 55%;
   }
   .mainMoneyTimerContainer {
     padding: 30px;
@@ -442,11 +443,11 @@ html body {
             flex-direction: row;
   }
   .mainMoneyTimerContainer .stopStartContainer {
-    width: 40%;
+    width: 45%;
   }
   .mainMoneyTimerContainer .mainMoneyTimerDisplay {
     margin: 0;
-    width: 60%;
+    width: 55%;
   }
   .mainTimerDisplayContainer {
     max-width: 100%;

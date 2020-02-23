@@ -84,7 +84,7 @@ class MainMoneyTimer extends React.Component {
                   : 'enterHourlyRateWarning'
               }
             >
-              enter hourly rate
+              set hourly rate
             </button>
           </div>
           <div className='mainMoneyTimerDisplay'>
