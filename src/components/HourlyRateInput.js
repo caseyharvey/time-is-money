@@ -19,7 +19,7 @@ class HourlyRateInput extends React.Component {
 
   renderInput = ({ input, meta: { error, pristine, submitFailed } }) => {
     const errorClass = `${
-      (error && !pristine) || submitFailed ? 'errorMessage' : ''
+      (error && !pristine) || (error && submitFailed) ? 'errorMessage' : ''
     }`;
     return (
       <div>
