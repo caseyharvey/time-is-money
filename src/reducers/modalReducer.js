@@ -1,20 +1,18 @@
 const initialState = {
-  primaryResetModalVisible: false,
-  changeHourlyModalVisibility: false
+  showPrimaryResetModal: false,
+  showRateChangeResetModal: false
 };
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'TOGGLE_PRIMARY_RESET_MODAL_VISIBILITY':
+    case 'PRIMARY_RESET_MODAL':
       return {
         ...state,
-        primaryResetModalVisible: state.primaryResetModalVisible ? false : true
+        showPrimaryResetModal: state.showPrimaryResetModal ? false : true
       };
-    case 'CHANGE_HOURLY_MODAL_VISIBILITY_TOGGLE':
+    case 'RATE_CHANGE_RESET_MODAL':
       return {
         ...state,
-        changeHourlyModalVisibility: state.changeHourlyModalVisibility
-          ? false
-          : true
+        showRateChangeResetModal: state.showRateChangeResetModal ? false : true
       };
     default:
       return state;

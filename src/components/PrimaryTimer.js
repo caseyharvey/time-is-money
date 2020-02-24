@@ -6,60 +6,23 @@ import TimerDisplay from './TimerDisplay';
 import StartStopButton from './StartStopButton';
 import DollarValueDisplay from './DollarValueDisplay';
 import {
-  setRate,
   resetPrimaryTimer,
-  rateHasBeenSet,
-  incrementPrimaryTimer,
-  setPrimaryTimerRunning,
-  setStopTimerWarning,
-  togglePrimaryResetModalVisibility
+  togglePrimaryTimer,
+  togglePrimaryResetModal
 } from '../actions';
 
 class PrimaryTimer extends React.Component {
   startTimer = () => {
-    const {
-      rateHasBeenSet,
-      incrementPrimaryTimer,
-      setPrimaryTimerRunning,
-      rate: { perHour }
-    } = this.props;
-
-    if (!perHour) {
-      rateHasBeenSet();
-    } else {
-      setPrimaryTimerRunning();
-      incrementPrimaryTimer();
-      this.interval = setInterval(() => {
-        incrementPrimaryTimer();
-      }, 1000);
-    }
+    this.props.togglePrimaryTimer('start');
   };
-
   stopTimer = () => {
-    const {
-      setStopTimerWarning,
-      setPrimaryTimerRunning,
-      primaryTimer: { stopTimerWarning }
-    } = this.props;
-
-    if (stopTimerWarning) {
-      setStopTimerWarning();
-    }
-    setPrimaryTimerRunning();
-    clearInterval(this.interval);
+    this.props.togglePrimaryTimer('stop');
   };
-
   resetAll = () => {
-    const {
-      setRate,
-      resetPrimaryTimer,
-      togglePrimaryResetModalVisibility
-    } = this.props;
-
-    setRate(0);
-    this.stopTimer();
-    resetPrimaryTimer();
-    togglePrimaryResetModalVisibility();
+    this.props.resetPrimaryTimer();
+  };
+  confirmReset = () => {
+    this.props.togglePrimaryResetModal();
   };
 
   render() {
@@ -75,12 +38,12 @@ class PrimaryTimer extends React.Component {
         </div>
         <div className='timerDisplayContainer'>
           <TimerDisplay />
-          <ResetButton action={this.resetAll} />
+          <ResetButton action={this.confirmReset} />
         </div>
         <Modal
           confirm={this.resetAll}
-          cancel={this.props.togglePrimaryResetModalVisibility}
-          isVisible={this.props.modal.primaryResetModalVisible ? '' : 'hide'}
+          cancel={this.props.togglePrimaryResetModal}
+          isVisible={this.props.isVisible ? '' : 'hide'}
           message='this will reset the primary timer and your hourly rate'
         />
       </>
@@ -90,18 +53,12 @@ class PrimaryTimer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    rate: state.rate,
-    modal: state.modal,
-    primaryTimer: state.primaryTimer
+    isVisible: state.modal.showPrimaryResetModal
   };
 };
 
 export default connect(mapStateToProps, {
-  setRate,
   resetPrimaryTimer,
-  rateHasBeenSet,
-  incrementPrimaryTimer,
-  setPrimaryTimerRunning,
-  setStopTimerWarning,
-  togglePrimaryResetModalVisibility
+  togglePrimaryTimer,
+  togglePrimaryResetModal
 })(PrimaryTimer);

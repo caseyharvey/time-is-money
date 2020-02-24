@@ -1,7 +1,8 @@
 const initialState = {
   timerValue: 0,
   timerRunning: false,
-  stopTimerWarning: false
+  stopTimerWarning: false,
+  timerId: null
 };
 
 export default (state = initialState, action) => {
@@ -9,11 +10,12 @@ export default (state = initialState, action) => {
     case 'INCREMENT_PRIMARY_TIMER':
       return { ...state, timerValue: state.timerValue + 1 };
     case 'RESET_PRIMARY_TIMER':
-      return { ...state, timerRunning: false, timerValue: 0 };
+      return { ...initialState };
     case 'SET_PRIMARY_TIMER_RUNNING':
       return {
         ...state,
-        timerRunning: state.timerRunning ? false : true
+        timerRunning: state.timerRunning ? false : true,
+        timerId: action.payload
       };
     case 'SET_STOP_TIMER_WARNING':
       return {

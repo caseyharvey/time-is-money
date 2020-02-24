@@ -2,6 +2,7 @@ const initialState = {
   perHour: 0,
   perMinute: 0,
   perSecond: 0,
+  holdRate: 0,
   rateHasBeenSet: false
 };
 
@@ -15,6 +16,10 @@ export default (state = initialState, action) => {
       };
     case 'RATE_HAS_BEEN_SET':
       return { ...state, rateHasBeenSet: state.rateHasBeenSet ? false : true };
+    case 'RESET_RATE':
+      return { ...initialState };
+    case 'HOLD_RATE':
+      return { ...state, holdRate: action.payload };
     default:
       return state;
   }
