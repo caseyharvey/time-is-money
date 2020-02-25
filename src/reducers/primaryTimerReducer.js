@@ -1,8 +1,8 @@
 const initialState = {
+  timerId: null,
   timerValue: 0,
   timerRunning: false,
-  stopTimerWarning: false,
-  timerId: null
+  stopTimerWarning: false
 };
 
 export default (state = initialState, action) => {

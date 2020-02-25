@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ResetButton from './ResetButton';
 import TimerDisplay from './TimerDisplay';
 import StartStopButton from './StartStopButton';
+import { initialize } from 'redux-form';
 import DollarValueDisplay from './DollarValueDisplay';
 import {
   resetPrimaryTimer,
@@ -14,11 +15,14 @@ import {
 class PrimaryTimer extends React.Component {
   startTimer = () => {
     this.props.togglePrimaryTimer('start');
+    this.props.initialize('HourlyRateInput');
   };
   stopTimer = () => {
     this.props.togglePrimaryTimer('stop');
+    this.props.initialize('HourlyRateInput');
   };
   resetAll = () => {
+    this.stopTimer();
     this.props.resetPrimaryTimer();
   };
   confirmReset = () => {
@@ -58,6 +62,7 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
+  initialize,
   resetPrimaryTimer,
   togglePrimaryTimer,
   togglePrimaryResetModal

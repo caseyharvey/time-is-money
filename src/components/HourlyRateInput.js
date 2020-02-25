@@ -12,10 +12,10 @@ import {
 } from '../actions';
 
 class HourlyRateInput extends React.Component {
-  handleFocus = e => {
-    this.props.primaryTimer.timerRunning
-      ? this.props.setStopTimerWarning()
-      : e.target.select();
+  handleClickWarning = () => {
+    if (!this.props.stopTimerWarning && this.props.timerRunning) {
+      this.props.setStopTimerWarning();
+    }
   };
 
   handleRateReset = () => {
@@ -26,9 +26,10 @@ class HourlyRateInput extends React.Component {
     this.props.onInputSubmit(parseInt(ratePerHour));
   };
 
-  renderInput = ({ input, meta: { error, submitFailed } }) => {
+  renderInput = ({ input, meta: { error, pristine, submitFailed } }) => {
+    const { timerRunning } = this.props;
     const errorClass = `${
-      error && submitFailed && !this.props.timerRunning ? 'errorMessage' : ''
+      (error && !pristine) || (submitFailed && error) ? 'errorMessage' : ''
     }`;
     return (
       <div>
@@ -36,10 +37,14 @@ class HourlyRateInput extends React.Component {
           <input
             {...input}
             autoComplete='off'
+            onFocus={e => {
+              e.target.select();
+            }}
             placeholder=' enter hourly rate'
-            onFocus={this.handleFocus}
+            disabled={timerRunning}
           />
         </span>
+        <button disabled={timerRunning}>set</button>
         <span className={errorClass}>{errorClass ? error : null}</span>
       </div>
     );
@@ -48,15 +53,20 @@ class HourlyRateInput extends React.Component {
   render() {
     const {
       isVisible,
-      setStopTimerWarning,
-      toggleRateChangeResetModal,
-      primaryTimer: { timerRunning, stopTimerWarning }
+      handleSubmit,
+      timerRunning,
+      stopTimerWarning,
+      toggleRateChangeResetModal
     } = this.props;
 
     return (
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+      <form onSubmit={handleSubmit(this.onSubmit)}>
         <Field name='ratePerHour' component={this.renderInput} />
-        <button onClick={timerRunning ? setStopTimerWarning : null}>set</button>
+        <button
+          disabled={!timerRunning}
+          onClick={this.handleClickWarning}
+          className={timerRunning ? 'clickLayer' : 'clickLayer hide'}
+        ></button>
         <div
           className={
             stopTimerWarning
@@ -91,15 +101,15 @@ const validate = ({ ratePerHour }) => {
   return errors;
 };
 
-const successfulSubmit = (result, dispatch) => {
+export const successfulSubmit = (result, dispatch) => {
   dispatch(reset('HourlyRateInput'));
 };
 
 const mapStateToProps = state => {
   return {
+    timerRunning: state.primaryTimer.timerRunning,
     isVisible: state.modal.showRateChangeResetModal,
-    primaryTimer: state.primaryTimer,
-    timerRunning: state.primaryTimer.timerRunning
+    stopTimerWarning: state.primaryTimer.stopTimerWarning
   };
 };
 
