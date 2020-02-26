@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, reset } from 'redux-form';
 import {
   onInputSubmit,
-  rateHasBeenSet,
+  hasRateBeenSet,
   newRateTimerReset,
   resetPrimaryTimer,
   setStopTimerWarning,
@@ -115,7 +115,7 @@ const mapStateToProps = state => {
 
 const connectedHourlyInput = connect(mapStateToProps, {
   onInputSubmit,
-  rateHasBeenSet,
+  hasRateBeenSet,
   newRateTimerReset,
   resetPrimaryTimer,
   setStopTimerWarning,

@@ -11,7 +11,7 @@ export const onInputSubmit = rate => {
       });
     } else {
       dispatch({
-        type: 'RATE_HAS_BEEN_SET'
+        type: 'HAS_RATE_BEEN_SET'
       });
       dispatch({
         type: 'SET_RATE',
@@ -32,7 +32,7 @@ export const togglePrimaryTimer = action => {
     if (action === 'start') {
       if (!getState().rate.perHour) {
         dispatch({
-          type: 'RATE_HAS_BEEN_SET'
+          type: 'HAS_RATE_BEEN_SET'
         });
       } else if (timerId === null) {
         dispatch({
@@ -58,6 +58,44 @@ export const togglePrimaryTimer = action => {
       clearInterval(timerId);
       dispatch({
         type: 'SET_PRIMARY_TIMER_RUNNING',
+        payload: null
+      });
+    }
+  };
+};
+
+export const toggleTaskTimer = action => {
+  return (dispatch, getState) => {
+    const { timerId } = getState().taskTimer;
+
+    if (action === 'start' && getState().primaryTimer.timerRunning) {
+      if (!getState().rate.perHour) {
+        dispatch({
+          type: 'HAS_RATE_BEEN_SET'
+        });
+      } else if (timerId === null) {
+        dispatch({
+          type: 'INCREMENT_TASK_TIMER'
+        });
+        const timerId = setInterval(() => {
+          dispatch({
+            type: 'INCREMENT_TASK_TIMER'
+          });
+        }, 1000);
+        dispatch({
+          type: 'SET_TASK_TIMER_RUNNING',
+          payload: timerId
+        });
+      }
+    } else if (action === 'stop') {
+      if (getState().taskTimer.stopTimerWarning) {
+        dispatch({
+          type: 'SET_STOP_TIMER_WARNING'
+        });
+      }
+      clearInterval(timerId);
+      dispatch({
+        type: 'SET_TASK_TIMER_RUNNING',
         payload: null
       });
     }
@@ -104,9 +142,9 @@ export const setStopTimerWarning = () => {
   };
 };
 
-export const rateHasBeenSet = () => {
+export const hasRateBeenSet = () => {
   return {
-    type: 'RATE_HAS_BEEN_SET'
+    type: 'HAS_RATE_BEEN_SET'
   };
 };
 

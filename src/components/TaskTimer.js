@@ -7,42 +7,42 @@ import StartStopButton from './StartStopButton';
 import { initialize } from 'redux-form';
 import DollarValueDisplay from './DollarValueDisplay';
 import {
+  // resetTaskTimer,
   toggleTaskTimer,
-  resetPrimaryTimer,
-  togglePrimaryTimer,
-  togglePrimaryResetModal
+  togglePrimaryTimer
+  // toggleTaskResetModal
 } from '../actions';
 
-class PrimaryTimer extends React.Component {
+class TaskTimer extends React.Component {
   startTimer = () => {
     this.props.togglePrimaryTimer('start');
+    this.props.toggleTaskTimer('start');
     this.props.initialize('HourlyRateInput');
   };
   stopTimer = () => {
-    this.props.togglePrimaryTimer('stop');
     this.props.toggleTaskTimer('stop');
     this.props.initialize('HourlyRateInput');
   };
-  resetAll = () => {
-    this.stopTimer();
-    this.props.resetPrimaryTimer();
-  };
-  confirmReset = () => {
-    this.props.togglePrimaryResetModal();
-  };
+  //   resetTask = () => {
+  //     this.stopTimer();
+  //     this.props.resetTaskTimer();
+  //   };
+  //   confirmReset = () => {
+  //     this.props.toggleTaskResetModal();
+  //   };
 
   render() {
     const {
       isVisible,
       ratePerSecond,
       hasRateBeenSet,
-      primaryTimerValue,
-      primaryTimerRunning,
-      togglePrimaryResetModal
+      taskTimerValue,
+      taskTimerRunning,
+      toggleTaskResetModal
     } = this.props;
 
-    const dollarValue = primaryTimerValue * ratePerSecond;
-    const stopClass = primaryTimerRunning ? 'stopButton' : 'hide stopButton';
+    const dollarValue = taskTimerValue * ratePerSecond;
+    const stopClass = taskTimerRunning ? 'stopButton' : 'hide stopButton';
     const warningClass = !hasRateBeenSet
       ? 'hide enterHourlyRateWarning'
       : 'enterHourlyRateWarning';
@@ -53,21 +53,21 @@ class PrimaryTimer extends React.Component {
           <StartStopButton
             start={this.startTimer}
             stop={this.stopTimer}
-            name='primary timer'
+            name='task timer'
             stopClass={stopClass}
             warningClass={warningClass}
           />
           <DollarValueDisplay dollarValue={dollarValue} />
         </div>
         <div className='timerDisplayContainer'>
-          <TimerDisplay timerValue={primaryTimerValue} />
-          <ResetButton action={this.confirmReset} name='reset' />
+          <TimerDisplay timerValue={taskTimerValue} />
+          <ResetButton action={this.confirmReset} name='task reset' />
         </div>
         <Modal
-          confirm={this.resetAll}
-          cancel={togglePrimaryResetModal}
+          confirm={this.resetTask}
+          cancel={toggleTaskResetModal}
           isVisible={isVisible ? '' : 'hide'}
-          message='this will reset the primary timer and your hourly rate'
+          message='this will reset the task timer'
         />
       </>
     );
@@ -78,16 +78,16 @@ const mapStateToProps = state => {
   return {
     ratePerSecond: state.rate.perSecond,
     hasRateBeenSet: state.rate.hasRateBeenSet,
-    isVisible: state.modal.showPrimaryResetModal,
-    primaryTimerValue: state.primaryTimer.timerValue,
-    primaryTimerRunning: state.primaryTimer.timerRunning
+    taskTimerValue: state.taskTimer.timerValue,
+    isVisible: state.modal.toggleTaskResetModal,
+    taskTimerRunning: state.taskTimer.timerRunning
   };
 };
 
 export default connect(mapStateToProps, {
   initialize,
+  //   resetTaskTimer,
   toggleTaskTimer,
-  resetPrimaryTimer,
-  togglePrimaryTimer,
-  togglePrimaryResetModal
-})(PrimaryTimer);
+  togglePrimaryTimer
+  //   toggleTaskResetModal
+})(TaskTimer);

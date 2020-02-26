@@ -75,7 +75,7 @@ html {
 .inputAndStatsContainer {
   width: 100%;
   display: flex;
-  padding: 15px;
+  padding: 10px;
   max-width: 565px;
   border-radius: 10px;
   align-items: center;
@@ -180,7 +180,7 @@ html {
     flex-direction: row;
     box-sizing: border-box;
     background-color: $light;
-    margin: 40px auto 25px auto;
+    margin: 25px auto 10px auto;
     justify-content: space-around;
     @extend .responsiveFont;
   }
@@ -190,7 +190,7 @@ html {
   width: 100%;
   color: $dark;
   display: flex;
-  padding: 15px;
+  padding: 10px;
   max-width: 565px;
   margin-top: 20px;
   position: relative;
@@ -234,7 +234,7 @@ html {
   }
   .dollarValueDisplay {
     text-align: center;
-    margin: 40px 0 25px 0;
+    margin: 20px 0 10px 0;
     box-sizing: border-box;
     @extend .LargeResponsiveFont;
   }
@@ -245,7 +245,7 @@ html {
   color: $dark;
   display: flex;
   max-width: 565px;
-  padding: 15px 20px;
+  padding: 10px 20px;
   flex-direction: row;
   box-sizing: border-box;
   background-color: $lightGrey;
@@ -348,30 +348,26 @@ html {
 }
 @media (min-width: 375px) {
   .timerDisplayContainer {
-    padding: 15px 30px;
+    padding: 10px 20px;
   }
 
   .inputAndStatsContainer,
   .moneyTimerContainer {
-    padding: 25px;
-  }
+    padding: 15px;
 
-  .valueBreakdown,
-  .dollarValueDisplay {
-    margin: 30px 0 15px 0;
+    .valueBreakdown,
+    .dollarValueDisplay {
+      margin: 20px 0 5px 0;
+    }
   }
 }
 @media (min-width: 425px) {
-  .responsiveFont {
+  .mediumResponsiveFont {
     font-size: 1.1em;
   }
 
-  .mediumResponsiveFont {
-    font-size: 1.2em;
-  }
-
   .LargeResponsiveFont {
-    font-size: 2em;
+    font-size: 1.8em;
   }
 
   .dollarSign {
@@ -384,7 +380,7 @@ html {
   .moneyTimerContainer {
     form {
       div input {
-        padding-left: 30px;
+        padding-left: 20px;
       }
     }
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import HourlyRateInput from './HourlyRateInput';
 import ValueBreakdown from './ValueBreakdown';
 import PrimaryTimer from './PrimaryTimer';
-// import TaskMoneyTimer from './TaskMoneyTimer';
+import TaskTimer from './TaskTimer';
 
 import '../CSS/App.css';
 
@@ -15,7 +15,7 @@ const App = () => {
         <ValueBreakdown />
       </div>
       <PrimaryTimer />
-      {/* <TaskMoneyTimer /> */}
+      <TaskTimer />
     </div>
   );
 };

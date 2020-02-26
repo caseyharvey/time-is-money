@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 function ResetButton(props) {
   return (
     <button onClick={props.action} className='resetButton'>
-      reset
+      {props.name}
     </button>
   );
 }

@@ -81,7 +81,7 @@ html body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 15px;
+  padding: 10px;
   max-width: 565px;
   border-radius: 10px;
   -webkit-box-align: center;
@@ -199,7 +199,7 @@ html body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-color: #fafafa;
-  margin: 40px auto 25px auto;
+  margin: 25px auto 10px auto;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
@@ -210,7 +210,7 @@ html body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 15px;
+  padding: 10px;
   max-width: 565px;
   margin-top: 20px;
   position: relative;
@@ -261,7 +261,7 @@ html body {
 
 .moneyTimerContainer .dollarValueDisplay {
   text-align: center;
-  margin: 40px 0 25px 0;
+  margin: 20px 0 10px 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -273,7 +273,7 @@ html body {
   display: -ms-flexbox;
   display: flex;
   max-width: 565px;
-  padding: 15px 20px;
+  padding: 10px 20px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -398,34 +398,33 @@ html body {
 
 @media (min-width: 375px) {
   .timerDisplayContainer {
-    padding: 15px 30px;
+    padding: 10px 20px;
   }
   .inputAndStatsContainer,
   .moneyTimerContainer {
-    padding: 25px;
+    padding: 15px;
   }
-  .valueBreakdown,
-  .dollarValueDisplay {
-    margin: 30px 0 15px 0;
+  .inputAndStatsContainer .valueBreakdown,
+  .inputAndStatsContainer .dollarValueDisplay,
+  .moneyTimerContainer .valueBreakdown,
+  .moneyTimerContainer .dollarValueDisplay {
+    margin: 20px 0 5px 0;
   }
 }
 
 @media (min-width: 425px) {
-  .responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown, .timerDisplayContainer .timerDisplay, .timerDisplayContainer .resetButton {
+  .mediumResponsiveFont, .inputAndStatsContainer form .primaryTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div button, .inputAndStatsContainer form div .errorMessage, .moneyTimerContainer .startStopContainer button, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
     font-size: 1.1em;
   }
-  .mediumResponsiveFont, .inputAndStatsContainer form .primaryTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div button, .inputAndStatsContainer form div .errorMessage, .moneyTimerContainer .startStopContainer button, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
-    font-size: 1.2em;
-  }
   .LargeResponsiveFont, .moneyTimerContainer .dollarValueDisplay {
-    font-size: 2em;
+    font-size: 1.8em;
   }
   .dollarSign:before {
     top: 0;
   }
   .inputAndStatsContainer form div input,
   .moneyTimerContainer form div input {
-    padding-left: 30px;
+    padding-left: 20px;
   }
 }
 
