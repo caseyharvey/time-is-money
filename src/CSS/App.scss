@@ -224,12 +224,35 @@ html {
   padding: 10px;
   display: flex;
   max-width: 565px;
+  position: relative;
   align-items: center;
   border-radius: 10px;
   align-items: center;
   box-sizing: border-box;
   flex-direction: column;
   background-color: $light;
+
+  .inputGuard {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    border-radius: 10px;
+  }
+  .showSetRateWarning {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    color: $warning;
+    position: absolute;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: center;
+    background-color: $light;
+  }
 
   form {
     width: 100%;

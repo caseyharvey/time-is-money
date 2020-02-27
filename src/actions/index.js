@@ -1,5 +1,5 @@
 export const onInputSubmit = rate => {
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch({
       type: 'SET_RATE',
       payload: {
@@ -8,18 +8,23 @@ export const onInputSubmit = rate => {
         second: rate / 3600
       }
     });
-    dispatch({
-      type: 'INCREMENT_PRIMARY_TIMER'
-    });
-    const timerId = setInterval(() => {
+    if (!getState().primaryTimer.timerRunning) {
+      dispatch({
+        type: 'SHOW_SET_RATE_WARNING'
+      });
       dispatch({
         type: 'INCREMENT_PRIMARY_TIMER'
       });
-    }, 1000);
-    dispatch({
-      type: 'SET_PRIMARY_TIMER_RUNNING',
-      payload: timerId
-    });
+      const timerId = setInterval(() => {
+        dispatch({
+          type: 'INCREMENT_PRIMARY_TIMER'
+        });
+      }, 1000);
+      dispatch({
+        type: 'SET_PRIMARY_TIMER_RUNNING',
+        payload: timerId
+      });
+    }
   };
 };
 
@@ -47,6 +52,11 @@ export const togglePrimaryResetModal = () => {
     type: 'PRIMARY_RESET_MODAL'
   };
 };
+export const toggleSetRateWarning = () => {
+  return {
+    type: 'SHOW_SET_RATE_WARNING'
+  };
+};
 
 export const onTaskSubmit = taskName => {
   return dispatch => {
@@ -65,6 +75,16 @@ export const onTaskSubmit = taskName => {
     dispatch({
       type: 'SET_TASK_TIMER_RUNNING',
       payload: timerId
+    });
+  };
+};
+
+export const stopTask = () => {
+  return (dispatch, getState) => {
+    clearInterval(getState().taskTimer.timerId);
+    dispatch({
+      type: 'SET_TASK_TIMER_RUNNING',
+      payload: null
     });
   };
 };

@@ -5,11 +5,9 @@ import { connect } from 'react-redux';
 import { initialize } from 'redux-form';
 import TimerDisplay from './TimerDisplay';
 import DollarValueDisplay from './DollarValueDisplay';
-// import {  } from '../actions';
+import { stopTask } from '../actions';
 
 class TaskDetails extends React.Component {
-  stopTask = () => {};
-
   render() {
     const { ratePerSecond, taskTimerValue } = this.props;
     const dollarValue = taskTimerValue * ratePerSecond;
@@ -17,12 +15,12 @@ class TaskDetails extends React.Component {
       <>
         <div className='taskDetails'>
           <div className='nameAndValue'>
-            <div className='taskName'>task:{this.props.taskNameDisplay}</div>
+            <div className='taskName'>task: {this.props.taskNameDisplay}</div>
             <DollarValueDisplay dollarValue={dollarValue} />
           </div>
           <div className='timerDisplayContainer'>
             <TimerDisplay timerValue={taskTimerValue} />
-            <RedButton action={this.stopTask} name='stop' />
+            <RedButton action={this.props.stopTask} name='stop' />
           </div>
         </div>
       </>
@@ -38,5 +36,6 @@ const mapStateToProps = state => {
   };
 };
 export default connect(mapStateToProps, {
+  stopTask,
   initialize
 })(TaskDetails);

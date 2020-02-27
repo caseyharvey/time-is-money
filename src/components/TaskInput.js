@@ -2,7 +2,7 @@ import React from 'react';
 import { initialize } from 'redux-form';
 import { connect } from 'react-redux';
 import { Field, reduxForm, reset } from 'redux-form';
-import { onTaskSubmit } from '../actions';
+import { onTaskSubmit, toggleSetRateWarning } from '../actions';
 
 class TaskInput extends React.Component {
   onSubmit = ({ taskName }) => {
@@ -28,6 +28,19 @@ class TaskInput extends React.Component {
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name='taskName' component={this.renderInput} />
         </form>
+        <div
+          className={this.props.isRateSet ? 'inputGuard hide' : 'inputGuard'}
+          onClick={this.props.toggleSetRateWarning}
+        ></div>
+        <div
+          className={
+            this.props.showSetRateWarning
+              ? 'showSetRateWarning '
+              : 'showSetRateWarning hide'
+          }
+        >
+          set your hourly rate first
+        </div>
       </div>
     );
   }
@@ -49,13 +62,16 @@ export const successfulSubmit = (result, dispatch) => {
 
 const mapStateToProps = state => {
   return {
-    taskNameDisplay: state.taskTimer.taskName
+    isRateSet: state.rate.isRateSet,
+    taskNameDisplay: state.taskTimer.taskName,
+    showSetRateWarning: state.rate.showSetRateWarning
   };
 };
 
 const connectedTaskInput = connect(mapStateToProps, {
   initialize,
-  onTaskSubmit
+  onTaskSubmit,
+  toggleSetRateWarning
 })(TaskInput);
 
 export default reduxForm({
