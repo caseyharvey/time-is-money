@@ -3,7 +3,8 @@ $dark: rgb(82, 82, 82);
 $darkGrey: rgb(104, 104, 104);
 $mediumGrey: rgb(228, 228, 228);
 $lightGrey: rgb(240, 240, 240);
-$light: rgb(250, 250, 250);
+$extraLightGrey: rgb(246, 246, 246);
+$light: rgb(253, 253, 253);
 $warning: rgb(255, 20, 0);
 
 .responsiveFont {
@@ -47,13 +48,13 @@ html {
   min-width: 320px;
   min-height: 96vh;
   min-height: 576px;
-  max-width: 1024px;
+  max-width: 900px;
   align-items: center;
   border-radius: 10px;
   box-sizing: border-box;
   flex-direction: column;
 
-  h1 {
+  h2 {
     color: $light;
     text-align: center;
     margin: 0 auto 20px auto;
@@ -72,15 +73,162 @@ html {
   }
 }
 
-.inputAndStatsContainer {
+.primaryControls {
   width: 100%;
   display: flex;
-  padding: 10px;
   max-width: 565px;
   border-radius: 10px;
+  margin-bottom: 10px;
   align-items: center;
   flex-direction: column;
+  background-color: $light;
+
+  .inputAndDisplay {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    form {
+      width: 100%;
+      display: flex;
+      position: relative;
+
+      div {
+        margin: 0;
+        width: 100%;
+        position: relative;
+
+        input {
+          width: 70%;
+          outline: none;
+          color: $dark;
+          padding: 20px;
+          border-style: none;
+          box-sizing: border-box;
+          border-radius: 10px 0 0 0;
+          font-family: $primaryFont;
+          background-color: $lightGrey;
+          border: 2px solid $lightGrey;
+          @extend .mediumResponsiveFont;
+
+          &:focus {
+            box-sizing: border-box;
+            background-color: white;
+            border: 2px solid $mediumGrey;
+          }
+        }
+
+        button {
+          width: 30%;
+          color: $dark;
+          padding: 20px;
+          background-color: $mediumGrey;
+          border-radius: 0 10px 0 0;
+          border: 2px solid $mediumGrey;
+          @extend .mediumResponsiveFont;
+          @extend .buttonBaseStyle;
+        }
+
+        .errorMessage {
+          top: 0;
+          left: 0;
+          width: 100%;
+          padding: 20px;
+          color: $warning;
+          text-align: right;
+          position: absolute;
+          pointer-events: none;
+          box-sizing: border-box;
+          border: 2px solid $warning;
+          border-radius: 10px 10px 0 0;
+          background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 1) 50%
+          );
+          @extend .mediumResponsiveFont;
+        }
+      }
+    }
+
+    .valueBreakdown {
+      width: 100%;
+      display: flex;
+      color: $darkGrey;
+      margin-top: 10px;
+      padding: 10px 20px;
+      align-items: center;
+      flex-direction: row;
+      box-sizing: border-box;
+      background-color: $extraLightGrey;
+      justify-content: space-between;
+      @extend .responsiveFont;
+    }
+  }
+  .primaryTimer {
+    width: 100%;
+    color: $dark;
+    padding: 10px;
+    display: flex;
+    padding-top: 0;
+    max-width: 565px;
+    position: relative;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    .dollarValue {
+      width: 100%;
+      height: 65px;
+      display: flex;
+      padding-left: 20px;
+      align-items: center;
+      box-sizing: border-box;
+      background-color: $extraLightGrey;
+      @extend .LargeResponsiveFont;
+    }
+
+    .timerDisplayContainer {
+      width: 100%;
+      display: flex;
+      color: $darkGrey;
+      max-width: 565px;
+      margin-top: 10px;
+      padding: 10px 20px;
+      align-items: center;
+      flex-direction: row;
+      box-sizing: border-box;
+      border-radius: 0 0 10px 10px;
+      background-color: $extraLightGrey;
+      justify-content: space-between;
+
+      .timerDisplay {
+        @extend .responsiveFont;
+      }
+
+      .resetButton {
+        padding: 0;
+        color: $warning;
+        background-color: transparent;
+        @extend .buttonBaseStyle;
+        @extend .responsiveFont;
+      }
+    }
+  }
+}
+
+.taskInput {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  max-width: 565px;
+  align-items: center;
+  border-radius: 10px;
+  align-items: center;
   box-sizing: border-box;
+  flex-direction: column;
   background-color: $light;
 
   form {
@@ -88,180 +236,116 @@ html {
     display: flex;
     position: relative;
 
-    .clickLayer {
-      top: 0;
-      left: 0;
-      opacity: 0;
-      z-index: 999;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-    }
-
-    .primaryTimerWarning {
-      top: 0;
-      left: 0;
-      width: 100%;
+    input {
+      width: 70%;
+      outline: none;
+      color: $dark;
       padding: 20px;
-      color: $warning;
-      position: absolute;
-      text-align: center;
-      border-radius: 10px;
+      border-style: none;
       box-sizing: border-box;
-      background-color: $light;
-      border: 2px solid $warning;
+      border-radius: 10px 0 0 10px;
+      font-family: $primaryFont;
+      background-color: $lightGrey;
+      border: 2px solid $lightGrey;
       @extend .mediumResponsiveFont;
-    }
 
-    div {
-      margin: 0;
-      width: 100%;
-      position: relative;
-
-      input {
-        width: 70%;
-        outline: none;
-        color: $dark;
-        padding: 20px;
-        border-style: none;
-        font-family: $primaryFont;
+      &:focus {
         box-sizing: border-box;
-        background-color: $lightGrey;
-        border: 2px solid $lightGrey;
-        border-radius: 10px 0 0 10px;
-        @extend .mediumResponsiveFont;
-
-        &:focus {
-          box-sizing: border-box;
-          background-color: white;
-          border: 2px solid $mediumGrey;
-        }
-      }
-
-      button {
-        width: 30%;
-        color: $dark;
-        padding: 20px;
-        background-color: $mediumGrey;
-        border-radius: 0 10px 10px 0;
+        background-color: white;
         border: 2px solid $mediumGrey;
-        @extend .mediumResponsiveFont;
-        @extend .buttonBaseStyle;
-      }
-
-      .errorMessage {
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 20px;
-        color: $warning;
-        text-align: right;
-        position: absolute;
-        border-radius: 10px;
-        pointer-events: none;
-        box-sizing: border-box;
-        border: 2px solid $warning;
-        background: linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 1) 50%
-        );
-        @extend .mediumResponsiveFont;
       }
     }
-  }
-
-  .valueBreakdown {
-    width: 100%;
-    display: flex;
-    color: $dark;
-    max-width: 520px;
-    align-items: center;
-    flex-direction: row;
-    box-sizing: border-box;
-    background-color: $light;
-    margin: 25px auto 10px auto;
-    justify-content: space-around;
-    @extend .responsiveFont;
-  }
-}
-
-.moneyTimerContainer {
-  width: 100%;
-  color: $dark;
-  display: flex;
-  padding: 10px;
-  max-width: 565px;
-  margin-top: 20px;
-  position: relative;
-  align-items: center;
-  border-radius: 10px 10px 0 0;
-  flex-direction: column;
-  box-sizing: border-box;
-  background-color: $light;
-
-  .startStopContainer {
-    width: 100%;
-    position: relative;
 
     button {
-      width: 100%;
-      padding: 20px;
+      width: 30%;
       color: $dark;
-      border-radius: 10px;
+      padding: 20px;
       background-color: $mediumGrey;
+      border-radius: 0 10px 10px 0;
+      border: 2px solid $mediumGrey;
       @extend .mediumResponsiveFont;
       @extend .buttonBaseStyle;
     }
 
-    .stopButton {
+    .errorMessage {
       top: 0;
       left: 0;
+      width: 100%;
+      padding: 20px;
       color: $warning;
+      text-align: right;
       position: absolute;
-      background-color: $lightGrey;
-    }
-
-    .enterHourlyRateWarning {
-      top: -2px;
-      left: 0;
-      color: $warning;
-      position: absolute;
+      pointer-events: none;
       box-sizing: border-box;
-      background-color: $light;
       border: 2px solid $warning;
+      border-radius: 10px 10px 0 0;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 50%
+      );
+      @extend .mediumResponsiveFont;
     }
-  }
-  .dollarValueDisplay {
-    text-align: center;
-    margin: 20px 0 10px 0;
-    box-sizing: border-box;
-    @extend .LargeResponsiveFont;
   }
 }
-
-.timerDisplayContainer {
+.taskDetails {
   width: 100%;
   color: $dark;
   display: flex;
   max-width: 565px;
-  padding: 10px 20px;
-  flex-direction: row;
+  margin-top: 10px;
+  position: relative;
   box-sizing: border-box;
-  background-color: $lightGrey;
-  border-radius: 0 0 10px 10px;
-  justify-content: space-between;
+  flex-direction: column;
 
-  .timerDisplay {
-    @extend .responsiveFont;
+  .nameAndValue {
+    display: flex;
+    flex-direction: column;
+    .taskName {
+      width: 100%;
+      display: flex;
+      font-size: 1em;
+      max-width: 565px;
+      color: $darkGrey;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 20px 30px 10px 30px;
+      border-radius: 10px 10px 0 0;
+      justify-content: space-between;
+      background-color: $extraLightGrey;
+    }
+    .dollarValue {
+      width: 100%;
+      display: flex;
+      font-size: 1.3em;
+      padding: 20px 30px;
+      align-items: center;
+      box-sizing: border-box;
+      background-color: $light;
+    }
   }
-
-  .resetButton {
-    padding: 0;
-    color: $warning;
-    background-color: transparent;
-    @extend .buttonBaseStyle;
-    @extend .responsiveFont;
+  .timerDisplayContainer {
+    width: 100%;
+    display: flex;
+    max-width: 565px;
+    color: $darkGrey;
+    padding: 10px 30px;
+    align-items: center;
+    flex-direction: row;
+    box-sizing: border-box;
+    border-radius: 0 0 10px 10px;
+    justify-content: space-between;
+    background-color: $extraLightGrey;
+    .timerDisplay {
+      @extend .responsiveFont;
+    }
+    .resetButton {
+      padding: 0;
+      color: $warning;
+      background-color: transparent;
+      @extend .buttonBaseStyle;
+      @extend .responsiveFont;
+    }
   }
 }
 
@@ -335,89 +419,104 @@ html {
   .responsiveFont {
     font-size: 0.9em;
   }
-
   .mediumResponsiveFont {
     font-size: 1em;
   }
-
   .dollarSign {
     &:before {
       top: 2px;
     }
   }
 }
-@media (min-width: 375px) {
-  .timerDisplayContainer {
-    padding: 10px 20px;
-  }
 
-  .inputAndStatsContainer,
-  .moneyTimerContainer {
-    padding: 15px;
-
-    .valueBreakdown,
-    .dollarValueDisplay {
-      margin: 20px 0 5px 0;
-    }
-  }
-}
 @media (min-width: 425px) {
   .mediumResponsiveFont {
     font-size: 1.1em;
   }
-
   .LargeResponsiveFont {
     font-size: 1.8em;
   }
-
   .dollarSign {
     &:before {
       top: 0;
     }
   }
+}
+@media (min-width: 900px) {
+  .LargeResponsiveFont {
+    font-size: 2em;
+  }
+  .container {
+    h2 {
+      align-self: start;
+      margin: 0 0 20px 40px;
+    }
+  }
 
-  .inputAndStatsContainer,
-  .moneyTimerContainer {
-    form {
-      div input {
-        padding-left: 20px;
+  .primaryControls {
+    max-width: 100%;
+    flex-direction: row;
+
+    .inputAndDisplay {
+      max-width: 45%;
+      padding-right: 5px;
+      border-radius: 10px 0 0 10px;
+
+      form {
+        div {
+          input {
+            border-radius: 10px 0 0 0;
+          }
+          button {
+            border-radius: 0;
+          }
+          .errorMessage {
+            border-radius: 10px 0 0 0;
+          }
+        }
+      }
+      .valueBreakdown {
+        border-radius: 0 0 0 10px;
+      }
+    }
+
+    .primaryTimer {
+      padding: 10px;
+      max-width: 55%;
+      padding-left: 5px;
+      border-radius: 0 10px 10px 0;
+
+      .dollarValue {
+        border-radius: 0 10px 0 0;
+      }
+
+      .timerDisplayContainer {
+        border-radius: 0 0 10px 0;
       }
     }
   }
-}
-@media (min-width: 900px) {
-  .inputAndStatsContainer {
-    flex-direction: row;
+
+  .taskInput {
     max-width: 100%;
-    padding: 30px;
-
-    form {
-      width: 45%;
-    }
-
-    .valueBreakdown {
-      margin: 0;
-      width: 55%;
-    }
   }
-
-  .moneyTimerContainer {
-    padding: 30px;
+  .taskDetails {
     max-width: 100%;
-    flex-direction: row;
-
-    .startStopContainer {
-      width: 45%;
+    .nameAndValue {
+      flex-direction: row;
+      .taskName {
+        width: 60%;
+        background-color: $light;
+        border-radius: 10px 0 0 0;
+      }
+      .dollarValue {
+        width: 40%;
+        border-radius: 0 10px 0 0;
+        border-left: 2px solid $mediumGrey;
+      }
     }
-
-    .dollarValueDisplay {
-      margin: 0;
-      width: 55%;
+    .timerDisplayContainer {
+      border-top: 2px solid $mediumGrey;
+      max-width: 100%;
     }
-  }
-
-  .timerDisplayContainer {
-    max-width: 100%;
-    padding: 15px 35px;
   }
 }

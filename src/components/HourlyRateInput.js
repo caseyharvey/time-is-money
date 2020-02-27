@@ -1,33 +1,16 @@
 import React from 'react';
-import Modal from './Modal';
+import ValueBreakdown from './ValueBreakdown';
+import { initialize } from 'redux-form';
 import { connect } from 'react-redux';
 import { Field, reduxForm, reset } from 'redux-form';
-import {
-  onInputSubmit,
-  hasRateBeenSet,
-  newRateTimerReset,
-  resetPrimaryTimer,
-  setStopTimerWarning,
-  toggleRateChangeResetModal
-} from '../actions';
+import { onInputSubmit, resetPrimaryTimer } from '../actions';
 
 class HourlyRateInput extends React.Component {
-  handleClickWarning = () => {
-    if (!this.props.stopTimerWarning && this.props.timerRunning) {
-      this.props.setStopTimerWarning();
-    }
-  };
-
-  handleRateReset = () => {
-    this.props.newRateTimerReset();
-  };
-
   onSubmit = ({ ratePerHour }) => {
     this.props.onInputSubmit(parseInt(ratePerHour));
   };
 
   renderInput = ({ input, meta: { error, pristine, submitFailed } }) => {
-    const { timerRunning } = this.props;
     const errorClass = `${
       (error && !pristine) || (submitFailed && error) ? 'errorMessage' : ''
     }`;
@@ -37,52 +20,23 @@ class HourlyRateInput extends React.Component {
           <input
             {...input}
             autoComplete='off'
-            onFocus={e => {
-              e.target.select();
-            }}
             placeholder=' enter hourly rate'
-            disabled={timerRunning}
           />
         </span>
-        <button disabled={timerRunning}>set</button>
+        <button>set</button>
         <span className={errorClass}>{errorClass ? error : null}</span>
       </div>
     );
   };
 
   render() {
-    const {
-      isVisible,
-      handleSubmit,
-      timerRunning,
-      stopTimerWarning,
-      toggleRateChangeResetModal
-    } = this.props;
-
     return (
-      <form onSubmit={handleSubmit(this.onSubmit)}>
-        <Field name='ratePerHour' component={this.renderInput} />
-        <button
-          disabled={!timerRunning}
-          onClick={this.handleClickWarning}
-          className={timerRunning ? 'clickLayer' : 'clickLayer hide'}
-        ></button>
-        <div
-          className={
-            stopTimerWarning
-              ? 'primaryTimerWarning'
-              : 'hide primaryTimerWarning'
-          }
-        >
-          stop primary timer first
-        </div>
-        <Modal
-          confirm={this.handleRateReset}
-          cancel={toggleRateChangeResetModal}
-          isVisible={isVisible ? '' : 'hide'}
-          message='this will reset the primary timer and set your new hourly rate'
-        />
-      </form>
+      <div className='inputAndDisplay'>
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+          <Field name='ratePerHour' component={this.renderInput} />
+        </form>
+        <ValueBreakdown />
+      </div>
     );
   }
 }
@@ -101,25 +55,21 @@ const validate = ({ ratePerHour }) => {
   return errors;
 };
 
-export const successfulSubmit = (result, dispatch) => {
+const successfulSubmit = (result, dispatch) => {
   dispatch(reset('HourlyRateInput'));
 };
 
 const mapStateToProps = state => {
   return {
-    timerRunning: state.primaryTimer.timerRunning,
-    isVisible: state.modal.showRateChangeResetModal,
-    stopTimerWarning: state.primaryTimer.stopTimerWarning
+    timerValue: state.primaryTimer.timerValue,
+    isVisible: state.modal.showRateChangeResetModal
   };
 };
 
 const connectedHourlyInput = connect(mapStateToProps, {
+  initialize,
   onInputSubmit,
-  hasRateBeenSet,
-  newRateTimerReset,
-  resetPrimaryTimer,
-  setStopTimerWarning,
-  toggleRateChangeResetModal
+  resetPrimaryTimer
 })(HourlyRateInput);
 
 export default reduxForm({

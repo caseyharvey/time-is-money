@@ -1,9 +1,7 @@
 const initialState = {
   perHour: 0,
   perMinute: 0,
-  perSecond: 0,
-  holdRate: 0,
-  hasRateBeenSet: false
+  perSecond: 0
 };
 
 export default (state = initialState, action) => {
@@ -14,12 +12,8 @@ export default (state = initialState, action) => {
         perMinute: action.payload.minute,
         perSecond: action.payload.second
       };
-    case 'HAS_RATE_BEEN_SET':
-      return { ...state, hasRateBeenSet: state.hasRateBeenSet ? false : true };
     case 'RESET_RATE':
       return { ...initialState };
-    case 'HOLD_RATE':
-      return { ...state, holdRate: action.payload };
     default:
       return state;
   }

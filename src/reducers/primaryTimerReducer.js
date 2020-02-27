@@ -1,8 +1,7 @@
 const initialState = {
   timerId: null,
   timerValue: 0,
-  timerRunning: false,
-  stopTimerWarning: false
+  timerRunning: false
 };
 
 export default (state = initialState, action) => {
@@ -16,11 +15,6 @@ export default (state = initialState, action) => {
         ...state,
         timerRunning: state.timerRunning ? false : true,
         timerId: action.payload
-      };
-    case 'SET_STOP_TIMER_WARNING':
-      return {
-        ...state,
-        stopTimerWarning: state.stopTimerWarning ? false : true
       };
     default:
       return state;

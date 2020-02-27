@@ -1,6 +1,5 @@
 const initialState = {
-  showPrimaryResetModal: false,
-  showRateChangeResetModal: false
+  showPrimaryResetModal: false
 };
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -8,11 +7,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         showPrimaryResetModal: state.showPrimaryResetModal ? false : true
-      };
-    case 'RATE_CHANGE_RESET_MODAL':
-      return {
-        ...state,
-        showRateChangeResetModal: state.showRateChangeResetModal ? false : true
       };
     default:
       return state;

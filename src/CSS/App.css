@@ -1,16 +1,16 @@
-.responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown, .timerDisplayContainer .timerDisplay, .timerDisplayContainer .resetButton {
+.responsiveFont, .dollarSign:before, .primaryControls .inputAndDisplay .valueBreakdown, .primaryControls .primaryTimer .timerDisplayContainer .timerDisplay, .primaryControls .primaryTimer .timerDisplayContainer .resetButton, .taskDetails .timerDisplayContainer .timerDisplay, .taskDetails .timerDisplayContainer .resetButton {
   font-size: 0.8em;
 }
 
-.mediumResponsiveFont, .inputAndStatsContainer form .primaryTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div button, .inputAndStatsContainer form div .errorMessage, .moneyTimerContainer .startStopContainer button, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+.mediumResponsiveFont, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskInput form input, .taskInput form button, .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
   font-size: 0.9em;
 }
 
-.LargeResponsiveFont, .moneyTimerContainer .dollarValueDisplay {
+.LargeResponsiveFont, .primaryControls .primaryTimer .dollarValue {
   font-size: 1.7em;
 }
 
-.buttonBaseStyle, .inputAndStatsContainer form div button, .moneyTimerContainer .startStopContainer button, .timerDisplayContainer .resetButton, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+.buttonBaseStyle, .primaryControls .inputAndDisplay form div button, .primaryControls .primaryTimer .timerDisplayContainer .resetButton, .taskInput form button, .taskDetails .timerDisplayContainer .resetButton, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
   outline: none;
   border-style: none;
   -webkit-box-sizing: border-box;
@@ -46,7 +46,7 @@ html body {
   min-width: 320px;
   min-height: 96vh;
   min-height: 576px;
-  max-width: 1024px;
+  max-width: 900px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -59,8 +59,8 @@ html body {
           flex-direction: column;
 }
 
-.container h1 {
-  color: #fafafa;
+.container h2 {
+  color: #fdfdfd;
   text-align: center;
   margin: 0 auto 20px auto;
 }
@@ -76,14 +76,30 @@ html body {
   position: absolute;
 }
 
-.inputAndStatsContainer {
+.primaryControls {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 565px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #fdfdfd;
+}
+
+.primaryControls .inputAndDisplay {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   padding: 10px;
-  max-width: 565px;
-  border-radius: 10px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -93,10 +109,9 @@ html body {
           flex-direction: column;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #fafafa;
 }
 
-.inputAndStatsContainer form {
+.primaryControls .inputAndDisplay form {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -104,59 +119,197 @@ html body {
   position: relative;
 }
 
-.inputAndStatsContainer form .clickLayer {
-  top: 0;
-  left: 0;
-  opacity: 0;
-  z-index: 999;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-
-.inputAndStatsContainer form .primaryTimerWarning {
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px;
-  color: #ff1400;
-  position: absolute;
-  text-align: center;
-  border-radius: 10px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  background-color: #fafafa;
-  border: 2px solid #ff1400;
-}
-
-.inputAndStatsContainer form div {
+.primaryControls .inputAndDisplay form div {
   margin: 0;
   width: 100%;
   position: relative;
 }
 
-.inputAndStatsContainer form div input {
+.primaryControls .inputAndDisplay form div input {
   width: 70%;
   outline: none;
   color: #525252;
   padding: 20px;
   border-style: none;
-  font-family: "Montserrat", sans-serif;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  border-radius: 10px 0 0 0;
+  font-family: "Montserrat", sans-serif;
   background-color: #f0f0f0;
   border: 2px solid #f0f0f0;
-  border-radius: 10px 0 0 10px;
 }
 
-.inputAndStatsContainer form div input:focus {
+.primaryControls .inputAndDisplay form div input:focus {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-color: white;
   border: 2px solid #e4e4e4;
 }
 
-.inputAndStatsContainer form div button {
+.primaryControls .inputAndDisplay form div button {
+  width: 30%;
+  color: #525252;
+  padding: 20px;
+  background-color: #e4e4e4;
+  border-radius: 0 10px 0 0;
+  border: 2px solid #e4e4e4;
+}
+
+.primaryControls .inputAndDisplay form div .errorMessage {
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  color: #ff1400;
+  text-align: right;
+  position: absolute;
+  pointer-events: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 2px solid #ff1400;
+  border-radius: 10px 10px 0 0;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(50%, white));
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 50%);
+}
+
+.primaryControls .inputAndDisplay .valueBreakdown {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #686868;
+  margin-top: 10px;
+  padding: 10px 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #f6f6f6;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.primaryControls .primaryTimer {
+  width: 100%;
+  color: #525252;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 0;
+  max-width: 565px;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.primaryControls .primaryTimer .dollarValue {
+  width: 100%;
+  height: 65px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #f6f6f6;
+}
+
+.primaryControls .primaryTimer .timerDisplayContainer {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #686868;
+  max-width: 565px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 0 0 10px 10px;
+  background-color: #f6f6f6;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.primaryControls .primaryTimer .timerDisplayContainer .resetButton {
+  padding: 0;
+  color: #ff1400;
+  background-color: transparent;
+}
+
+.taskInput {
+  width: 100%;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 565px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #fdfdfd;
+}
+
+.taskInput form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.taskInput form input {
+  width: 70%;
+  outline: none;
+  color: #525252;
+  padding: 20px;
+  border-style: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 10px 0 0 10px;
+  font-family: "Montserrat", sans-serif;
+  background-color: #f0f0f0;
+  border: 2px solid #f0f0f0;
+}
+
+.taskInput form input:focus {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: white;
+  border: 2px solid #e4e4e4;
+}
+
+.taskInput form button {
   width: 30%;
   color: #525252;
   padding: 20px;
@@ -165,7 +318,7 @@ html body {
   border: 2px solid #e4e4e4;
 }
 
-.inputAndStatsContainer form div .errorMessage {
+.taskInput form .errorMessage {
   top: 0;
   left: 0;
   width: 100%;
@@ -173,121 +326,103 @@ html body {
   color: #ff1400;
   text-align: right;
   position: absolute;
-  border-radius: 10px;
   pointer-events: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border: 2px solid #ff1400;
+  border-radius: 10px 10px 0 0;
   background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(50%, white));
   background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 50%);
 }
 
-.inputAndStatsContainer .valueBreakdown {
+.taskDetails {
   width: 100%;
+  color: #525252;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: #525252;
-  max-width: 520px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  max-width: 565px;
+  margin-top: 10px;
+  position: relative;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #fafafa;
-  margin: 25px auto 10px auto;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-.moneyTimerContainer {
-  width: 100%;
-  color: #525252;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 10px;
-  max-width: 565px;
-  margin-top: 20px;
-  position: relative;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 10px 10px 0 0;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.taskDetails .nameAndValue {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.taskDetails .nameAndValue .taskName {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1em;
+  max-width: 565px;
+  color: #686868;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #fafafa;
+  padding: 20px 30px 10px 30px;
+  border-radius: 10px 10px 0 0;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #f6f6f6;
 }
 
-.moneyTimerContainer .startStopContainer {
+.taskDetails .nameAndValue .dollarValue {
   width: 100%;
-  position: relative;
-}
-
-.moneyTimerContainer .startStopContainer button {
-  width: 100%;
-  padding: 20px;
-  color: #525252;
-  border-radius: 10px;
-  background-color: #e4e4e4;
-}
-
-.moneyTimerContainer .startStopContainer .stopButton {
-  top: 0;
-  left: 0;
-  color: #ff1400;
-  position: absolute;
-  background-color: #f0f0f0;
-}
-
-.moneyTimerContainer .startStopContainer .enterHourlyRateWarning {
-  top: -2px;
-  left: 0;
-  color: #ff1400;
-  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.3em;
+  padding: 20px 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #fafafa;
-  border: 2px solid #ff1400;
+  background-color: #fdfdfd;
 }
 
-.moneyTimerContainer .dollarValueDisplay {
-  text-align: center;
-  margin: 20px 0 10px 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.timerDisplayContainer {
+.taskDetails .timerDisplayContainer {
   width: 100%;
-  color: #525252;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   max-width: 565px;
-  padding: 10px 20px;
+  color: #686868;
+  padding: 10px 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #f0f0f0;
   border-radius: 0 0 10px 10px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  background-color: #f6f6f6;
 }
 
-.timerDisplayContainer .resetButton {
+.taskDetails .timerDisplayContainer .resetButton {
   padding: 0;
   color: #ff1400;
   background-color: transparent;
@@ -331,7 +466,7 @@ html body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: #fafafa;
+  background-color: #fdfdfd;
   -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
           box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.5);
 }
@@ -381,14 +516,14 @@ html body {
   color: #ff1400;
   border-radius: 10px;
   border: 2px solid #ff1400;
-  background-color: #fafafa;
+  background-color: #fdfdfd;
 }
 
 @media (min-width: 360px) {
-  .responsiveFont, .dollarSign:before, .inputAndStatsContainer .valueBreakdown, .timerDisplayContainer .timerDisplay, .timerDisplayContainer .resetButton {
+  .responsiveFont, .dollarSign:before, .primaryControls .inputAndDisplay .valueBreakdown, .primaryControls .primaryTimer .timerDisplayContainer .timerDisplay, .primaryControls .primaryTimer .timerDisplayContainer .resetButton, .taskDetails .timerDisplayContainer .timerDisplay, .taskDetails .timerDisplayContainer .resetButton {
     font-size: 0.9em;
   }
-  .mediumResponsiveFont, .inputAndStatsContainer form .primaryTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div button, .inputAndStatsContainer form div .errorMessage, .moneyTimerContainer .startStopContainer button, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+  .mediumResponsiveFont, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskInput form input, .taskInput form button, .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
     font-size: 1em;
   }
   .dollarSign:before {
@@ -396,72 +531,89 @@ html body {
   }
 }
 
-@media (min-width: 375px) {
-  .timerDisplayContainer {
-    padding: 10px 20px;
-  }
-  .inputAndStatsContainer,
-  .moneyTimerContainer {
-    padding: 15px;
-  }
-  .inputAndStatsContainer .valueBreakdown,
-  .inputAndStatsContainer .dollarValueDisplay,
-  .moneyTimerContainer .valueBreakdown,
-  .moneyTimerContainer .dollarValueDisplay {
-    margin: 20px 0 5px 0;
-  }
-}
-
 @media (min-width: 425px) {
-  .mediumResponsiveFont, .inputAndStatsContainer form .primaryTimerWarning, .inputAndStatsContainer form div input, .inputAndStatsContainer form div button, .inputAndStatsContainer form div .errorMessage, .moneyTimerContainer .startStopContainer button, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+  .mediumResponsiveFont, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskInput form input, .taskInput form button, .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
     font-size: 1.1em;
   }
-  .LargeResponsiveFont, .moneyTimerContainer .dollarValueDisplay {
+  .LargeResponsiveFont, .primaryControls .primaryTimer .dollarValue {
     font-size: 1.8em;
   }
   .dollarSign:before {
     top: 0;
   }
-  .inputAndStatsContainer form div input,
-  .moneyTimerContainer form div input {
-    padding-left: 20px;
-  }
 }
 
 @media (min-width: 900px) {
-  .inputAndStatsContainer {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    max-width: 100%;
-    padding: 30px;
+  .LargeResponsiveFont, .primaryControls .primaryTimer .dollarValue {
+    font-size: 2em;
   }
-  .inputAndStatsContainer form {
-    width: 45%;
+  .container h2 {
+    -ms-flex-item-align: start;
+        -ms-grid-row-align: start;
+        align-self: start;
+    margin: 0 0 20px 40px;
   }
-  .inputAndStatsContainer .valueBreakdown {
-    margin: 0;
-    width: 55%;
-  }
-  .moneyTimerContainer {
-    padding: 30px;
+  .primaryControls {
     max-width: 100%;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
   }
-  .moneyTimerContainer .startStopContainer {
-    width: 45%;
+  .primaryControls .inputAndDisplay {
+    max-width: 45%;
+    padding-right: 5px;
+    border-radius: 10px 0 0 10px;
   }
-  .moneyTimerContainer .dollarValueDisplay {
-    margin: 0;
-    width: 55%;
+  .primaryControls .inputAndDisplay form div input {
+    border-radius: 10px 0 0 0;
   }
-  .timerDisplayContainer {
+  .primaryControls .inputAndDisplay form div button {
+    border-radius: 0;
+  }
+  .primaryControls .inputAndDisplay form div .errorMessage {
+    border-radius: 10px 0 0 0;
+  }
+  .primaryControls .inputAndDisplay .valueBreakdown {
+    border-radius: 0 0 0 10px;
+  }
+  .primaryControls .primaryTimer {
+    padding: 10px;
+    max-width: 55%;
+    padding-left: 5px;
+    border-radius: 0 10px 10px 0;
+  }
+  .primaryControls .primaryTimer .dollarValue {
+    border-radius: 0 10px 0 0;
+  }
+  .primaryControls .primaryTimer .timerDisplayContainer {
+    border-radius: 0 0 10px 0;
+  }
+  .taskInput {
     max-width: 100%;
-    padding: 15px 35px;
+  }
+  .taskDetails {
+    max-width: 100%;
+  }
+  .taskDetails .nameAndValue {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .taskDetails .nameAndValue .taskName {
+    width: 60%;
+    background-color: #fdfdfd;
+    border-radius: 10px 0 0 0;
+  }
+  .taskDetails .nameAndValue .dollarValue {
+    width: 40%;
+    border-radius: 0 10px 0 0;
+    border-left: 2px solid #e4e4e4;
+  }
+  .taskDetails .timerDisplayContainer {
+    border-top: 2px solid #e4e4e4;
+    max-width: 100%;
   }
 }
 /*# sourceMappingURL=App.css.map */

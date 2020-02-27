@@ -1,21 +1,21 @@
 import React from 'react';
 import HourlyRateInput from './HourlyRateInput';
-import ValueBreakdown from './ValueBreakdown';
 import PrimaryTimer from './PrimaryTimer';
-import TaskTimer from './TaskTimer';
+import TaskDetails from './TaskDetails';
+import TaskInput from './TaskInput';
 
 import '../CSS/App.css';
 
 const App = () => {
   return (
     <div className='container'>
-      <h1>time is money</h1>
-      <div className='inputAndStatsContainer'>
+      <h2>time is money</h2>
+      <div className='primaryControls'>
         <HourlyRateInput />
-        <ValueBreakdown />
+        <PrimaryTimer />
       </div>
-      <PrimaryTimer />
-      <TaskTimer />
+      <TaskInput />
+      <TaskDetails />
     </div>
   );
 };
