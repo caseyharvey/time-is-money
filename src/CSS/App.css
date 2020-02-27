@@ -1,4 +1,4 @@
-.responsiveFont, .dollarSign:before, .primaryControls .inputAndDisplay .valueBreakdown, .primaryControls .primaryTimer .timerDisplayContainer .timerDisplay, .primaryControls .primaryTimer .timerDisplayContainer .resetButton, .taskDetails .timerDisplayContainer .timerDisplay, .taskDetails .timerDisplayContainer .resetButton {
+.responsiveFont, .container .completedTaskList .completedTaskEntry, .dollarSign:before, .primaryControls .inputAndDisplay .valueBreakdown, .primaryControls .primaryTimer .timerDisplayContainer .timerDisplay, .primaryControls .primaryTimer .timerDisplayContainer .resetButton, .taskDetails .timerDisplayContainer .timerDisplay, .taskDetails .timerDisplayContainer .resetButton {
   font-size: 0.8em;
 }
 
@@ -63,6 +63,39 @@ html body {
   color: #fdfdfd;
   text-align: center;
   margin: 0 auto 20px auto;
+}
+
+.container .completedTaskList {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 10px;
+  border-radius: 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #fdfdfd;
+}
+
+.container .completedTaskList .completedTaskEntry {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #525252;
+  margin-top: 2px;
+  padding: 10px 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .dollarSign {
@@ -550,7 +583,7 @@ html body {
 }
 
 @media (min-width: 360px) {
-  .responsiveFont, .dollarSign:before, .primaryControls .inputAndDisplay .valueBreakdown, .primaryControls .primaryTimer .timerDisplayContainer .timerDisplay, .primaryControls .primaryTimer .timerDisplayContainer .resetButton, .taskDetails .timerDisplayContainer .timerDisplay, .taskDetails .timerDisplayContainer .resetButton {
+  .responsiveFont, .container .completedTaskList .completedTaskEntry, .dollarSign:before, .primaryControls .inputAndDisplay .valueBreakdown, .primaryControls .primaryTimer .timerDisplayContainer .timerDisplay, .primaryControls .primaryTimer .timerDisplayContainer .resetButton, .taskDetails .timerDisplayContainer .timerDisplay, .taskDetails .timerDisplayContainer .resetButton {
     font-size: 0.9em;
   }
   .mediumResponsiveFont, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskInput form input, .taskInput form button, .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {

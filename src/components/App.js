@@ -1,5 +1,6 @@
 import React from 'react';
 import HourlyRateInput from './HourlyRateInput';
+import CompletedTaskList from './CompletedTaskList';
 import PrimaryTimer from './PrimaryTimer';
 import TaskDetails from './TaskDetails';
 import TaskInput from './TaskInput';
@@ -16,6 +17,7 @@ const App = () => {
       </div>
       <TaskInput />
       <TaskDetails />
+      <CompletedTaskList />
     </div>
   );
 };

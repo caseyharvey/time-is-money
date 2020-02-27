@@ -9,18 +9,17 @@ import { stopTask } from '../actions';
 
 class TaskDetails extends React.Component {
   render() {
-    const { ratePerSecond, taskTimerValue } = this.props;
-    const dollarValue = taskTimerValue * ratePerSecond;
+    const { stopTask, taskName, taskTimerValue, taskDollarValue } = this.props;
     return (
       <>
         <div className='taskDetails'>
           <div className='nameAndValue'>
-            <div className='taskName'>task: {this.props.taskNameDisplay}</div>
-            <DollarValueDisplay dollarValue={dollarValue} />
+            <div className='taskName'>task: {taskName}</div>
+            <DollarValueDisplay dollarValue={taskDollarValue} />
           </div>
           <div className='timerDisplayContainer'>
             <TimerDisplay timerValue={taskTimerValue} />
-            <RedButton action={this.props.stopTask} name='stop' />
+            <RedButton action={stopTask} name='stop' />
           </div>
         </div>
       </>
@@ -30,9 +29,9 @@ class TaskDetails extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    ratePerSecond: state.rate.perSecond,
-    taskNameDisplay: state.taskTimer.taskName,
-    taskTimerValue: state.taskTimer.timerValue
+    taskName: state.taskTimer.taskName,
+    taskTimerValue: state.taskTimer.timerValue,
+    taskDollarValue: state.taskTimer.taskDollarValue
   };
 };
 export default connect(mapStateToProps, {

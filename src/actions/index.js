@@ -59,22 +59,27 @@ export const toggleSetRateWarning = () => {
 };
 
 export const onTaskSubmit = taskName => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const ratePerSecond = getState().rate.perSecond;
     dispatch({
       type: 'SET_TASK_NAME',
       payload: taskName
     });
     dispatch({
-      type: 'INCREMENT_TASK_TIMER'
+      type: 'INCREMENT_TASK_TIMER',
+      payload: ratePerSecond
     });
     const timerId = setInterval(() => {
       dispatch({
-        type: 'INCREMENT_TASK_TIMER'
+        type: 'INCREMENT_TASK_TIMER',
+        payload: ratePerSecond
       });
     }, 1000);
     dispatch({
       type: 'SET_TASK_TIMER_RUNNING',
-      payload: timerId
+      payload: {
+        timerId: timerId
+      }
     });
   };
 };
@@ -82,10 +87,38 @@ export const onTaskSubmit = taskName => {
 export const stopTask = () => {
   return (dispatch, getState) => {
     clearInterval(getState().taskTimer.timerId);
+    const timerValue = getState().taskTimer.timerValue;
+    const seconds = ('0' + (timerValue % 60)).slice(-2);
+    const minutes = ('0' + (Math.floor(timerValue / 60) % 60)).slice(-2);
+    const hours = ('0' + (Math.floor(timerValue / 3600) % 24)).slice(-2);
     dispatch({
       type: 'SET_TASK_TIMER_RUNNING',
-      payload: null
+      payload: {
+        timerId: null,
+        taskDuration: `${hours}:${minutes}:${seconds}`
+      }
     });
+    const key = getState().completedTasks.length + 1;
+    const { taskName, taskDuration, taskDollarValue } = getState().taskTimer;
+    dispatch({
+      type: 'ADD_TASK_TO_COMPLETED',
+      payload: {
+        key: key,
+        name: taskName,
+        duration: taskDuration,
+        dollarValue: taskDollarValue.toFixed(2)
+      }
+    });
+    dispatch({
+      type: 'RESET_TASK_TIMER'
+    });
+  };
+};
+
+export const updateTaskDollarValue = dollarValue => {
+  return {
+    type: 'UPDATE_TASK_DOLLAR_VALUE',
+    payload: dollarValue
   };
 };
 

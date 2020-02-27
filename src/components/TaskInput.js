@@ -63,7 +63,6 @@ export const successfulSubmit = (result, dispatch) => {
 const mapStateToProps = state => {
   return {
     isRateSet: state.rate.isRateSet,
-    taskNameDisplay: state.taskTimer.taskName,
     showSetRateWarning: state.rate.showSetRateWarning
   };
 };

@@ -59,6 +59,25 @@ html {
     text-align: center;
     margin: 0 auto 20px auto;
   }
+  .completedTaskList {
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+    border-radius: 10px;
+    flex-direction: column;
+    background-color: $light;
+
+    .completedTaskEntry {
+      display: flex;
+      color: $dark;
+      margin-top: 2px;
+      padding: 10px 30px;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      @extend .responsiveFont;
+    }
+  }
 }
 
 .dollarSign {
