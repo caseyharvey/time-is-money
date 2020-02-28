@@ -9,7 +9,14 @@ import { stopTask } from '../actions';
 
 class TaskDetails extends React.Component {
   render() {
-    const { stopTask, taskName, taskTimerValue, taskDollarValue } = this.props;
+    const {
+      stopTask,
+      taskName,
+      taskTimerValue,
+      taskDollarValue,
+      timerRunning
+    } = this.props;
+
     return (
       <>
         <div className='taskDetails'>
@@ -17,9 +24,13 @@ class TaskDetails extends React.Component {
             <div className='taskName'>task: {taskName}</div>
             <DollarValueDisplay dollarValue={taskDollarValue} />
           </div>
-          <div className='timerDisplayContainer'>
+          <div className='timerDisplay'>
             <TimerDisplay timerValue={taskTimerValue} />
-            <RedButton action={stopTask} name='stop' />
+            <RedButton
+              disabled={!timerRunning}
+              action={stopTask}
+              name='complete'
+            />
           </div>
         </div>
       </>
@@ -30,6 +41,7 @@ class TaskDetails extends React.Component {
 const mapStateToProps = state => {
   return {
     taskName: state.taskTimer.taskName,
+    timerRunning: state.taskTimer.timerRunning,
     taskTimerValue: state.taskTimer.timerValue,
     taskDollarValue: state.taskTimer.taskDollarValue
   };

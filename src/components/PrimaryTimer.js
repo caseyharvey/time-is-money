@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import RedButton from './RedButton';
 import TimerDisplay from './TimerDisplay';
 import { initialize } from 'redux-form';
+import ValueBreakdown from './ValueBreakdown';
 import DollarValueDisplay from './DollarValueDisplay';
 import { resetPrimaryTimer, togglePrimaryResetModal } from '../actions';
 
@@ -26,8 +27,9 @@ class PrimaryTimer extends React.Component {
     const dollarValue = primaryTimerValue * ratePerSecond;
     return (
       <div className='primaryTimer'>
+        <ValueBreakdown />
         <DollarValueDisplay dollarValue={dollarValue} />
-        <div className='timerDisplayContainer'>
+        <div className='timerDisplay'>
           <TimerDisplay timerValue={primaryTimerValue} />
           <RedButton action={this.confirmReset} name='reset' />
         </div>

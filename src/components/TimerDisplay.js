@@ -9,7 +9,7 @@ class TimerDisplay extends React.Component {
     const hours = ('0' + (Math.floor(timerValue / 3600) % 24)).slice(-2);
 
     return (
-      <div className='timerDisplay'>
+      <div className='timer'>
         time: {hours}:{minutes}:{seconds}
       </div>
     );

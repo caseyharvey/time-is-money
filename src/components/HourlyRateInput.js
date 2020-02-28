@@ -20,7 +20,7 @@ class HourlyRateInput extends React.Component {
           <input
             {...input}
             autoComplete='off'
-            placeholder=' enter hourly rate'
+            placeholder='enter hourly rate'
           />
         </span>
         <button>set</button>
@@ -35,7 +35,6 @@ class HourlyRateInput extends React.Component {
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name='ratePerHour' component={this.renderInput} />
         </form>
-        <ValueBreakdown />
       </div>
     );
   }

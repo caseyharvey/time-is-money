@@ -1,16 +1,20 @@
-.responsiveFont, .container .completedTaskList .completedTaskEntry, .dollarSign:before, .primaryControls .inputAndDisplay .valueBreakdown, .primaryControls .primaryTimer .timerDisplayContainer .timerDisplay, .primaryControls .primaryTimer .timerDisplayContainer .resetButton, .taskDetails .timerDisplayContainer .timerDisplay, .taskDetails .timerDisplayContainer .resetButton {
+.responsiveFont, .dollarSign:before, .container .completedTaskList .completedTaskEntry, .primaryControls .primaryTimer .valueBreakdown, .timerDisplay .timer {
   font-size: 0.8em;
 }
 
-.mediumResponsiveFont, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskInput form input, .taskInput form button, .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+.mediumResponsiveFont, .redButton, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskInput form input, .taskInput form button, .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
   font-size: 0.9em;
 }
 
-.LargeResponsiveFont, .primaryControls .primaryTimer .dollarValue {
+.largeResponsiveFont {
+  font-size: 1.6em;
+}
+
+.XLargeResponsiveFont, .dollarValue {
   font-size: 1.7em;
 }
 
-.buttonBaseStyle, .primaryControls .inputAndDisplay form div button, .primaryControls .primaryTimer .timerDisplayContainer .resetButton, .taskInput form button, .taskDetails .timerDisplayContainer .resetButton, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+.buttonBaseStyle, .redButton, .primaryControls .inputAndDisplay form div button, .taskInput form button, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
   outline: none;
   border-style: none;
   -webkit-box-sizing: border-box;
@@ -20,6 +24,24 @@
 
 .hide {
   visibility: hidden;
+}
+
+.paddingOne, .container .completedTaskList .completedTaskEntry .taskName, .container .completedTaskList .completedTaskEntry .totalTaskValue, .primaryControls .primaryTimer .valueBreakdown, .dollarValue, .taskDetails .taskName {
+  padding-top: 18px;
+  padding-right: 20px;
+  padding-bottom: 12px;
+  padding-left: 20px;
+}
+
+.paddingTwo, .container .completedTaskList .completedTaskEntry .taskDetails, .timerDisplay {
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+
+.inputPadding, .primaryControls .inputAndDisplay, .taskInput {
+  padding: 10px;
 }
 
 html {
@@ -36,8 +58,25 @@ html body {
   font-family: "Montserrat", sans-serif;
 }
 
+.dollarSign {
+  position: relative;
+}
+
+.dollarSign:before {
+  top: 3.35px;
+  left: 9.5px;
+  content: '$';
+  position: absolute;
+}
+
+.redButton {
+  padding: 0;
+  color: #ff1400;
+  background-color: transparent;
+}
+
 .container {
-  padding: 20px;
+  padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -46,11 +85,10 @@ html body {
   min-width: 320px;
   min-height: 96vh;
   min-height: 576px;
-  max-width: 900px;
+  max-width: 600px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   -webkit-box-orient: vertical;
@@ -62,7 +100,7 @@ html body {
 .container h2 {
   color: #fdfdfd;
   text-align: center;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 10px auto;
 }
 
 .container .completedTaskList {
@@ -70,43 +108,82 @@ html body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 10px;
-  border-radius: 10px;
+  margin-top: 5px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #fdfdfd;
 }
 
 .container .completedTaskList .completedTaskEntry {
+  color: #525252;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: #525252;
-  margin-top: 2px;
-  padding: 10px 30px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.container .completedTaskList .completedTaskEntry .taskName {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #686868;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  border-radius: 10px 10px 0 0;
+  background-color: #f9f9f9;
+}
+
+.container .completedTaskList .completedTaskEntry .taskName span {
+  color: #525252;
+  padding-left: 10px;
+}
+
+.container .completedTaskList .completedTaskEntry .taskDetails {
+  margin: 0;
+  color: #525252;
+  background-color: #fdfdfd;
+}
+
+.container .completedTaskList .completedTaskEntry .taskDetails span {
+  color: #686868;
+}
+
+.container .completedTaskList .completedTaskEntry .totalTaskValue {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #686868;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border-radius: 0 0 10px 10px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  background-color: #f9f9f9;
 }
 
-.dollarSign {
-  position: relative;
-}
-
-.dollarSign:before {
-  top: 3px;
-  left: 10px;
-  content: '$';
-  position: absolute;
+.container .completedTaskList .completedTaskEntry .totalTaskValue span {
+  color: #525252;
+  font-size: 1.2em;
+  padding-left: 10px;
 }
 
 .primaryControls {
@@ -114,7 +191,6 @@ html body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  max-width: 565px;
   border-radius: 10px;
   margin-bottom: 10px;
   -webkit-box-align: center;
@@ -132,16 +208,15 @@ html body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 10px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 .primaryControls .inputAndDisplay form {
@@ -162,14 +237,14 @@ html body {
   width: 70%;
   outline: none;
   color: #525252;
-  padding: 20px;
+  padding: 20px 18px;
   border-style: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 10px 0 0 0;
   font-family: "Montserrat", sans-serif;
-  background-color: #f0f0f0;
-  border: 2px solid #f0f0f0;
+  background-color: #f9f9f9;
+  border: 2px solid #e4e4e4;
 }
 
 .primaryControls .inputAndDisplay form div input:focus {
@@ -205,38 +280,13 @@ html body {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 50%);
 }
 
-.primaryControls .inputAndDisplay .valueBreakdown {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  color: #686868;
-  margin-top: 10px;
-  padding: 10px 20px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  background-color: #f6f6f6;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
 .primaryControls .primaryTimer {
   width: 100%;
   color: #525252;
-  padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   padding-top: 0;
-  max-width: 565px;
   position: relative;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -246,30 +296,13 @@ html body {
           box-sizing: border-box;
 }
 
-.primaryControls .primaryTimer .dollarValue {
-  width: 100%;
-  height: 65px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 20px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  background-color: #f6f6f6;
-}
-
-.primaryControls .primaryTimer .timerDisplayContainer {
+.primaryControls .primaryTimer .valueBreakdown {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   color: #686868;
-  max-width: 565px;
-  margin-top: 10px;
-  padding: 10px 20px;
+  text-align: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -279,31 +312,57 @@ html body {
           flex-direction: row;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #f3f3f3;
+}
+
+.dollarValue {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-top: 4px solid #fdfdfd;
+  background-color: #f9f9f9;
+}
+
+.timerDisplay {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #686868;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-top: 4px solid #fdfdfd;
   border-radius: 0 0 10px 10px;
-  background-color: #f6f6f6;
+  background-color: #f3f3f3;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 
-.primaryControls .primaryTimer .timerDisplayContainer .resetButton {
-  padding: 0;
-  color: #ff1400;
-  background-color: transparent;
-}
-
 .taskInput {
   width: 100%;
-  padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  max-width: 565px;
-  position: relative;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 10px;
   align-items: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -312,35 +371,7 @@ html body {
       -ms-flex-direction: column;
           flex-direction: column;
   background-color: #fdfdfd;
-}
-
-.taskInput .inputGuard {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-  border-radius: 10px;
-}
-
-.taskInput .showSetRateWarning {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  color: #ff1400;
-  position: absolute;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 10px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background-color: #fdfdfd;
+  border-radius: 10px 10px 0 0;
 }
 
 .taskInput form {
@@ -351,18 +382,48 @@ html body {
   position: relative;
 }
 
+.taskInput form .inputGuard {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  border-radius: 10px;
+}
+
+.taskInput form .showWarning {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #ff1400;
+  position: absolute;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px 10px 0 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 2px solid #ff1400;
+  background-color: #fdfdfd;
+}
+
 .taskInput form input {
   width: 70%;
   outline: none;
   color: #525252;
-  padding: 20px;
+  padding: 20px 18px;
   border-style: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  border-radius: 10px 0 0 10px;
   font-family: "Montserrat", sans-serif;
-  background-color: #f0f0f0;
-  border: 2px solid #f0f0f0;
+  border: 2px solid #e4e4e4;
+  border-radius: 10px 0 0 0;
+  background-color: #f9f9f9;
 }
 
 .taskInput form input:focus {
@@ -377,7 +438,7 @@ html body {
   color: #525252;
   padding: 20px;
   background-color: #e4e4e4;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 10px 0 0;
   border: 2px solid #e4e4e4;
 }
 
@@ -404,9 +465,8 @@ html body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  max-width: 565px;
-  margin-top: 10px;
   position: relative;
+  margin-bottom: 5px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   -webkit-box-orient: vertical;
@@ -415,80 +475,22 @@ html body {
           flex-direction: column;
 }
 
-.taskDetails .nameAndValue {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.taskDetails .nameAndValue .taskName {
+.taskDetails .taskName {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   font-size: 1em;
-  max-width: 565px;
   color: #686868;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 20px 30px 10px 30px;
-  border-radius: 10px 10px 0 0;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-color: #f6f6f6;
-}
-
-.taskDetails .nameAndValue .dollarValue {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 1.3em;
-  padding: 20px 30px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  background-color: #fdfdfd;
-}
-
-.taskDetails .timerDisplayContainer {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  max-width: 565px;
-  color: #686868;
-  padding: 10px 30px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-radius: 0 0 10px 10px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  background-color: #f6f6f6;
-}
-
-.taskDetails .timerDisplayContainer .resetButton {
-  padding: 0;
-  color: #ff1400;
-  background-color: transparent;
+  background-color: #f3f3f3;
 }
 
 .modalBackground {
@@ -570,7 +572,7 @@ html body {
   width: 45%;
   padding: 20px;
   border-radius: 10px;
-  background-color: #f0f0f0;
+  background-color: #f3f3f3;
 }
 
 .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
@@ -583,100 +585,61 @@ html body {
 }
 
 @media (min-width: 360px) {
-  .responsiveFont, .container .completedTaskList .completedTaskEntry, .dollarSign:before, .primaryControls .inputAndDisplay .valueBreakdown, .primaryControls .primaryTimer .timerDisplayContainer .timerDisplay, .primaryControls .primaryTimer .timerDisplayContainer .resetButton, .taskDetails .timerDisplayContainer .timerDisplay, .taskDetails .timerDisplayContainer .resetButton {
+  .responsiveFont, .dollarSign:before, .container .completedTaskList .completedTaskEntry, .primaryControls .primaryTimer .valueBreakdown, .timerDisplay .timer {
     font-size: 0.9em;
   }
-  .mediumResponsiveFont, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskInput form input, .taskInput form button, .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+  .mediumResponsiveFont, .redButton, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskInput form input, .taskInput form button, .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
     font-size: 1em;
   }
   .dollarSign:before {
-    top: 2px;
+    top: 1.45px;
+    left: 9px;
   }
 }
 
 @media (min-width: 425px) {
-  .mediumResponsiveFont, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskInput form input, .taskInput form button, .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+  .paddingOne, .container .completedTaskList .completedTaskEntry .taskName, .container .completedTaskList .completedTaskEntry .totalTaskValue, .primaryControls .primaryTimer .valueBreakdown, .dollarValue, .taskDetails .taskName {
+    padding-top: 18px;
+    padding-right: 30px;
+    padding-bottom: 12px;
+    padding-left: 30px;
+  }
+  .paddingTwo, .container .completedTaskList .completedTaskEntry .taskDetails, .timerDisplay {
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+  }
+  .mediumResponsiveFont, .redButton, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskInput form input, .taskInput form button, .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
     font-size: 1.1em;
   }
-  .LargeResponsiveFont, .primaryControls .primaryTimer .dollarValue {
+  .largeResponsiveFont {
     font-size: 1.8em;
   }
+  .XLargeResponsiveFont, .dollarValue {
+    font-size: 1.9em;
+  }
   .dollarSign:before {
-    top: 0;
+    top: 1.2px;
+    left: 8px;
   }
 }
 
-@media (min-width: 900px) {
-  .LargeResponsiveFont, .primaryControls .primaryTimer .dollarValue {
-    font-size: 2em;
+@media (min-width: 600px) {
+  .paddingOne, .container .completedTaskList .completedTaskEntry .taskName, .container .completedTaskList .completedTaskEntry .totalTaskValue, .primaryControls .primaryTimer .valueBreakdown, .dollarValue, .taskDetails .taskName {
+    padding-top: 18px;
+    padding-right: 40px;
+    padding-bottom: 12px;
+    padding-left: 40px;
   }
-  .container h2 {
-    -ms-flex-item-align: start;
-        -ms-grid-row-align: start;
-        align-self: start;
-    margin: 0 0 20px 40px;
+  .paddingTwo, .container .completedTaskList .completedTaskEntry .taskDetails, .timerDisplay {
+    padding-top: 10px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-left: 40px;
   }
-  .primaryControls {
-    max-width: 100%;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-  }
-  .primaryControls .inputAndDisplay {
-    max-width: 45%;
-    padding-right: 5px;
-    border-radius: 10px 0 0 10px;
-  }
-  .primaryControls .inputAndDisplay form div input {
-    border-radius: 10px 0 0 0;
-  }
-  .primaryControls .inputAndDisplay form div button {
-    border-radius: 0;
-  }
-  .primaryControls .inputAndDisplay form div .errorMessage {
-    border-radius: 10px 0 0 0;
-  }
-  .primaryControls .inputAndDisplay .valueBreakdown {
-    border-radius: 0 0 0 10px;
-  }
-  .primaryControls .primaryTimer {
-    padding: 10px;
-    max-width: 55%;
-    padding-left: 5px;
-    border-radius: 0 10px 10px 0;
-  }
-  .primaryControls .primaryTimer .dollarValue {
-    border-radius: 0 10px 0 0;
-  }
-  .primaryControls .primaryTimer .timerDisplayContainer {
-    border-radius: 0 0 10px 0;
-  }
-  .taskInput {
-    max-width: 100%;
-  }
-  .taskDetails {
-    max-width: 100%;
-  }
-  .taskDetails .nameAndValue {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-  }
-  .taskDetails .nameAndValue .taskName {
-    width: 60%;
-    background-color: #fdfdfd;
-    border-radius: 10px 0 0 0;
-  }
-  .taskDetails .nameAndValue .dollarValue {
-    width: 40%;
-    border-radius: 0 10px 0 0;
-    border-left: 2px solid #e4e4e4;
-  }
-  .taskDetails .timerDisplayContainer {
-    border-top: 2px solid #e4e4e4;
-    max-width: 100%;
+  .inputPadding, .primaryControls .inputAndDisplay, .taskInput {
+    padding: 20px;
   }
 }
 /*# sourceMappingURL=App.css.map */

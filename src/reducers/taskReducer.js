@@ -4,7 +4,8 @@ const initialState = {
   timerRunning: false,
   taskName: '',
   taskDuration: '',
-  taskDollarValue: ''
+  taskDollarValue: '',
+  showTaskTimerWarning: false
 };
 
 export default (state = initialState, action) => {
@@ -19,6 +20,11 @@ export default (state = initialState, action) => {
       };
     case 'RESET_TASK_TIMER':
       return { ...initialState };
+    case 'SHOW_TASK_TIMER_WARNING':
+      return {
+        ...state,
+        showTaskTimerWarning: state.showTaskTimerWarning ? false : true
+      };
     case 'UPDATE_TASK_DOLLAR_VALUE':
       return { ...state, taskDollarValue: action.payload };
     case 'SET_TASK_TIMER_RUNNING':

@@ -2,7 +2,11 @@ import React from 'react';
 import { initialize } from 'redux-form';
 import { connect } from 'react-redux';
 import { Field, reduxForm, reset } from 'redux-form';
-import { onTaskSubmit, toggleSetRateWarning } from '../actions';
+import {
+  onTaskSubmit,
+  toggleSetRateWarning,
+  toggleTaskTimerWarning
+} from '../actions';
 
 class TaskInput extends React.Component {
   onSubmit = ({ taskName }) => {
@@ -27,20 +31,35 @@ class TaskInput extends React.Component {
       <div className='taskInput'>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name='taskName' component={this.renderInput} />
+          <div
+            className={this.props.isRateSet ? 'inputGuard hide' : 'inputGuard'}
+            onClick={this.props.toggleSetRateWarning}
+          ></div>
+          <div
+            className={
+              this.props.taskTimerRunning ? 'inputGuard' : 'inputGuard hide'
+            }
+            onClick={this.props.toggleTaskTimerWarning}
+          ></div>
+          <div
+            className={
+              this.props.showSetRateWarning
+                ? 'showWarning '
+                : 'showWarning hide'
+            }
+          >
+            set your hourly rate first
+          </div>
+          <div
+            className={
+              this.props.showTaskTimerWarning
+                ? 'showWarning'
+                : 'showWarning hide'
+            }
+          >
+            complete your task first
+          </div>
         </form>
-        <div
-          className={this.props.isRateSet ? 'inputGuard hide' : 'inputGuard'}
-          onClick={this.props.toggleSetRateWarning}
-        ></div>
-        <div
-          className={
-            this.props.showSetRateWarning
-              ? 'showSetRateWarning '
-              : 'showSetRateWarning hide'
-          }
-        >
-          set your hourly rate first
-        </div>
       </div>
     );
   }
@@ -50,7 +69,7 @@ const validate = ({ taskName }) => {
   const errors = {};
   if (!taskName) {
     errors.taskName = 'enter task name';
-  } else if (taskName.length > 49) {
+  } else if (taskName.length > 39) {
     errors.taskName = 'task name is too long';
   }
   return errors;
@@ -63,14 +82,17 @@ export const successfulSubmit = (result, dispatch) => {
 const mapStateToProps = state => {
   return {
     isRateSet: state.rate.isRateSet,
-    showSetRateWarning: state.rate.showSetRateWarning
+    taskTimerRunning: state.taskTimer.timerRunning,
+    showSetRateWarning: state.rate.showSetRateWarning,
+    showTaskTimerWarning: state.taskTimer.showTaskTimerWarning
   };
 };
 
 const connectedTaskInput = connect(mapStateToProps, {
   initialize,
   onTaskSubmit,
-  toggleSetRateWarning
+  toggleSetRateWarning,
+  toggleTaskTimerWarning
 })(TaskInput);
 
 export default reduxForm({

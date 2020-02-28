@@ -31,6 +31,10 @@ export const onInputSubmit = rate => {
 export const resetPrimaryTimer = () => {
   return (dispatch, getState) => {
     clearInterval(getState().primaryTimer.timerId);
+    clearInterval(getState().taskTimer.timerId);
+    dispatch({
+      type: 'RESET_TASK_TIMER'
+    });
     dispatch({
       type: 'SET_PRIMARY_TIMER_RUNNING',
       payload: null
@@ -55,6 +59,11 @@ export const togglePrimaryResetModal = () => {
 export const toggleSetRateWarning = () => {
   return {
     type: 'SHOW_SET_RATE_WARNING'
+  };
+};
+export const toggleTaskTimerWarning = () => {
+  return {
+    type: 'SHOW_TASK_TIMER_WARNING'
   };
 };
 
@@ -87,27 +96,41 @@ export const onTaskSubmit = taskName => {
 export const stopTask = () => {
   return (dispatch, getState) => {
     clearInterval(getState().taskTimer.timerId);
+
     const timerValue = getState().taskTimer.timerValue;
-    const seconds = ('0' + (timerValue % 60)).slice(-2);
-    const minutes = ('0' + (Math.floor(timerValue / 60) % 60)).slice(-2);
-    const hours = ('0' + (Math.floor(timerValue / 3600) % 24)).slice(-2);
+    const seconds = timerValue % 60;
+    const minutes = Math.floor(timerValue / 60) % 60;
+    const hours = Math.floor(timerValue / 3600) % 24;
+
+    const finalDuration = `${
+      hours < 1 ? '' : hours + (hours === 1 ? ' hour' : ' hours')
+    } 
+    ${minutes < 1 ? '' : minutes + (minutes === 1 ? ' minute' : ' minutes')} 
+    ${seconds < 1 ? '' : seconds + (seconds === 1 ? ' second' : ' seconds')}`;
+
     dispatch({
       type: 'SET_TASK_TIMER_RUNNING',
       payload: {
         timerId: null,
-        taskDuration: `${hours}:${minutes}:${seconds}`
+        taskDuration: finalDuration
       }
     });
     const key = getState().completedTasks.length + 1;
+    const ratePerHour = getState().rate.perHour;
     const { taskName, taskDuration, taskDollarValue } = getState().taskTimer;
     dispatch({
       type: 'ADD_TASK_TO_COMPLETED',
       payload: {
+        id: key,
         key: key,
         name: taskName,
         duration: taskDuration,
+        ratePerHour: ratePerHour.toFixed(2),
         dollarValue: taskDollarValue.toFixed(2)
       }
+    });
+    dispatch({
+      type: 'SHOW_TASK_TIMER_WARNING'
     });
     dispatch({
       type: 'RESET_TASK_TIMER'
@@ -115,6 +138,12 @@ export const stopTask = () => {
   };
 };
 
+export const removeTaskFromCompleted = id => {
+  return {
+    type: 'REMOVE_TASK_FROM_COMPLETED',
+    payload: id
+  };
+};
 export const updateTaskDollarValue = dollarValue => {
   return {
     type: 'UPDATE_TASK_DOLLAR_VALUE',
