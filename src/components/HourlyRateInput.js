@@ -1,26 +1,40 @@
 import React from 'react';
-import ValueBreakdown from './ValueBreakdown';
-import { initialize } from 'redux-form';
 import { connect } from 'react-redux';
-import { Field, reduxForm, reset } from 'redux-form';
+import { Field, reduxForm, reset, initialize } from 'redux-form';
 import { onInputSubmit, resetPrimaryTimer } from '../actions';
 
 class HourlyRateInput extends React.Component {
   onSubmit = ({ ratePerHour }) => {
-    this.props.onInputSubmit(parseInt(ratePerHour));
+    this.props.onInputSubmit(parseFloat(ratePerHour));
   };
 
-  renderInput = ({ input, meta: { error, pristine, submitFailed } }) => {
+  // handleBlur=()=>{
+
+  // }
+
+  renderInput = ({
+    input,
+    meta,
+    meta: { dispatch, error, pristine, submitFailed }
+  }) => {
     const errorClass = `${
       (error && !pristine) || (submitFailed && error) ? 'errorMessage' : ''
     }`;
+    console.log(this.props, '   this.props');
+    console.log(meta, '  meta ');
     return (
       <div>
         <span className='dollarSign'>
           <input
             {...input}
+            pattern='[0-9]*\.?[0-9]+'
+            inputMode='decimal'
+            // type='number'
+            // step='0.01'
+            // min='0'
             autoComplete='off'
             placeholder='enter hourly rate'
+            onFocus={() => dispatch(initialize('HourlyRateInput'))}
           />
         </span>
         <button>set</button>
@@ -66,7 +80,6 @@ const mapStateToProps = state => {
 };
 
 const connectedHourlyInput = connect(mapStateToProps, {
-  initialize,
   onInputSubmit,
   resetPrimaryTimer
 })(HourlyRateInput);

@@ -17,13 +17,7 @@ const CompletedTaskEntry = props => {
         <div>
           total value:<span>${props.dollarValue}</span>
         </div>
-        <RedButton
-          action={() => {
-            console.log(props.id + ' action in button');
-            props.delete(props.id);
-          }}
-          name='delete'
-        />
+        <RedButton action={() => props.delete(props.id)} name='delete' />
       </div>
     </div>
   );

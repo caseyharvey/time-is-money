@@ -51,22 +51,6 @@ export const resetPrimaryTimer = () => {
   };
 };
 
-export const togglePrimaryResetModal = () => {
-  return {
-    type: 'PRIMARY_RESET_MODAL'
-  };
-};
-export const toggleSetRateWarning = () => {
-  return {
-    type: 'SHOW_SET_RATE_WARNING'
-  };
-};
-export const toggleTaskTimerWarning = () => {
-  return {
-    type: 'SHOW_TASK_TIMER_WARNING'
-  };
-};
-
 export const onTaskSubmit = taskName => {
   return (dispatch, getState) => {
     const ratePerSecond = getState().rate.perSecond;
@@ -144,47 +128,19 @@ export const removeTaskFromCompleted = id => {
     payload: id
   };
 };
-export const updateTaskDollarValue = dollarValue => {
+
+export const togglePrimaryResetModal = () => {
   return {
-    type: 'UPDATE_TASK_DOLLAR_VALUE',
-    payload: dollarValue
+    type: 'PRIMARY_RESET_MODAL'
   };
 };
-
-// export const toggleTaskTimer = action => {
-//   return (dispatch, getState) => {
-//     const { timerId } = getState().taskTimer;
-
-//     if (action === 'start' && getState().primaryTimer.timerRunning) {
-//       if (!getState().rate.perHour) {
-//         dispatch({
-//           type: 'HAS_RATE_BEEN_SET'
-//         });
-//       } else if (timerId === null) {
-//         dispatch({
-//           type: 'INCREMENT_TASK_TIMER'
-//         });
-//         const timerId = setInterval(() => {
-//           dispatch({
-//             type: 'INCREMENT_TASK_TIMER'
-//           });
-//         }, 1000);
-//         dispatch({
-//           type: 'SET_TASK_TIMER_RUNNING',
-//           payload: timerId
-//         });
-//       }
-//     } else if (action === 'stop') {
-//       if (getState().taskTimer.stopTimerWarning) {
-//         dispatch({
-//           type: 'SET_STOP_TIMER_WARNING'
-//         });
-//       }
-//       clearInterval(timerId);
-//       dispatch({
-//         type: 'SET_TASK_TIMER_RUNNING',
-//         payload: null
-//       });
-//     }
-//   };
-// };
+export const toggleSetRateWarning = () => {
+  return {
+    type: 'SHOW_SET_RATE_WARNING'
+  };
+};
+export const toggleTaskTimerWarning = () => {
+  return {
+    type: 'SHOW_TASK_TIMER_WARNING'
+  };
+};

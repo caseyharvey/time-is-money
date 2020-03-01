@@ -71,12 +71,22 @@ html {
   }
 }
 
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+input[type='number'],
+input[type='text'] {
+  appearance: none;
+}
+
 .redButton {
   padding: 0;
   color: $warning;
   background-color: transparent;
-  @extend .buttonBaseStyle;
   @extend .mediumResponsiveFont;
+  @extend .buttonBaseStyle;
 }
 
 .container {

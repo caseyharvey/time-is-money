@@ -4,8 +4,6 @@ export default (state = [], action) => {
       return [action.payload, ...state];
     case 'REMOVE_TASK_FROM_COMPLETED':
       return [...state].filter(task => {
-        console.log(task);
-        console.log(task.id !== action.payload);
         if (task.id !== action.payload) {
           return task;
         }

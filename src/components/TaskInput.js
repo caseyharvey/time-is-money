@@ -1,7 +1,6 @@
 import React from 'react';
-import { initialize } from 'redux-form';
 import { connect } from 'react-redux';
-import { Field, reduxForm, reset } from 'redux-form';
+import { Field, reduxForm, reset, initialize } from 'redux-form';
 import {
   onTaskSubmit,
   toggleSetRateWarning,
@@ -13,13 +12,22 @@ class TaskInput extends React.Component {
     this.props.onTaskSubmit(taskName);
   };
 
-  renderInput = ({ input, meta: { error, pristine, submitFailed } }) => {
+  renderInput = ({
+    input,
+    meta: { dispatch, error, pristine, submitFailed }
+  }) => {
     const errorClass = `${
       (error && !pristine) || (submitFailed && error) ? 'errorMessage' : ''
     }`;
     return (
       <>
-        <input {...input} autoComplete='off' placeholder='enter task name' />
+        <input
+          {...input}
+          type='text'
+          autoComplete='off'
+          placeholder='enter task name'
+          onFocus={() => dispatch(initialize('TaskInput'))}
+        />
         <button>start</button>
         <span className={errorClass}>{errorClass ? error : null}</span>
       </>
@@ -89,7 +97,6 @@ const mapStateToProps = state => {
 };
 
 const connectedTaskInput = connect(mapStateToProps, {
-  initialize,
   onTaskSubmit,
   toggleSetRateWarning,
   toggleTaskTimerWarning

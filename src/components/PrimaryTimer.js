@@ -14,6 +14,8 @@ class PrimaryTimer extends React.Component {
   };
   confirmReset = () => {
     this.props.togglePrimaryResetModal();
+    this.props.initialize('HourlyRateInput');
+    this.props.initialize('TaskInput');
   };
 
   render() {
