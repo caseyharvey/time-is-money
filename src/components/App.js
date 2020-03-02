@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import HourlyRateInput from './HourlyRateInput';
 import CompletedTaskList from './CompletedTaskList';
 import PrimaryTimer from './PrimaryTimer';
@@ -7,7 +9,7 @@ import TaskInput from './TaskInput';
 
 import '../CSS/App.css';
 
-const App = () => {
+const App = props => {
   return (
     <div className='container'>
       <h2>time is money</h2>
@@ -15,11 +17,17 @@ const App = () => {
         <HourlyRateInput />
         <PrimaryTimer />
       </div>
-      <TaskInput />
-      <TaskDetails />
+      <div className={props.showTaskTimer ? 'taskControls' : 'hide'}>
+        <TaskInput />
+        <TaskDetails />
+      </div>
       <CompletedTaskList />
     </div>
   );
 };
-
-export default App;
+const mapStateToProps = state => {
+  return {
+    showTaskTimer: state.taskTimer.timerIsVisible
+  };
+};
+export default connect(mapStateToProps)(App);

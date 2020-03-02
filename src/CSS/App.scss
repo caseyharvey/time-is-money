@@ -17,7 +17,7 @@ $warning: rgb(255, 20, 0);
   font-size: 1.6em;
 }
 .XLargeResponsiveFont {
-  font-size: 1.7em;
+  font-size: 1.9em;
 }
 .buttonBaseStyle {
   outline: none;
@@ -84,7 +84,7 @@ input[type='text'] {
 }
 
 .deleteTaskAnimation {
-  animation: slideOutRight 250ms forwards ease-out;
+  animation: deleteTask 250ms forwards ease-out;
 }
 
 .completeTaskAnimation {
@@ -330,122 +330,127 @@ input[type='text'] {
   }
 }
 
-.taskInput {
+.taskControls {
   width: 100%;
-  display: flex;
-  align-items: center;
-  align-items: center;
-  box-sizing: border-box;
-  flex-direction: column;
-  background-color: $light;
-  border-radius: 10px 10px 0 0;
-  @extend .inputPadding;
+  animation: slideInLeft 250ms forwards ease-in-out;
 
-  form {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    position: relative;
-
-    .inputGuard {
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      position: absolute;
-      border-radius: 10px;
-    }
-    .showWarning {
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: flex;
-      color: $warning;
-      position: absolute;
-      align-items: center;
-      border-radius: 10px 10px 0 0;
-      justify-content: center;
-      border: 2px solid $warning;
-      background-color: $light;
-    }
-
-    input {
-      width: 70%;
-      height: 100%;
-      outline: none;
-      color: $dark;
-      padding: 20px 18px;
-      border-style: none;
-      box-sizing: border-box;
-      font-family: $primaryFont;
-      border: 2px solid $mediumGrey;
-      border-radius: 10px 0 0 0;
-      background-color: $extraLightGrey;
-      @extend .mediumResponsiveFont;
-
-      &:focus {
-        box-sizing: border-box;
-        background-color: white;
-        border: 2px solid $mediumGrey;
-      }
-    }
-
-    button {
-      width: 30%;
-      height: 100%;
-      color: $dark;
-      padding: 20px;
-      background-color: $mediumGrey;
-      border-radius: 0 10px 0 0;
-      border: 2px solid $mediumGrey;
-      @extend .mediumResponsiveFont;
-      @extend .buttonBaseStyle;
-    }
-
-    .errorMessage {
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: 100%;
-      padding: 20px;
-      color: $warning;
-      text-align: right;
-      position: absolute;
-      pointer-events: none;
-      box-sizing: border-box;
-      border: 2px solid $warning;
-      border-radius: 10px 10px 0 0;
-      background: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 1) 50%
-      );
-      @extend .mediumResponsiveFont;
-    }
-  }
-}
-
-.taskDetails {
-  width: 100%;
-  color: $dark;
-  display: flex;
-  position: relative;
-  margin-bottom: 5px;
-  box-sizing: border-box;
-  flex-direction: column;
-
-  .taskName {
+  .taskInput {
     width: 100%;
     display: flex;
-    font-size: 1em;
-    color: $darkGrey;
+    align-items: center;
     align-items: center;
     box-sizing: border-box;
-    @extend .paddingOne;
-    justify-content: space-between;
-    background-color: $lightGrey;
+    flex-direction: column;
+    background-color: $light;
+    border-radius: 10px 10px 0 0;
+    @extend .inputPadding;
+
+    form {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      position: relative;
+
+      .inputGuard {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        border-radius: 10px;
+      }
+      .showWarning {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        color: $warning;
+        position: absolute;
+        align-items: center;
+        border-radius: 10px 10px 0 0;
+        justify-content: center;
+        border: 2px solid $warning;
+        background-color: $light;
+      }
+
+      input {
+        width: 70%;
+        height: 100%;
+        outline: none;
+        color: $dark;
+        padding: 20px 18px;
+        border-style: none;
+        box-sizing: border-box;
+        font-family: $primaryFont;
+        border: 2px solid $mediumGrey;
+        border-radius: 10px 0 0 0;
+        background-color: $extraLightGrey;
+        @extend .mediumResponsiveFont;
+
+        &:focus {
+          box-sizing: border-box;
+          background-color: white;
+          border: 2px solid $mediumGrey;
+        }
+      }
+
+      button {
+        width: 30%;
+        height: 100%;
+        color: $dark;
+        padding: 20px;
+        background-color: $mediumGrey;
+        border-radius: 0 10px 0 0;
+        border: 2px solid $mediumGrey;
+        @extend .mediumResponsiveFont;
+        @extend .buttonBaseStyle;
+      }
+
+      .errorMessage {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 20px;
+        color: $warning;
+        text-align: right;
+        position: absolute;
+        pointer-events: none;
+        box-sizing: border-box;
+        border: 2px solid $warning;
+        border-radius: 10px 10px 0 0;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 1) 50%
+        );
+        @extend .mediumResponsiveFont;
+      }
+    }
+  }
+
+  .taskDetails {
+    width: 100%;
+    color: $dark;
+    display: flex;
+    position: relative;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    flex-direction: column;
+
+    .taskName {
+      width: 100%;
+      display: flex;
+      font-size: 1em;
+      color: $darkGrey;
+      align-items: center;
+      box-sizing: border-box;
+      @extend .paddingOne;
+      justify-content: space-between;
+      background-color: $lightGrey;
+    }
   }
 }
 
@@ -549,7 +554,7 @@ input[type='text'] {
     font-size: 1.8em;
   }
   .XLargeResponsiveFont {
-    font-size: 1.9em;
+    font-size: 2.1em;
   }
   .dollarSign {
     &:before {
@@ -575,6 +580,18 @@ input[type='text'] {
     padding: 20px;
   }
 }
+@keyframes slideInDown {
+  0% {
+    opacity: 0.1;
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+}
 @keyframes slideInLeft {
   0% {
     opacity: 0;
@@ -584,7 +601,7 @@ input[type='text'] {
     opacity: 1;
   }
 }
-@keyframes slideOutRight {
+@keyframes deleteTask {
   0% {
     opacity: 1;
     transform: translateX(0);

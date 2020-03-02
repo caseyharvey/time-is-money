@@ -1,7 +1,10 @@
-export default (state = [], action) => {
+const initialState = [];
+export default (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_TASK_TO_COMPLETED':
       return [action.payload, ...state];
+    case 'RESET_COMPLETED_TASKS':
+      return [...initialState];
     case 'ADD_REMOVE_TASK_ANIMATION':
       return [...state].map(task => {
         if (task.id === action.payload) {

@@ -6,11 +6,14 @@ const initialState = {
   taskDuration: '',
   taskDollarValue: '',
   showTaskTimerWarning: false,
-  showCompleteTaskWarning: false
+  showCompleteTaskWarning: false,
+  timerIsVisible: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case 'SHOW_TASK_TIMER':
+      return { ...state, timerIsVisible: state.timerIsVisible ? false : true };
     case 'SET_TASK_NAME':
       return { ...state, taskName: action.payload };
     case 'INCREMENT_TASK_TIMER':
@@ -20,7 +23,7 @@ export default (state = initialState, action) => {
         taskDollarValue: state.timerValue * action.payload
       };
     case 'RESET_TASK_TIMER':
-      return { ...initialState };
+      return { ...initialState, timerIsVisible: state.timerIsVisible };
     case 'SHOW_TASK_TIMER_WARNING':
       return {
         ...state,

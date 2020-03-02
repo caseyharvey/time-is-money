@@ -24,6 +24,9 @@ export const onInputSubmit = rate => {
         type: 'SET_PRIMARY_TIMER_RUNNING',
         payload: timerId
       });
+      dispatch({
+        type: 'SHOW_TASK_TIMER'
+      });
     }
   };
 };
@@ -47,6 +50,12 @@ export const resetPrimaryTimer = () => {
     });
     dispatch({
       type: 'PRIMARY_RESET_MODAL'
+    });
+    dispatch({
+      type: 'SHOW_TASK_TIMER'
+    });
+    dispatch({
+      type: 'RESET_COMPLETED_TASKS'
     });
   };
 };
@@ -85,7 +94,6 @@ export const stopTask = () => {
     const seconds = timerValue % 60;
     const minutes = Math.floor(timerValue / 60) % 60;
     const hours = Math.floor(timerValue / 3600) % 24;
-
     const finalDuration = `${
       hours < 1 ? '' : hours + (hours === 1 ? ' hour' : ' hours')
     } 
@@ -99,6 +107,7 @@ export const stopTask = () => {
         taskDuration: finalDuration
       }
     });
+
     const ID = () => {
       return (
         '_' +
@@ -108,8 +117,10 @@ export const stopTask = () => {
       );
     };
     let id = ID();
+
     const ratePerHour = getState().rate.perHour;
     const { taskName, taskDuration, taskDollarValue } = getState().taskTimer;
+
     dispatch({
       type: 'ADD_TASK_TO_COMPLETED',
       payload: {
