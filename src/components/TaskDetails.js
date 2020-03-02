@@ -1,6 +1,5 @@
 import React from 'react';
-// import Modal from './Modal';
-import RedButton from './RedButton';
+import Button from './Button';
 import { connect } from 'react-redux';
 import { initialize } from 'redux-form';
 import TimerDisplay from './TimerDisplay';
@@ -26,10 +25,11 @@ class TaskDetails extends React.Component {
           </div>
           <div className='timerDisplay'>
             <TimerDisplay timerValue={taskTimerValue} />
-            <RedButton
+            <Button
               disabled={!timerRunning}
               action={stopTask}
               name='complete'
+              className='blue'
             />
           </div>
         </div>

@@ -5,7 +5,7 @@ function RedButton(props) {
     <button
       disabled={props.disabled}
       onClick={props.action}
-      className='redButton'
+      className={props.className + 'Button'}
     >
       {props.name}
     </button>

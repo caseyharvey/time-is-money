@@ -1,5 +1,5 @@
 import React from 'react';
-import RedButton from './RedButton';
+import Button from './Button';
 
 const CompletedTaskEntry = props => {
   console.log(props, 'props');
@@ -18,7 +18,11 @@ const CompletedTaskEntry = props => {
         <div>
           total value:<span>${props.dollarValue}</span>
         </div>
-        <RedButton action={() => props.delete(props.id)} name='delete' />
+        <Button
+          action={() => props.delete(props.id)}
+          name='delete'
+          className='red'
+        />
       </div>
     </div>
   );

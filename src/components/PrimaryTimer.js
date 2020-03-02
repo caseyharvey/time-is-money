@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from './Modal';
 import { connect } from 'react-redux';
-import RedButton from './RedButton';
+import Button from './Button';
 import TimerDisplay from './TimerDisplay';
 import { initialize } from 'redux-form';
 import ValueBreakdown from './ValueBreakdown';
@@ -33,7 +33,7 @@ class PrimaryTimer extends React.Component {
         <DollarValueDisplay dollarValue={dollarValue} />
         <div className='timerDisplay'>
           <TimerDisplay timerValue={primaryTimerValue} />
-          <RedButton action={this.confirmReset} name='reset' />
+          <Button action={this.confirmReset} name='reset' className='red' />
         </div>
         <Modal
           confirm={this.resetAll}

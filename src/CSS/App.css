@@ -2,7 +2,7 @@
   font-size: 0.8em;
 }
 
-.mediumResponsiveFont, .redButton, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskControls .taskInput form input, .taskControls .taskInput form button, .taskControls .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+.mediumResponsiveFont, .redButton, .blueButton, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskControls .taskInput form input, .taskControls .taskInput form button, .taskControls .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
   font-size: 0.9em;
 }
 
@@ -14,7 +14,7 @@
   font-size: 1.9em;
 }
 
-.buttonBaseStyle, .redButton, .primaryControls .inputAndDisplay form div button, .taskControls .taskInput form button, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+.buttonBaseStyle, .redButton, .blueButton, .primaryControls .inputAndDisplay form div button, .taskControls .taskInput form button, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
   outline: none;
   border-style: none;
   -webkit-box-sizing: border-box;
@@ -85,6 +85,12 @@ input:-webkit-autofill:focus {
 .redButton {
   padding: 0;
   color: #ff1400;
+  background-color: transparent;
+}
+
+.blueButton {
+  padding: 0;
+  color: #009632;
   background-color: transparent;
 }
 
@@ -656,7 +662,7 @@ input:-webkit-autofill:focus {
   .responsiveFont, .dollarSign:before, .container .completedTaskList .completedTaskEntry, .primaryControls .primaryTimer .valueBreakdown, .timerDisplay .timer {
     font-size: 0.9em;
   }
-  .mediumResponsiveFont, .redButton, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskControls .taskInput form input, .taskControls .taskInput form button, .taskControls .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+  .mediumResponsiveFont, .redButton, .blueButton, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskControls .taskInput form input, .taskControls .taskInput form button, .taskControls .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
     font-size: 1em;
   }
   .dollarSign:before {
@@ -678,7 +684,7 @@ input:-webkit-autofill:focus {
     padding-bottom: 10px;
     padding-left: 30px;
   }
-  .mediumResponsiveFont, .redButton, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskControls .taskInput form input, .taskControls .taskInput form button, .taskControls .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+  .mediumResponsiveFont, .redButton, .blueButton, .primaryControls .inputAndDisplay form div input, .primaryControls .inputAndDisplay form div button, .primaryControls .inputAndDisplay form div .errorMessage, .taskControls .taskInput form input, .taskControls .taskInput form button, .taskControls .taskInput form .errorMessage, .modalBackground .modalContainer .modalMessage, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
     font-size: 1.1em;
   }
   .largeResponsiveFont {

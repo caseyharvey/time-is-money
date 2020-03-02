@@ -6,6 +6,7 @@ $lightGrey: rgb(243, 243, 243);
 $extraLightGrey: rgb(249, 249, 249);
 $light: rgb(253, 253, 253);
 $warning: rgb(255, 20, 0);
+$confirm: rgb(0, 150, 50);
 
 .responsiveFont {
   font-size: 0.8em;
@@ -84,6 +85,14 @@ input:-webkit-autofill:focus {
 .redButton {
   padding: 0;
   color: $warning;
+  background-color: transparent;
+  @extend .mediumResponsiveFont;
+  @extend .buttonBaseStyle;
+}
+
+.blueButton {
+  padding: 0;
+  color: $confirm;
   background-color: transparent;
   @extend .mediumResponsiveFont;
   @extend .buttonBaseStyle;
