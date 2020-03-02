@@ -2,8 +2,9 @@ import React from 'react';
 import RedButton from './RedButton';
 
 const CompletedTaskEntry = props => {
+  console.log(props, 'props');
   return (
-    <div className='completedTaskEntry'>
+    <div className={props.className}>
       <div className='taskName'>
         task name:<span>{props.name}</span>
       </div>

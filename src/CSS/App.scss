@@ -1,7 +1,7 @@
 $primaryFont: 'Montserrat', sans-serif;
-$dark: rgb(82, 82, 82);
-$darkGrey: rgb(104, 104, 104);
-$mediumGrey: rgb(228, 228, 228);
+$dark: rgb(50, 50, 50);
+$darkGrey: rgb(95, 95, 95);
+$mediumGrey: rgb(215, 215, 215);
 $lightGrey: rgb(243, 243, 243);
 $extraLightGrey: rgb(249, 249, 249);
 $light: rgb(253, 253, 253);
@@ -71,12 +71,6 @@ html {
   }
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  appearance: none;
-  margin: 0;
-}
-input[type='number'],
 input[type='text'] {
   appearance: none;
 }
@@ -87,6 +81,14 @@ input[type='text'] {
   background-color: transparent;
   @extend .mediumResponsiveFont;
   @extend .buttonBaseStyle;
+}
+
+.deleteTaskAnimation {
+  animation: slideOutRight 250ms forwards ease-out;
+}
+
+.completeTaskAnimation {
+  animation: slideInLeft 250ms forwards cubic-bezier(0.55, 0.5, 0.97, 0.76);
 }
 
 .container {
@@ -116,8 +118,8 @@ input[type='text'] {
     .completedTaskEntry {
       color: $dark;
       display: flex;
-      flex-direction: column;
       margin-bottom: 5px;
+      flex-direction: column;
       @extend .responsiveFont;
 
       .taskName {
@@ -189,6 +191,29 @@ input[type='text'] {
       display: flex;
       position: relative;
 
+      .inputGuard {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        border-radius: 10px;
+      }
+      .showWarning {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        color: $warning;
+        position: absolute;
+        align-items: center;
+        border-radius: 10px 10px 0 0;
+        justify-content: center;
+        border: 2px solid $warning;
+        background-color: $light;
+      }
+
       div {
         margin: 0;
         width: 100%;
@@ -196,6 +221,7 @@ input[type='text'] {
 
         input {
           width: 70%;
+          height: 100%;
           outline: none;
           color: $dark;
           padding: 20px 18px;
@@ -216,6 +242,7 @@ input[type='text'] {
 
         button {
           width: 30%;
+          height: 100%;
           color: $dark;
           padding: 20px;
           background-color: $mediumGrey;
@@ -228,6 +255,8 @@ input[type='text'] {
         .errorMessage {
           top: 0;
           left: 0;
+          right: 0;
+          bottom: 0;
           width: 100%;
           padding: 20px;
           color: $warning;
@@ -314,6 +343,7 @@ input[type='text'] {
 
   form {
     width: 100%;
+    height: 100%;
     display: flex;
     position: relative;
 
@@ -342,6 +372,7 @@ input[type='text'] {
 
     input {
       width: 70%;
+      height: 100%;
       outline: none;
       color: $dark;
       padding: 20px 18px;
@@ -362,6 +393,7 @@ input[type='text'] {
 
     button {
       width: 30%;
+      height: 100%;
       color: $dark;
       padding: 20px;
       background-color: $mediumGrey;
@@ -374,6 +406,8 @@ input[type='text'] {
     .errorMessage {
       top: 0;
       left: 0;
+      right: 0;
+      bottom: 0;
       width: 100%;
       padding: 20px;
       color: $warning;
@@ -539,5 +573,24 @@ input[type='text'] {
   }
   .inputPadding {
     padding: 20px;
+  }
+}
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-500px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes slideOutRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-500px);
   }
 }

@@ -99,22 +99,33 @@ export const stopTask = () => {
         taskDuration: finalDuration
       }
     });
-    const key = getState().completedTasks.length + 1;
+    const ID = () => {
+      return (
+        '_' +
+        Math.random()
+          .toString(36)
+          .substr(2, 9)
+      );
+    };
+    let id = ID();
     const ratePerHour = getState().rate.perHour;
     const { taskName, taskDuration, taskDollarValue } = getState().taskTimer;
     dispatch({
       type: 'ADD_TASK_TO_COMPLETED',
       payload: {
-        id: key,
-        key: key,
+        id: id,
         name: taskName,
         duration: taskDuration,
         ratePerHour: ratePerHour.toFixed(2),
-        dollarValue: taskDollarValue.toFixed(2)
+        dollarValue: taskDollarValue.toFixed(2),
+        className: 'completedTaskEntry completeTaskAnimation'
       }
     });
     dispatch({
       type: 'SHOW_TASK_TIMER_WARNING'
+    });
+    dispatch({
+      type: 'SHOW_COMPLETE_TASK_WARNING'
     });
     dispatch({
       type: 'RESET_TASK_TIMER'
@@ -123,9 +134,17 @@ export const stopTask = () => {
 };
 
 export const removeTaskFromCompleted = id => {
-  return {
-    type: 'REMOVE_TASK_FROM_COMPLETED',
-    payload: id
+  return dispatch => {
+    dispatch({
+      type: 'ADD_REMOVE_TASK_ANIMATION',
+      payload: id
+    });
+    setTimeout(() => {
+      dispatch({
+        type: 'REMOVE_TASK_FROM_COMPLETED',
+        payload: id
+      });
+    }, 250);
   };
 };
 
@@ -142,5 +161,10 @@ export const toggleSetRateWarning = () => {
 export const toggleTaskTimerWarning = () => {
   return {
     type: 'SHOW_TASK_TIMER_WARNING'
+  };
+};
+export const toggleCompleteTaskWarning = () => {
+  return {
+    type: 'SHOW_COMPLETE_TASK_WARNING'
   };
 };

@@ -5,7 +5,8 @@ const initialState = {
   taskName: '',
   taskDuration: '',
   taskDollarValue: '',
-  showTaskTimerWarning: false
+  showTaskTimerWarning: false,
+  showCompleteTaskWarning: false
 };
 
 export default (state = initialState, action) => {
@@ -24,6 +25,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         showTaskTimerWarning: state.showTaskTimerWarning ? false : true
+      };
+    case 'SHOW_COMPLETE_TASK_WARNING':
+      return {
+        ...state,
+        showCompleteTaskWarning: state.showCompleteTaskWarning ? false : true
       };
     case 'UPDATE_TASK_DOLLAR_VALUE':
       return { ...state, taskDollarValue: action.payload };

@@ -10,16 +10,18 @@ class CompletedTaskList extends React.Component {
 
   render() {
     const completedTasks = this.props.completedTasks;
+    console.log(completedTasks);
     return (
       <div className='completedTaskList'>
         {completedTasks.map(task => (
           <CompletedTaskEntry
-            id={task.key}
-            key={task.key}
+            id={task.id}
+            key={task.id}
             name={task.name}
             duration={task.duration}
             ratePerHour={task.ratePerHour}
             dollarValue={task.dollarValue}
+            className={task.className}
             delete={this.deleteTask}
           />
         ))}
@@ -32,10 +34,9 @@ const mapStateToProps = state => {
   return {
     taskName: state.taskTimer.taskName,
     ratePerSecond: state.rate.perSecond,
-    completedTasks: state.completedTasks,
-    taskTimerValue: state.taskTimer.timerValue
+    completedTasks: state.completedTasks
   };
 };
-export default connect(mapStateToProps, { removeTaskFromCompleted })(
-  CompletedTaskList
-);
+export default connect(mapStateToProps, {
+  removeTaskFromCompleted
+})(CompletedTaskList);

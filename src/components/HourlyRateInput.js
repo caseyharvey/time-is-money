@@ -1,32 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm, reset, initialize } from 'redux-form';
-import { onInputSubmit, resetPrimaryTimer } from '../actions';
+import {
+  onInputSubmit,
+  resetPrimaryTimer,
+  toggleCompleteTaskWarning
+} from '../actions';
 
 class HourlyRateInput extends React.Component {
   onSubmit = ({ ratePerHour }) => {
     this.props.onInputSubmit(parseFloat(ratePerHour));
   };
 
-  // handleBlur=()=>{
-
-  // }
-
   renderInput = ({
     input,
-    meta,
     meta: { dispatch, error, pristine, submitFailed }
   }) => {
     const errorClass = `${
       (error && !pristine) || (submitFailed && error) ? 'errorMessage' : ''
     }`;
-    console.log(this.props, '   this.props');
-    console.log(meta, '  meta ');
     return (
       <div>
         <span className='dollarSign'>
           <input
             {...input}
+            type='text'
             pattern='[0-9]*\.?[0-9]+'
             inputMode='decimal'
             // type='number'
@@ -48,6 +46,21 @@ class HourlyRateInput extends React.Component {
       <div className='inputAndDisplay'>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name='ratePerHour' component={this.renderInput} />
+          <div
+            className={
+              this.props.taskTimerRunning ? 'inputGuard' : 'inputGuard hide'
+            }
+            onClick={this.props.toggleCompleteTaskWarning}
+          ></div>
+          <div
+            className={
+              this.props.showCompleteTaskWarning
+                ? 'showWarning '
+                : 'showWarning hide'
+            }
+          >
+            complete your task first
+          </div>
         </form>
       </div>
     );
@@ -75,13 +88,16 @@ const successfulSubmit = (result, dispatch) => {
 const mapStateToProps = state => {
   return {
     timerValue: state.primaryTimer.timerValue,
-    isVisible: state.modal.showRateChangeResetModal
+    isVisible: state.modal.showRateChangeResetModal,
+    taskTimerRunning: state.taskTimer.timerRunning,
+    showCompleteTaskWarning: state.taskTimer.showCompleteTaskWarning
   };
 };
 
 const connectedHourlyInput = connect(mapStateToProps, {
   onInputSubmit,
-  resetPrimaryTimer
+  resetPrimaryTimer,
+  toggleCompleteTaskWarning
 })(HourlyRateInput);
 
 export default reduxForm({

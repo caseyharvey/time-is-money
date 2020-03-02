@@ -54,7 +54,7 @@ html {
 html body {
   margin: 0;
   padding: 0;
-  background-color: #525252;
+  background-color: #323232;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -69,19 +69,6 @@ html body {
   position: absolute;
 }
 
-input[type='number'] {
-  -webkit-appearance: textfield;
-     -moz-appearance: textfield;
-          appearance: textfield;
-}
-
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-          appearance: none;
-  margin: 0;
-}
-
 input[type='text'] {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -92,6 +79,16 @@ input[type='text'] {
   padding: 0;
   color: #ff1400;
   background-color: transparent;
+}
+
+.deleteTaskAnimation {
+  -webkit-animation: slideOutRight 250ms forwards ease-out;
+          animation: slideOutRight 250ms forwards ease-out;
+}
+
+.completeTaskAnimation {
+  -webkit-animation: slideInLeft 250ms forwards cubic-bezier(0.55, 0.5, 0.97, 0.76);
+          animation: slideInLeft 250ms forwards cubic-bezier(0.55, 0.5, 0.97, 0.76);
 }
 
 .container {
@@ -135,15 +132,15 @@ input[type='text'] {
 }
 
 .container .completedTaskList .completedTaskEntry {
-  color: #525252;
+  color: #323232;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 5px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-bottom: 5px;
 }
 
 .container .completedTaskList .completedTaskEntry .taskName {
@@ -151,7 +148,7 @@ input[type='text'] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: #686868;
+  color: #5f5f5f;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -169,25 +166,25 @@ input[type='text'] {
 }
 
 .container .completedTaskList .completedTaskEntry .taskName span {
-  color: #525252;
+  color: #323232;
   padding-left: 10px;
 }
 
 .container .completedTaskList .completedTaskEntry .taskDetails {
   margin: 0;
-  color: #525252;
+  color: #323232;
   background-color: #fdfdfd;
 }
 
 .container .completedTaskList .completedTaskEntry .taskDetails span {
-  color: #686868;
+  color: #5f5f5f;
 }
 
 .container .completedTaskList .completedTaskEntry .totalTaskValue {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: #686868;
+  color: #5f5f5f;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -200,7 +197,7 @@ input[type='text'] {
 }
 
 .container .completedTaskList .completedTaskEntry .totalTaskValue span {
-  color: #525252;
+  color: #323232;
   font-size: 1.2em;
   padding-left: 10px;
 }
@@ -246,6 +243,36 @@ input[type='text'] {
   position: relative;
 }
 
+.primaryControls .inputAndDisplay form .inputGuard {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  border-radius: 10px;
+}
+
+.primaryControls .inputAndDisplay form .showWarning {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #ff1400;
+  position: absolute;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px 10px 0 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 2px solid #ff1400;
+  background-color: #fdfdfd;
+}
+
 .primaryControls .inputAndDisplay form div {
   margin: 0;
   width: 100%;
@@ -254,8 +281,9 @@ input[type='text'] {
 
 .primaryControls .inputAndDisplay form div input {
   width: 70%;
+  height: 100%;
   outline: none;
-  color: #525252;
+  color: #323232;
   padding: 20px 18px;
   border-style: none;
   -webkit-box-sizing: border-box;
@@ -263,28 +291,31 @@ input[type='text'] {
   border-radius: 10px 0 0 0;
   font-family: "Montserrat", sans-serif;
   background-color: #f9f9f9;
-  border: 2px solid #e4e4e4;
+  border: 2px solid #d7d7d7;
 }
 
 .primaryControls .inputAndDisplay form div input:focus {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-color: white;
-  border: 2px solid #e4e4e4;
+  border: 2px solid #d7d7d7;
 }
 
 .primaryControls .inputAndDisplay form div button {
   width: 30%;
-  color: #525252;
+  height: 100%;
+  color: #323232;
   padding: 20px;
-  background-color: #e4e4e4;
+  background-color: #d7d7d7;
   border-radius: 0 10px 0 0;
-  border: 2px solid #e4e4e4;
+  border: 2px solid #d7d7d7;
 }
 
 .primaryControls .inputAndDisplay form div .errorMessage {
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   padding: 20px;
   color: #ff1400;
@@ -301,7 +332,7 @@ input[type='text'] {
 
 .primaryControls .primaryTimer {
   width: 100%;
-  color: #525252;
+  color: #323232;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -320,7 +351,7 @@ input[type='text'] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: #686868;
+  color: #5f5f5f;
   text-align: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -356,7 +387,7 @@ input[type='text'] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: #686868;
+  color: #5f5f5f;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -395,6 +426,7 @@ input[type='text'] {
 
 .taskInput form {
   width: 100%;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -433,14 +465,15 @@ input[type='text'] {
 
 .taskInput form input {
   width: 70%;
+  height: 100%;
   outline: none;
-  color: #525252;
+  color: #323232;
   padding: 20px 18px;
   border-style: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
-  border: 2px solid #e4e4e4;
+  border: 2px solid #d7d7d7;
   border-radius: 10px 0 0 0;
   background-color: #f9f9f9;
 }
@@ -449,21 +482,24 @@ input[type='text'] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-color: white;
-  border: 2px solid #e4e4e4;
+  border: 2px solid #d7d7d7;
 }
 
 .taskInput form button {
   width: 30%;
-  color: #525252;
+  height: 100%;
+  color: #323232;
   padding: 20px;
-  background-color: #e4e4e4;
+  background-color: #d7d7d7;
   border-radius: 0 10px 0 0;
-  border: 2px solid #e4e4e4;
+  border: 2px solid #d7d7d7;
 }
 
 .taskInput form .errorMessage {
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   padding: 20px;
   color: #ff1400;
@@ -480,7 +516,7 @@ input[type='text'] {
 
 .taskDetails {
   width: 100%;
-  color: #525252;
+  color: #323232;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -500,7 +536,7 @@ input[type='text'] {
   display: -ms-flexbox;
   display: flex;
   font-size: 1em;
-  color: #686868;
+  color: #5f5f5f;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -659,6 +695,54 @@ input[type='text'] {
   }
   .inputPadding, .primaryControls .inputAndDisplay, .taskInput {
     padding: 20px;
+  }
+}
+
+@-webkit-keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-500px);
+            transform: translateX(-500px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-500px);
+            transform: translateX(-500px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slideOutRight {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-500px);
+            transform: translateX(-500px);
+  }
+}
+
+@keyframes slideOutRight {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-500px);
+            transform: translateX(-500px);
   }
 }
 /*# sourceMappingURL=App.css.map */
