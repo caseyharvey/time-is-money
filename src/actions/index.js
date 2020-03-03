@@ -51,9 +51,10 @@ export const resetPrimaryTimer = () => {
     dispatch({
       type: 'PRIMARY_RESET_MODAL'
     });
-    dispatch({
-      type: 'SHOW_TASK_TIMER'
-    });
+    if (getState().taskTimer.timerIsVisible)
+      dispatch({
+        type: 'SHOW_TASK_TIMER'
+      });
     dispatch({
       type: 'RESET_COMPLETED_TASKS'
     });
@@ -177,5 +178,10 @@ export const toggleTaskTimerWarning = () => {
 export const toggleCompleteTaskWarning = () => {
   return {
     type: 'SHOW_COMPLETE_TASK_WARNING'
+  };
+};
+export const toggleShowHelp = () => {
+  return {
+    type: 'TOGGLE_SHOW_HELP'
   };
 };

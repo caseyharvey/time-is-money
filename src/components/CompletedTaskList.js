@@ -10,7 +10,6 @@ class CompletedTaskList extends React.Component {
 
   render() {
     const completedTasks = this.props.completedTasks;
-    console.log(completedTasks);
     return (
       <div className='completedTaskList'>
         {completedTasks.map(task => (

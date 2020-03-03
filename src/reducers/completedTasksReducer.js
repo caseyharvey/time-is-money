@@ -21,6 +21,7 @@ export default (state = initialState, action) => {
         if (task.id !== action.payload) {
           return task;
         }
+        return null;
       });
     default:
       return state;

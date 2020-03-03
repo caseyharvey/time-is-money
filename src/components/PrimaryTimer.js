@@ -39,7 +39,8 @@ class PrimaryTimer extends React.Component {
           confirm={this.resetAll}
           cancel={togglePrimaryResetModal}
           isVisible={isVisible ? '' : 'hide'}
-          message='this will reset the primary timer and your hourly rate'
+          message='this is a master reset, all data will be lost.
+           are you sure you would like to continue?'
         />
       </div>
     );

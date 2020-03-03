@@ -14,7 +14,7 @@
   font-size: 1.9em;
 }
 
-.buttonBaseStyle, .redButton, .blueButton, .primaryControls .inputAndDisplay form div button, .taskControls .taskInput form button, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
+.buttonBaseStyle, .redButton, .blueButton, .container .infoLogo, .primaryControls .inputAndDisplay form div button, .taskControls .taskInput form button, .modalBackground .modalContainer .modalButtonContainer .modalCancel, .modalBackground .modalContainer .modalButtonContainer .modalConfirm {
   outline: none;
   border-style: none;
   -webkit-box-sizing: border-box;
@@ -24,6 +24,7 @@
 
 .hide {
   visibility: hidden;
+  display: none;
 }
 
 .paddingOne, .container .completedTaskList .completedTaskEntry .taskName, .container .completedTaskList .completedTaskEntry .totalTaskValue, .primaryControls .primaryTimer .valueBreakdown, .dollarValue, .taskControls .taskDetails .taskName {
@@ -33,7 +34,7 @@
   padding-left: 20px;
 }
 
-.paddingTwo, h2, .helpMessage, .container .completedTaskList .completedTaskEntry .taskDetails, .timerDisplay {
+.paddingTwo, .helpMessage, .container h2, .container .completedTaskList .completedTaskEntry .taskDetails, .timerDisplay {
   padding-top: 10px;
   padding-right: 20px;
   padding-bottom: 10px;
@@ -104,13 +105,6 @@ input:-webkit-autofill:focus {
           animation: slideInLeft 250ms forwards cubic-bezier(0.55, 0.5, 0.97, 0.76);
 }
 
-h2 {
-  margin: 0;
-  color: #fdfdfd;
-  -ms-flex-item-align: start;
-      align-self: flex-start;
-}
-
 .helpMessage {
   width: 100%;
   color: #d7d7d7;
@@ -141,6 +135,28 @@ h2 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  position: relative;
+}
+
+.container .infoLogo {
+  top: 23px;
+  right: 30px;
+  color: #2d2d2d;
+  padding: 1px 8px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #fdfdfd;
+  font-size: 1.2em;
+}
+
+.container h2 {
+  margin: 0;
+  width: 100%;
+  color: #fdfdfd;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .container .completedTaskList {
@@ -164,6 +180,8 @@ h2 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  border-radius: 10px;
+  background-color: #f9f9f9;
 }
 
 .container .completedTaskList .completedTaskEntry .taskName {
@@ -600,7 +618,7 @@ h2 {
   display: -ms-flexbox;
   display: flex;
   margin-top: 100px;
-  max-width: 500px;
+  max-width: 440px;
   max-height: 250px;
   border-radius: 10px;
   -webkit-box-align: center;
@@ -688,7 +706,7 @@ h2 {
     padding-bottom: 12px;
     padding-left: 30px;
   }
-  .paddingTwo, h2, .helpMessage, .container .completedTaskList .completedTaskEntry .taskDetails, .timerDisplay {
+  .paddingTwo, .helpMessage, .container h2, .container .completedTaskList .completedTaskEntry .taskDetails, .timerDisplay {
     padding-top: 10px;
     padding-right: 30px;
     padding-bottom: 10px;
@@ -707,6 +725,9 @@ h2 {
     top: 1.2px;
     left: 8px;
   }
+  .container .infoLogo {
+    right: 40px;
+  }
 }
 
 @media (min-width: 600px) {
@@ -716,7 +737,7 @@ h2 {
     padding-bottom: 12px;
     padding-left: 40px;
   }
-  .paddingTwo, h2, .helpMessage, .container .completedTaskList .completedTaskEntry .taskDetails, .timerDisplay {
+  .paddingTwo, .helpMessage, .container h2, .container .completedTaskList .completedTaskEntry .taskDetails, .timerDisplay {
     padding-top: 10px;
     padding-right: 40px;
     padding-bottom: 10px;
@@ -724,6 +745,9 @@ h2 {
   }
   .inputPadding, .primaryControls .inputAndDisplay, .taskControls .taskInput {
     padding: 20px;
+  }
+  .container .infoLogo {
+    right: 50px;
   }
 }
 

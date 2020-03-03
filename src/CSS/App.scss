@@ -28,6 +28,7 @@ $confirm: rgb(0, 150, 50);
 }
 .hide {
   visibility: hidden;
+  display: none;
 }
 
 .paddingOne {
@@ -106,13 +107,6 @@ input:-webkit-autofill:focus {
   animation: slideInLeft 250ms forwards cubic-bezier(0.55, 0.5, 0.97, 0.76);
 }
 
-h2 {
-  margin: 0;
-  color: $light;
-  align-self: flex-start;
-  @extend .paddingTwo;
-}
-
 .helpMessage {
   width: 100%;
   color: $mediumGrey;
@@ -136,6 +130,28 @@ h2 {
   align-items: center;
   box-sizing: border-box;
   flex-direction: column;
+  position: relative;
+
+  .infoLogo {
+    top: 23px;
+    right: 30px;
+    color: $dark;
+    padding: 1px 8px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: $light;
+    font-size: 1.2em;
+    @extend .buttonBaseStyle;
+  }
+
+  h2 {
+    margin: 0;
+    width: 100%;
+    color: $light;
+    align-self: flex-start;
+    box-sizing: border-box;
+    @extend .paddingTwo;
+  }
 
   .completedTaskList {
     width: 100%;
@@ -147,6 +163,8 @@ h2 {
       display: flex;
       margin-bottom: 5px;
       flex-direction: column;
+      border-radius: 10px;
+      background-color: $extraLightGrey;
       @extend .responsiveFont;
 
       .taskName {
@@ -497,7 +515,7 @@ h2 {
     padding: 30px;
     display: flex;
     margin-top: 100px;
-    max-width: 500px;
+    max-width: 440px;
     max-height: 250px;
     border-radius: 10px;
     align-items: center;
@@ -589,6 +607,11 @@ h2 {
       left: 8px;
     }
   }
+  .container {
+    .infoLogo {
+      right: 40px;
+    }
+  }
 }
 @media (min-width: 600px) {
   .paddingOne {
@@ -605,6 +628,11 @@ h2 {
   }
   .inputPadding {
     padding: 20px;
+  }
+  .container {
+    .infoLogo {
+      right: 50px;
+    }
   }
 }
 @keyframes slideInDown {
