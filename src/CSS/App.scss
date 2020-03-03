@@ -1,6 +1,6 @@
 $primaryFont: 'Montserrat', sans-serif;
-$dark: rgb(50, 50, 50);
-$darkGrey: rgb(95, 95, 95);
+$dark: rgb(45, 45, 45);
+$darkGrey: rgb(50, 50, 50);
 $mediumGrey: rgb(215, 215, 215);
 $lightGrey: rgb(243, 243, 243);
 $extraLightGrey: rgb(249, 249, 249);
@@ -55,7 +55,7 @@ html {
   body {
     margin: 0;
     padding: 0;
-    background-color: $dark;
+    background-color: $darkGrey;
     font-family: $primaryFont;
   }
 }
@@ -106,6 +106,24 @@ input:-webkit-autofill:focus {
   animation: slideInLeft 250ms forwards cubic-bezier(0.55, 0.5, 0.97, 0.76);
 }
 
+h2 {
+  margin: 0;
+  color: $light;
+  align-self: flex-start;
+  @extend .paddingTwo;
+}
+
+.helpMessage {
+  width: 100%;
+  color: $mediumGrey;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background-color: $dark;
+  margin: 0 auto 10px auto;
+  @extend .responsiveFont;
+  @extend .paddingTwo;
+}
+
 .container {
   padding: 10px;
   display: flex;
@@ -119,15 +137,9 @@ input:-webkit-autofill:focus {
   box-sizing: border-box;
   flex-direction: column;
 
-  h2 {
-    color: $light;
-    text-align: center;
-    margin: 0 auto 10px auto;
-  }
   .completedTaskList {
     width: 100%;
     display: flex;
-    margin-top: 5px;
     flex-direction: column;
 
     .completedTaskEntry {
@@ -451,7 +463,7 @@ input:-webkit-autofill:focus {
     color: $dark;
     display: flex;
     position: relative;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     box-sizing: border-box;
     flex-direction: column;
 

@@ -12,6 +12,15 @@ class HourlyRateInput extends React.Component {
     this.props.onInputSubmit(parseFloat(ratePerHour));
   };
 
+  formatValue = input => {
+    if (!input) return '';
+    return input.replace(/,/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+
+  normalizeValue = value => {
+    return value.replace(/,/g, '');
+  };
+
   renderInput = ({
     input,
     meta: { dispatch, error, pristine, submitFailed }
@@ -25,7 +34,6 @@ class HourlyRateInput extends React.Component {
           <input
             {...input}
             type='text'
-            pattern='[0-9]*\.?[0-9]+'
             inputMode='decimal'
             // type='number'
             // step='0.01'
@@ -45,7 +53,12 @@ class HourlyRateInput extends React.Component {
     return (
       <div className='inputAndDisplay'>
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-          <Field name='ratePerHour' component={this.renderInput} />
+          <Field
+            name='ratePerHour'
+            format={this.formatValue}
+            normalize={this.normalizeValue}
+            component={this.renderInput}
+          />
           <div
             className={
               this.props.taskTimerRunning ? 'inputGuard' : 'inputGuard hide'
