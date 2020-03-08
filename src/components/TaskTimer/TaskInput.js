@@ -5,7 +5,7 @@ import {
   onTaskSubmit,
   toggleSetRateWarning,
   toggleTaskTimerWarning
-} from '../actions';
+} from '../../actions';
 
 class TaskInput extends React.Component {
   onSubmit = ({ taskName }) => {

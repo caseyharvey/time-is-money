@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CompletedTaskEntry from './CompletedTaskEntry';
-import { removeTaskFromCompleted } from '../actions';
+import { removeTaskFromCompleted } from '../../actions';
 
 class CompletedTaskList extends React.Component {
   deleteTask = id => {

@@ -1,12 +1,12 @@
 import React from 'react';
-import Modal from './Modal';
+import Modal from '../Modal';
 import { connect } from 'react-redux';
-import Button from './Button';
-import TimerDisplay from './TimerDisplay';
+import Button from '../Button';
+import TimerDisplay from '../TimerDisplay';
 import { initialize } from 'redux-form';
 import ValueBreakdown from './ValueBreakdown';
-import DollarValueDisplay from './DollarValueDisplay';
-import { resetPrimaryTimer, togglePrimaryResetModal } from '../actions';
+import DollarValueDisplay from '../DollarValueDisplay';
+import { resetPrimaryTimer, togglePrimaryResetModal } from '../../actions';
 
 class PrimaryTimer extends React.Component {
   resetAll = () => {

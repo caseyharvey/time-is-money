@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import HourlyRateInput from './HourlyRateInput';
-import CompletedTaskList from './CompletedTaskList';
-import PrimaryTimer from './PrimaryTimer';
-import TaskDetails from './TaskDetails';
-import TaskInput from './TaskInput';
-import { toggleShowHelp } from '../actions';
+import HourlyRateInput from '../PrimaryTimer/HourlyRateInput';
+import CompletedTaskList from '../CompletedTask/CompletedTaskList';
+import PrimaryTimer from '../PrimaryTimer/PrimaryTimer';
+import TaskDetails from '../TaskTimer/TaskDetails';
+import TaskInput from '../TaskTimer/TaskInput';
+import { toggleShowHelp } from '../../actions';
 
-import '../CSS/App.css';
+import './App.scss';
 
 const App = props => {
   let displayHelpMessages = props.showHelp ? 'helpMessage' : 'helpMessage hide';

@@ -1,10 +1,10 @@
 import React from 'react';
-import Button from './Button';
+import Button from '../Button';
 import { connect } from 'react-redux';
 import { initialize } from 'redux-form';
-import TimerDisplay from './TimerDisplay';
-import DollarValueDisplay from './DollarValueDisplay';
-import { stopTask } from '../actions';
+import TimerDisplay from '../TimerDisplay';
+import DollarValueDisplay from '../DollarValueDisplay';
+import { stopTask } from '../../actions';
 
 class TaskDetails extends React.Component {
   render() {

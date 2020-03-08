@@ -5,7 +5,7 @@ import {
   onInputSubmit,
   resetPrimaryTimer,
   toggleCompleteTaskWarning
-} from '../actions';
+} from '../../actions';
 
 class HourlyRateInput extends React.Component {
   onSubmit = ({ ratePerHour }) => {
